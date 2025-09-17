@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph (WhatsApp/Facebook) -->
+  <!-- Open Graph / WhatsApp -->
   <meta property="og:site_name" content="Psicología Rural & Comunitaria" />
   <meta property="og:title" content="V Congreso Latinoamericano de Psicología Rural" />
   <meta property="og:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
@@ -26,9 +26,8 @@
   <meta name="twitter:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
   <meta name="twitter:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
 
-  <!-- Favicon y color del tema -->
+  <!-- Favicon opcional (no visible el logo dentro de la página) -->
   <link rel="icon" type="image/png" href="LOGO.png" />
-  <meta name="theme-color" content="#1e3a8a" />
 
   <!-- Fuentes y Tailwind -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,46 +36,71 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* Paleta del logo */
-    :root {
-      --azul: #2C6B8E;     /* Azul principal */
-      --verde: #7BA84F;    /* Verde acento */
-      --beige: #D6AE6D;    /* Beige/dorado */
-      --gris: #2E2E2E;     /* Gris oscuro */
+    /* ===== Paleta tierra ===== */
+    :root{
+      --arena:#F4E9D8;      /* fondo tarjetas de sala */
+      --arena-suave:#EFE6D9;/* barras/filtros */
+      --marron:#8B6B4A;     /* títulos sala/botones activos */
+      --verde:#7BA84F;      /* acentos */
+      --gris:#2E2E2E;       /* texto principal */
     }
 
-    body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: var(--gris); }
-    .container-main { max-width: 1200px; }
+    body{ font-family: 'Inter', sans-serif; background:#fcfaf7; color:var(--gris); }
+    .container-main{ max-width:1200px; }
 
-    /* Tabs */
-    .tab-button { border: 1px solid var(--azul); color: var(--azul); transition: all 0.2s; }
-    .tab-button.active { background-color: var(--azul); color: #fff; }
-    .tab-button:hover { background-color: var(--beige); color: var(--gris); }
+    /* Tabs (días) */
+    .tab-button{ border:1px solid var(--marron); color:var(--marron); transition:.15s; border-radius:.5rem; }
+    .tab-button.active{ background:var(--marron); color:#fff; }
+    .tab-button:hover{ background:#e5d5c5; color:#4b3727; }
 
-    /* Botones de actividades */
-    .talk-button { transition: all 0.2s; }
-    .talk-button:hover {
-      transform: scale(1.01);
-      background-color: var(--verde);
-      color: #fff;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    /* Tarjeta de sala */
+    .sala-card{ background:var(--arena); border:1px solid #e3d6c5; }
+    .sala-title{ color:var(--marron); }
+
+    /* Chips de ejes por sala */
+    .eje-chip{
+      background:#dfead6; color:#2f6b2f; border:1px solid #c7ddbc;
+      font-size:12px; padding:4px 8px; border-radius:999px;
     }
 
-    /* Links */
-    a { color: var(--azul); text-decoration: underline; }
-    a:hover { color: var(--verde); }
+    /* Actividades */
+    .talk-button{ background:#fff; border:1px solid #e8e1d6; transition:.15s; }
+    .talk-button:hover{
+      background:#eaf3e3; /* verde muy claro */
+      transform: translateY(-1px);
+      box-shadow:0 4px 10px rgba(0,0,0,.06);
+    }
+    .autores{ font-style:italic; color:#616161; }
+
+    /* Píldoras de filtro de ejes */
+    .axis-pill{
+      padding:6px 12px; border-radius:999px; border:1px solid #cdb79b;
+      background:#fff; color:#6b4e37; font-weight:600; transition:.15s;
+    }
+    .axis-pill:hover{ background:#f3e9dc; }
+    .axis-active{ background:var(--marron); color:#fff; border-color:var(--marron); }
+
+    /* Bloque Información General (destacado) */
+    .info-general{
+      background:#fff5e6;               /* distinto al resto */
+      border:1px solid #f0d7b2;
+    }
+    .info-general h2{ color:#6b4e37; }
+    .info-general h3{ color:#6b4e37; }
+
+    /* Enlaces */
+    a{ color:#2C6B8E; text-decoration:underline; }
+    a:hover{ color:var(--verde); }
 
     /* Footer */
-    footer { background-color: #f3f4f6; }
-    footer a { color: var(--azul); font-weight: 600; }
-    footer a:hover { color: var(--verde); }
+    footer{ background:#f3f1ec; }
 
     /* Impresión básica */
-    @media print {
-      nav, #toggle-info, .shadow-inner, .shadow-lg, .shadow-xl, #shareBtn { display: none !important; }
-      body { background: #fff; }
-      .container-main { box-shadow: none; padding: 0; }
-      .talk-button { border: 1px solid #ddd; box-shadow: none; }
+    @media print{
+      nav, #toggle-info, .shadow-inner, .shadow-lg, .shadow-xl, #shareBtn, #pdfBtn { display:none !important; }
+      body{ background:#fff; }
+      .container-main{ box-shadow:none; padding:0; }
+      .talk-button{ border:1px solid #ddd; box-shadow:none; }
     }
   </style>
 
@@ -99,81 +123,90 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
   <div class="container-main mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10">
+
     <!-- Header -->
     <header class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 leading-tight mb-2">
+      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-2" style="color:#4b3727;">
         V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
       </h1>
-      <p class="text-lg text-gray-600 mb-4"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
-      <p class="text-gray-500 max-w-2xl mx-auto mb-6">
-        Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria. Este evento ha sido diseñado como un espacio crucial para la reflexión y el intercambio de conocimientos.
+      <p class="text-lg text-gray-700 mb-4"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+        Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria.
       </p>
     </header>
 
-    <!-- Tabs accesibles -->
+    <!-- Tabs (Días) -->
     <nav role="tablist" aria-label="Días" class="flex justify-center mb-8 bg-gray-200 rounded-xl p-2 shadow-inner">
-      <button id="tab-martes" role="tab" aria-selected="true" aria-controls="panel-martes" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Martes 7</button>
-      <button id="tab-miercoles" role="tab" aria-selected="false" aria-controls="panel-miercoles" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Miércoles 8</button>
-      <button id="tab-jueves" role="tab" aria-selected="false" aria-controls="panel-jueves" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Jueves 9</button>
+      <button id="tab-martes" role="tab" aria-selected="true" aria-controls="panel-martes" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Martes 7</button>
+      <button id="tab-miercoles" role="tab" aria-selected="false" aria-controls="panel-miercoles" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Miércoles 8</button>
+      <button id="tab-jueves" role="tab" aria-selected="false" aria-controls="panel-jueves" class="tab-button px-4 py-2 sm:py-3 sm:px-6 font-semibold text-lg">Jueves 9</button>
     </nav>
 
-    <!-- Filtros e información general -->
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 bg-blue-50 rounded-lg shadow-sm">
-      <div class="w-full sm:w-1/2 flex items-center mb-4 sm:mb-0">
-        <label for="axis-filter" class="text-gray-700 font-medium mr-3 whitespace-nowrap">Filtrar por Eje:</label>
-        <select id="axis-filter" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-4 py-2">
-          <option value="all">Todos los Ejes Temáticos</option>
-          <option value="Eje 1">Eje 1: Pueblos indígenas y afrodescendientes</option>
-          <option value="Eje 2">Eje 2: Crisis sistémicas, sostenibilidad y transformaciones socioambientales</option>
-          <option value="Eje 3">Eje 3: Mujeres, cuidados y territorios</option>
-          <option value="Eje 4">Eje 4: Diversidades, ciclos vitales y territorios</option>
-          <option value="Eje 5">Eje 5: Trayectorias de la Psicología Rural</option>
-          <option value="Eje 6">Eje 6: Trayectorias y horizontes emergentes de la Psicología Comunitaria</option>
-        </select>
+    <!-- Filtros por eje (píldoras) -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 rounded-lg shadow-sm" style="background:var(--arena-suave);">
+      <div class="w-full">
+        <div class="flex flex-wrap gap-2 items-center">
+          <span class="text-sm font-semibold" style="color:#6b4e37;">Filtrar por eje:</span>
+          <div id="axis-pills" class="flex flex-wrap gap-2 mt-2">
+            <button class="axis-pill axis-active" data-axis="all">Todos</button>
+            <button class="axis-pill" data-axis="Eje 1">Eje 1</button>
+            <button class="axis-pill" data-axis="Eje 2">Eje 2</button>
+            <button class="axis-pill" data-axis="Eje 3">Eje 3</button>
+            <button class="axis-pill" data-axis="Eje 4">Eje 4</button>
+            <button class="axis-pill" data-axis="Eje 5">Eje 5</button>
+            <button class="axis-pill" data-axis="Eje 6">Eje 6</button>
+          </div>
+        </div>
       </div>
-      <div class="w-full sm:w-1/2 flex justify-end">
-        <button id="toggle-info" class="px-4 py-2" style="background: var(--azul); color: #fff; border-radius: 0.5rem;">Ver Información General</button>
+      <div class="w-full sm:w-auto flex justify-end mt-3 sm:mt-0">
+        <button id="toggle-info" class="px-4 py-2 rounded-lg font-semibold" style="background: var(--marron); color:#fff;">Ver Información General</button>
       </div>
     </div>
 
-    <!-- Información general -->
-    <div id="general-info-container" class="hidden mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200 shadow-inner">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">Información General</h2>
+    <!-- Información General (destacada y exacta) -->
+    <section id="general-info-container" class="hidden mt-6 p-6 rounded-lg border info-general">
+      <h2 class="text-2xl font-bold mb-4">Información General</h2>
+
       <div class="mb-4">
-        <h3 class="text-xl font-semibold text-gray-700 mb-2">Sedes:</h3>
-        <ul class="list-disc list-inside text-gray-600">
+        <h3 class="text-xl font-semibold mb-2">Sedes:</h3>
+        <ul class="list-disc list-inside">
           <li><span class="font-medium">Martes 7:</span> Campus USACH – Estación Central (L1 METRO USACH)</li>
           <li><span class="font-medium">Miércoles 8 y Jueves 9:</span> CEPEC USACH – Apoquindo (L1 METRO ESCUELA MILITAR)</li>
         </ul>
       </div>
+
       <div class="mb-4">
-        <h3 class="text-xl font-semibold text-gray-700 mb-2">Datos Clave:</h3>
-        <ul class="list-disc list-inside text-gray-600">
+        <h3 class="text-xl font-semibold mb-2">Datos Clave:</h3>
+        <ul class="list-disc list-inside">
           <li><span class="font-medium">Acreditación:</span> martes 7 de octubre, de 09:00 a 15:30.</li>
           <li><span class="font-medium">Actividades con inscripción:</span> Algunos talleres y visitas a territorios tienen cupos limitados y requieren inscripción previa.</li>
         </ul>
       </div>
-      <div class="mb-4">
-        <h3 class="text-xl font-semibold text-gray-700 mb-2">Ejes Temáticos:</h3>
-        <ul class="list-decimal list-inside text-gray-600 space-y-2">
+
+      <div>
+        <h3 class="text-xl font-semibold mb-2">Ejes Temáticos:</h3>
+        <ul class="list-decimal list-inside space-y-2">
           <li>Pueblos indígenas y afrodescendientes: saberes ancestrales, comunidades rurales y prácticas comunitarias</li>
           <li>Crisis sistémicas, sostenibilidad y transformaciones socioambientales en territorios rurales y urbanos</li>
           <li>Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales en resistencia</li>
           <li>Diversidades, ciclos vitales y territorios: reconocimiento e inclusión de sujetos históricamente invisibilizados</li>
           <li>Trayectorias de la Psicología Rural en Latinoamérica</li>
-          <li>Trayectorias y horizontes emergentes de la Psicología Comunitaria en Latinoamérica: desarrollos, desafíos y transformaciones</li>
+          <li>Trayectorias y horizontes emergentes de la Psicología Comunitaria en Latinoamérica: desarrollos, desafíos y transformaciones.</li>
         </ul>
       </div>
-    </div>
+    </section>
 
     <!-- Contenedor del programa -->
     <div id="schedule-container" class="mt-8 space-y-8"></div>
 
     <!-- Pie -->
-    <footer class="text-center text-sm text-gray-500 mt-12 p-6 rounded-xl">
+    <footer class="text-center text-sm text-gray-700 mt-12 p-6 rounded-xl">
       <p>Contacto: <a class="underline" href="mailto:eventosepusach@usach.cl">eventosepusach@usach.cl</a> ·
         <a class="underline" href="https://psicologiaruralcomunitaria.cl" target="_blank" rel="noopener">psicologiaruralcomunitaria.cl</a></p>
-      <button id="shareBtn" class="mt-3 px-3 py-2 rounded-lg border">Compartir este programa</button>
+      <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
+        <button id="shareBtn" class="px-3 py-2 rounded-lg border">Compartir este programa</button>
+        <button id="pdfBtn" class="px-3 py-2 rounded-lg border">Descargar PDF</button>
+      </div>
     </footer>
   </div>
 
@@ -292,23 +325,25 @@
       ]
     };
 
-    /* ====== LÓGICA DE RENDER ====== */
+    /* ====== Estado y elementos ====== */
     const scheduleContainer = document.getElementById('schedule-container');
     const tabButtons = document.querySelectorAll('.tab-button');
-    const axisFilter = document.getElementById('axis-filter');
+    const axisPills = document.getElementById('axis-pills');
     const toggleInfoBtn = document.getElementById('toggle-info');
     const generalInfoContainer = document.getElementById('general-info-container');
 
     let selectedDay = 'Martes 7';
+    let selectedAxis = 'all';
 
+    /* ====== Render ====== */
     function renderSchedule() {
       const currentDaySchedule = scheduleData[selectedDay];
-      const selectedAxis = axisFilter.value;
+      const selectedAxisLocal = selectedAxis;
 
       const groupedEvents = currentDaySchedule.reduce((acc, event) => {
         const key = event.location + ' - ' + event.room;
         if (!acc[key]) acc[key] = [];
-        if (selectedAxis === 'all' || event.axis === selectedAxis || event.axis === null) {
+        if (selectedAxisLocal === 'all' || event.axis === selectedAxisLocal || event.axis === null) {
           acc[key].push(event);
         }
         return acc;
@@ -318,35 +353,44 @@
       for (const key in groupedEvents) {
         if (groupedEvents[key].length > 0) {
           const [location, room] = key.split(' - ');
+
+          // ejes únicos en la sala
+          const axesInRoom = Array.from(new Set(groupedEvents[key].map(ev => ev.axis).filter(Boolean)));
+          const axesHtml = axesInRoom.length
+            ? `<div class="mb-3 flex flex-wrap gap-2">
+                 ${axesInRoom.map(a => `<span class="eje-chip">${a}</span>`).join('')}
+               </div>` : '';
+
           htmlContent += `
-            <section class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200" aria-label="${room}">
-              <h3 class="text-xl sm:text-2xl font-bold text-blue-800 mb-2">${room}</h3>
-              <p class="text-gray-500 mb-4">${location}</p>
+            <section class="sala-card p-6 rounded-xl shadow-lg border" aria-label="${room}">
+              <h3 class="text-xl sm:text-2xl font-extrabold sala-title mb-1">${room}</h3>
+              <p class="text-gray-700 mb-2">${location}</p>
+              ${axesHtml}
               <div class="space-y-4">
                 ${groupedEvents[key].map(event => {
                   if (event.block_title) {
                     return `
-                      <article class="bg-gray-100 p-4 rounded-lg shadow-inner">
-                        <h4 class="font-bold text-gray-700 mb-2">${event.block_title}</h4>
-                        <p class="text-sm text-gray-500 mb-4">${event.block_time}</p>
+                      <article class="p-4 rounded-lg shadow-inner" style="background:#f9f3ea;border:1px solid #e7d8c5;">
+                        <h4 class="font-bold mb-2" style="color:#5c432f;">${event.block_title}</h4>
+                        <p class="text-sm text-gray-600 mb-4">${event.block_time}</p>
                         <div class="space-y-2">
                           ${event.talks.map(talk => `
-                            <button class="talk-button w-full text-left bg-white p-3 rounded-md border border-gray-200 shadow-sm">
-                              <p class="text-xs text-gray-200/80" style="color:#6b7280">${talk.time}</p>
+                            <div class="talk-button w-full text-left p-3 rounded-md border">
+                              <p class="text-xs" style="color:#6b7280">${talk.time}</p>
                               <h5 class="font-medium">${talk.title}</h5>
-                              ${talk.speakers.length > 0 ? `<p class="text-sm mt-1">Con: <span class="font-medium">${talk.speakers.join(', ')}</span></p>` : ''}
-                            </button>
+                              ${talk.speakers.length ? `<p class="autores text-sm mt-1">${talk.speakers.join(', ')}</p>` : ''}
+                            </div>
                           `).join('')}
                         </div>
                       </article>
                     `;
                   } else {
                     return `
-                      <button class="talk-button w-full text-left bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                      <div class="talk-button w-full text-left p-4 rounded-lg border">
                         <p class="text-sm" style="color:#6b7280">${event.time}</p>
                         <h4 class="font-semibold">${event.title}</h4>
-                        ${event.speakers.length > 0 ? `<p class="text-sm mt-1">Con: <span class="font-medium">${event.speakers.join(', ')}</span></p>` : ''}
-                      </button>
+                        ${event.speakers.length ? `<p class="autores text-sm mt-1">${event.speakers.join(', ')}</p>` : ''}
+                      </div>
                     `;
                   }
                 }).join('')}
@@ -367,23 +411,25 @@
     }
 
     // Estado en la URL (#dia=...&eje=...)
-    function readStateFromHash() {
+    function readStateFromHash(){
       const params = new URLSearchParams(location.hash.replace('#',''));
       const dia = params.get('dia');
       const eje = params.get('eje');
       if (dia && scheduleData[dia]) selectedDay = dia;
-      if (eje && axisFilter) {
-        const optExists = [...axisFilter.options].some(o => o.value === eje);
-        if (optExists) axisFilter.value = eje;
+      if (eje){
+        selectedAxis = eje;
+        // marcar píldora activa
+        const btn = axisPills.querySelector(`[data-axis="${eje}"]`);
+        axisPills.querySelectorAll('.axis-pill').forEach(b=>b.classList.remove('axis-active'));
+        (btn||axisPills.querySelector('[data-axis="all"]')).classList.add('axis-active');
       }
     }
-    function writeStateToHash() {
+    function writeStateToHash(){
       const params = new URLSearchParams();
       params.set('dia', selectedDay);
-      if (axisFilter.value !== 'all') params.set('eje', axisFilter.value);
+      if (selectedAxis !== 'all') params.set('eje', selectedAxis);
       location.hash = params.toString();
     }
-
     window.addEventListener('hashchange', () => { readStateFromHash(); updateTabs(); renderSchedule(); });
 
     tabButtons.forEach(button => {
@@ -395,41 +441,48 @@
       });
     });
 
-    axisFilter.addEventListener('change', () => { renderSchedule(); writeStateToHash(); });
-
-    toggleInfoBtn.addEventListener('click', () => {
-      generalInfoContainer.classList.toggle('hidden');
-      const buttonText = generalInfoContainer.classList.contains('hidden') ? 'Ver Información General' : 'Ocultar Información General';
-      toggleInfoBtn.textContent = buttonText;
+    // Píldoras de ejes
+    axisPills.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.axis-pill');
+      if(!btn) return;
+      selectedAxis = btn.dataset.axis;
+      axisPills.querySelectorAll('.axis-pill').forEach(b=>b.classList.remove('axis-active'));
+      btn.classList.add('axis-active');
+      renderSchedule();
+      writeStateToHash();
     });
 
- // Botón compartir (nativo o copia)
-document.getElementById('shareBtn')?.addEventListener('click', async () => {
-  const url = location.href;
-  const title = document.title;
-  if (navigator.share) {
-    try { await navigator.share({ title, url }); } catch (e) {}
-  } else {
-    try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
-  }
-});
+    // Mostrar/Ocultar Información General
+    const toggleInfoBtnEl = document.getElementById('toggle-info');
+    const generalInfoContainerEl = document.getElementById('general-info-container');
+    toggleInfoBtnEl.addEventListener('click', ()=>{
+      generalInfoContainerEl.classList.toggle('hidden');
+      toggleInfoBtnEl.textContent = generalInfoContainerEl.classList.contains('hidden')
+        ? 'Ver Información General' : 'Ocultar Información General';
+    });
 
-// Botón descargar PDF
-document.getElementById('pdfBtn')?.addEventListener('click', () => {
-  const element = document.querySelector('.container-main'); // el bloque principal
-  html2pdf().from(element).save('programa_congreso.pdf');
-});
+    // Botón compartir (nativo o copia)
+    document.getElementById('shareBtn')?.addEventListener('click', async () => {
+      const url = location.href;
+      const title = document.title;
+      if (navigator.share) {
+        try { await navigator.share({ title, url }); } catch (e) {}
+      } else {
+        try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
+      }
+    });
 
-// Render inicial
-document.addEventListener('DOMContentLoaded', () => { 
-  readStateFromHash(); 
-  updateTabs(); 
-  renderSchedule(); 
-});
-</script>
+    // Botón descargar PDF (usa librería incluida al final)
+    document.getElementById('pdfBtn')?.addEventListener('click', () => {
+      const element = document.querySelector('.container-main');
+      html2pdf().from(element).save('programa_congreso.pdf');
+    });
 
-<!-- Librería para generar PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    // Render inicial
+    document.addEventListener('DOMContentLoaded', () => { readStateFromHash(); updateTabs(); renderSchedule(); });
+  </script>
+
+  <!-- Librería para generar PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </body>
 </html>
-
