@@ -101,7 +101,6 @@
   <div class="container-main mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10">
     <!-- Header -->
     <header class="text-center mb-8">
-      <img src="LOGO.png" alt="Logo del congreso" class="mx-auto mb-4 w-24 h-24 object-contain" />
       <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 leading-tight mb-2">
         V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
       </h1>
@@ -404,19 +403,33 @@
       toggleInfoBtn.textContent = buttonText;
     });
 
-    // Botón compartir (nativo o copia)
-    document.getElementById('shareBtn')?.addEventListener('click', async () => {
-      const url = location.href;
-      const title = document.title;
-      if (navigator.share) {
-        try { await navigator.share({ title, url }); } catch (e) {}
-      } else {
-        try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
-      }
-    });
+ // Botón compartir (nativo o copia)
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+  const url = location.href;
+  const title = document.title;
+  if (navigator.share) {
+    try { await navigator.share({ title, url }); } catch (e) {}
+  } else {
+    try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
+  }
+});
 
-    // Render inicial
-    document.addEventListener('DOMContentLoaded', () => { readStateFromHash(); updateTabs(); renderSchedule(); });
-  </script>
+// Botón descargar PDF
+document.getElementById('pdfBtn')?.addEventListener('click', () => {
+  const element = document.querySelector('.container-main'); // el bloque principal
+  html2pdf().from(element).save('programa_congreso.pdf');
+});
+
+// Render inicial
+document.addEventListener('DOMContentLoaded', () => { 
+  readStateFromHash(); 
+  updateTabs(); 
+  renderSchedule(); 
+});
+</script>
+
+<!-- Librería para generar PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </body>
 </html>
+
