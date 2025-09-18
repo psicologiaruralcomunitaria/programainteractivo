@@ -65,6 +65,45 @@
         }
         .talk-button:hover h5, .talk-button:hover p, .talk-button:hover span { color: #fff; }
 
+        /* Estilo para los títulos de las salas (ahora son botones colapsables) */
+        .room-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+            background-color: #f1f5f9;
+            border: none;
+            cursor: pointer;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--azul-principal);
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .room-toggle:hover {
+            background-color: var(--beige-dorado);
+        }
+
+        .room-toggle::after {
+            content: "+";
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .room-toggle.expanded::after {
+            content: "-";
+            transform: rotate(0deg);
+        }
+
+        .room-toggle.expanded h3 {
+            color: var(--gris-oscuro);
+        }
+
         /* Links */
         a { color: var(--azul-principal); text-decoration: underline; }
         a:hover { color: var(--verde-acento); }
@@ -353,13 +392,20 @@
                 }, {});
 
                 let htmlContent = '';
+                let sectionCount = 0;
                 for (const key in groupedEvents) {
                     const [location, room] = key.split(' - ');
+                    const sectionId = `section-${sectionCount++}`;
+                    
                     htmlContent += `
                         <section class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200" aria-label="${room}">
-                            <h3 class="text-xl sm:text-2xl font-bold text-blue-800 mb-2">${room}</h3>
-                            <p class="text-gray-500 mb-4">${location}</p>
-                            <div class="space-y-4">
+                            <button class="room-toggle" aria-expanded="false" aria-controls="${sectionId}">
+                                <div class="text-left">
+                                    <h3 class="text-xl sm:text-2xl font-bold mb-0">${room}</h3>
+                                    <p class="text-sm text-gray-500 mb-0">${location}</p>
+                                </div>
+                            </button>
+                            <div id="${sectionId}" class="talks-container hidden mt-4 space-y-4">
                                 ${groupedEvents[key].map(event => {
                                     if (event.block_title) {
                                         return `
@@ -393,7 +439,21 @@
                 }
                 
                 scheduleContainer.innerHTML = htmlContent || '<p class="text-center text-gray-500 text-lg py-10">No hay eventos para el filtro seleccionado.</p>';
-            }, 500); // 500ms de retardo
+                
+                // Añadir el listener para los botones de sala
+                document.querySelectorAll('.room-toggle').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const targetId = button.getAttribute('aria-controls');
+                        const targetContainer = document.getElementById(targetId);
+                        
+                        const isExpanded = button.getAttribute('aria-expanded') === 'true' || false;
+                        
+                        button.setAttribute('aria-expanded', !isExpanded);
+                        button.classList.toggle('expanded', !isExpanded);
+                        targetContainer.classList.toggle('hidden');
+                    });
+                });
+            }, 500);
         }
 
         // Funciones para actualizar la interfaz
