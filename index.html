@@ -1,858 +1,810 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>V Congreso Latinoamericano de Psicología Rural</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria (USACH). Filtra por días y ejes temáticos." />
-  <link rel="canonical" href="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
-  <meta name="robots" content="index,follow" />
-
-  <!-- Open Graph / WhatsApp -->
-  <meta property="og:site_name" content="Psicología Rural & Comunitaria" />
-  <meta property="og:title" content="V Congreso Latinoamericano de Psicología Rural" />
-  <meta property="og:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
-  <meta property="og:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="V Congreso Latinoamericano de Psicología Rural" />
-  <meta name="twitter:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
-  <meta name="twitter:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="LOGO.png" />
-  <meta name="theme-color" content="#476C8E" />
-
-  <!-- Fuentes + Tailwind -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>V Congreso Latinoamericano de Psicología Rural — Programa interactivo</title>
+  <meta name="description" content="Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria (USACH). Vista por ejes o por horario."/>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --azul:#476C8E; --verde:#7BA84F; --dorado:#D6AE6D;
-      --gris-oscuro:#2E2E2E; --gris-fondo:#f9fafb;
-      --arena:#fff5e6; --arena-borde:#f0d7b2;
-    }
-    body{ font-family:'Inter',sans-serif; background:var(--gris-fondo); color:var(--gris-oscuro);}
-    .container-main{ max-width:1200px;}
-
-    /* Tabs (días) */
-    .tab-button{ border:1px solid var(--azul); color:var(--azul); transition:.2s; border-radius:.5rem;}
-    .tab-button.active{ background:var(--azul); color:#fff;}
-    .tab-button:hover:not(.active){ background:var(--dorado); color:#1f2937;}
-
-    /* Filtros por eje */
-    .filter-button{ background:#e5e7eb; border-radius:9999px; padding:.5rem 1rem; font-weight:600; font-size:.875rem; transition:.2s; border:1px solid transparent; color:#374151;}
-    .filter-button.active{ background:var(--verde); color:#fff; border-color:var(--verde);}
-    .filter-button:hover:not(.active){ background:#d1d5db;}
-
-    /* Sala/Bloque colapsables */
-    .room-toggle{ display:flex; justify-content:space-between; align-items:center; width:100%; text-align:left; padding:1.1rem 1.1rem; background:#f1f5f9; border:none; cursor:pointer; border-radius:.75rem; font-weight:700; color:var(--azul);}
-    .room-toggle:hover{ background:var(--dorado); color:#1f2937;}
-    .room-toggle::after{ content:"+"; font-size:1.4rem;}
-    .room-toggle[aria-expanded="true"]::after{ content:"–"; }
-
-    /* Chips eje */
-    .eje-chip{ display:inline-block; font-size:12px; padding:4px 8px; border-radius:9999px; background:#dfead6; color:#2f6b2f; border:1px solid #c7ddbc;}
-
-    /* Actividad */
-    .talk{ transition:.2s; border-left:4px solid var(--azul); background:#fff; border:1px solid #e5e7eb;}
-    .talk:hover{ transform:translateY(-1px); background:var(--verde); color:#fff; box-shadow:0 4px 10px rgba(0,0,0,.08); border-left-color:#2c4e6a;}
-    .talk:hover h5, .talk:hover p{ color:#fff;}
-    .autores{ font-style:italic; color:#616161;}
-
-    /* Info General (tierra) */
-    .info-general{ background:var(--arena); border:1px solid var(--arena-borde);}
-    .info-general h2,.info-general h3{ color:#6b4e37;}
-
-    /* Print */
-    @media print{
-      nav, #toggle-info, #shareBtn, #pdfBtn, .filter-button{ display:none !important;}
-      body{ background:#fff;}
-      .container-main{ box-shadow:none; padding:0;}
-      .talk{ border:1px solid #ddd; box-shadow:none;}
-    }
+    :root{--azul:#476C8E;--verde:#7BA84F;--beige:#D6AE6D;--negro:#2E2E2E;--fondo:#F7F5EF;--arena:#EDE6D6}
+    html,body{font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--negro);background:var(--fondo)}
+    .container-main{max-width:1200px}
+    .chip{display:inline-block;border:1px solid #00000020;border-radius:9999px;padding:.25rem .6rem;font-weight:600;font-size:.75rem}
+    .chip-eje{border-color:var(--azul);color:var(--azul)}
+    .chip-sala{border-color:#00000020;color:#555}
+    .btn{border:1px solid var(--azul);color:var(--azul);padding:.5rem .9rem;border-radius:.75rem;font-weight:700}
+    .btn.active{background:var(--azul);color:#fff}
+    .btn:hover{background:var(--beige);color:#222}
+    .btn-ghost{border:1px solid #00000020;color:#333}
+    .btn-ghost:hover{background:#00000008}
+    .card{background:#fff;border:1px solid #00000012;border-radius:1rem;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+    .room{background:var(--arena)}
+    .talk{border-left:4px solid var(--azul)}
+    .talk:hover{transform:scale(1.01);transition:.15s;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .section-title{border-bottom:2px solid #00000015;padding-bottom:.35rem;margin-bottom:.8rem}
+    .info-panel{background:#fff;border:1px solid #00000012}
+    @media print{#controls,#shareBtn,#pdfBtn,.sticky-top{display:none!important}body{background:#fff}.card,.room,.talk{box-shadow:none}}
   </style>
-
-  <!-- Datos estructurados -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Event",
-    "name":"V Congreso Latinoamericano de Psicología Rural",
-    "startDate":"2025-10-07",
-    "endDate":"2025-10-09",
-    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus":"https://schema.org/EventScheduled",
-    "location":{"@type":"Place","name":"USACH / CEPEC USACH","address":"Santiago, Chile"},
-    "image":["https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png"],
-    "description":"Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria.",
-    "organizer":{"@type":"Organization","name":"Universidad de Santiago de Chile (USACH)","url":"https://psicologiaruralcomunitaria.github.io/programainteractivo/"}
-  }
-  </script>
 </head>
-<body class="bg-gray-100 p-4 sm:p-8">
-  <div class="container-main mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10">
-    <!-- Header -->
-    <header class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-2" style="color:#1f2f44">
-        V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
+<body class="p-4 sm:p-8">
+  <div class="container-main mx-auto card p-6 sm:p-10">
+    <header class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-2" style="color:var(--azul)">
+        V Congreso Latinoamericano de Psicología Rural<br class="hidden sm:block"/> & III Congreso Nacional de Psicología Comunitaria
       </h1>
-      <p class="text-lg text-gray-700 mb-4"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
-      <p class="text-gray-600 max-w-3xl mx-auto">
-        Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria.
-        Este evento es un espacio para la reflexión e intercambio de conocimientos con foco en justicia social y ambiental.
-      </p>
+      <p class="text-lg text-gray-700"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
     </header>
 
-    <!-- Tabs días -->
-    <nav role="tablist" aria-label="Días" class="flex justify-center mb-6 bg-gray-200 rounded-xl p-2 shadow-inner">
-      <button role="tab" aria-selected="true" data-day="Martes 7" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Martes 7</button>
-      <button role="tab" aria-selected="false" data-day="Miércoles 8" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Miércoles 8</button>
-      <button role="tab" aria-selected="false" data-day="Jueves 9" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Jueves 9</button>
-    </nav>
-
-    <!-- Filtros por eje -->
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 p-4 rounded-lg shadow-sm" style="background:#eef4fa">
-      <div class="w-full flex flex-wrap gap-2 justify-center sm:justify-start">
-        <button data-filter="all" class="filter-button active">Todos los Ejes</button>
-        <button data-filter="Eje 1" class="filter-button">Eje 1</button>
-        <button data-filter="Eje 2" class="filter-button">Eje 2</button>
-        <button data-filter="Eje 3" class="filter-button">Eje 3</button>
-        <button data-filter="Eje 4" class="filter-button">Eje 4</button>
-        <button data-filter="Eje 5" class="filter-button">Eje 5</button>
-        <button data-filter="Eje 6" class="filter-button">Eje 6</button>
-      </div>
-      <div class="w-full sm:w-auto flex justify-center sm:justify-end mt-3 sm:mt-0">
-        <button id="toggle-info" class="px-4 py-2 rounded-lg font-semibold" style="background:var(--azul); color:#fff;">Ver Información General</button>
-      </div>
-    </div>
-
-    <!-- Info General -->
-    <section id="general-info-container" class="hidden mt-6 p-6 rounded-lg info-general">
-      <h2 class="text-2xl font-bold mb-4">Información General</h2>
-      <p class="mb-4">Agradecemos profundamente su participación y el compromiso con los saberes y experiencias que hacen posible este encuentro.</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Sedes</h3>
-          <ul class="list-disc list-inside">
-            <li><span class="font-medium">Martes 7:</span> Campus USACH – Estación Central (L1 METRO USACH)</li>
-            <li><span class="font-medium">Miércoles 8 y Jueves 9:</span> CEPEC USACH – Apoquindo (L1 METRO ESCUELA MILITAR)</li>
-          </ul>
+    <section id="generalInfo" class="info-panel rounded-xl p-5 mb-6">
+      <h2 class="text-xl font-bold mb-2">Información General</h2>
+      <div class="space-y-3 text-gray-800">
+        <p>Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria. Este evento ha sido diseñado como un espacio crucial para la reflexión y el intercambio de conocimientos. Está dirigido a académicos, profesionales, líderes comunitarios y actores sociales con el interés de construir propuestas concretas para avanzar hacia la justicia social y ambiental en comunidades tanto rurales como urbanas de América Latina.</p>
+        <p>Agradecemos profundamente su participación y el compromiso con los saberes y experiencias que hacen posible este encuentro. Esperamos que las discusiones de estos días no solo fortalezcan la disciplina, sino que también inspiren nuevas colaboraciones y acciones transformadoras.</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold mb-1">Sedes</h3>
+            <ul class="list-disc ml-5">
+              <li><b>Martes 7:</b> Campus USACH – Estación Central (L1 METRO USACH)</li>
+              <li><b>Miércoles 8 y Jueves 9:</b> CEPEC USACH – Apoquindo (L1 METRO ESCUELA MILITAR)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-1">Datos Clave</h3>
+            <ul class="list-disc ml-5">
+              <li><b>Acreditación:</b> martes 7 de octubre, de 09:00 a 15:30.</li>
+              <li><b>Actividades con inscripción previa:</b> Algunos talleres y visitas a territorios tienen cupos limitados y requieren inscripción previa.</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Datos Clave</h3>
-          <ul class="list-disc list-inside">
-            <li><span class="font-medium">Acreditación:</span> martes 7 de octubre, de 09:00 a 15:30.</li>
-            <li><span class="font-medium">Actividades con inscripción previa:</span> talleres, visitas a territorios y algunas sesiones con cupo limitado.</li>
-          </ul>
+        <div class="mt-2">
+          <h3 class="font-semibold mb-1">Ejes Temáticos del Congreso</h3>
+          <ol class="list-decimal ml-5 space-y-1">
+            <li>Eje 1: Pueblos indígenas y afrodescendientes: saberes ancestrales, comunidades rurales y prácticas comunitarias</li>
+            <li>Eje 2: Crisis sistémicas, sostenibilidad y transformaciones socioambientales en territorios rurales y urbanos</li>
+            <li>Eje 3: Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales en resistencia</li>
+            <li>Eje 4: Diversidades, ciclos vitales y territorios: reconocimiento e inclusión de sujetos históricamente invisibilizados</li>
+            <li>Eje 5: Trayectorias de la Psicología Rural en Latinoamérica</li>
+            <li>Eje 6: Trayectorias y horizontes emergentes de la Psicología Comunitaria en Latinoamérica: desarrollos, desafíos y transformaciones</li>
+          </ol>
         </div>
-      </div>
-      <div class="mt-6">
-        <h3 class="text-xl font-semibold mb-2">Ejes Temáticos</h3>
-        <ul class="list-decimal list-inside space-y-1">
-          <li>Eje 1: Pueblos indígenas y afrodescendientes…</li>
-          <li>Eje 2: Crisis sistémicas, sostenibilidad y transformaciones socioambientales…</li>
-          <li>Eje 3: Mujeres, cuidados y territorios…</li>
-          <li>Eje 4: Diversidades, ciclos vitales y territorios…</li>
-          <li>Eje 5: Trayectorias de la Psicología Rural en Latinoamérica</li>
-          <li>Eje 6: Trayectorias y horizontes emergentes de la Psicología Comunitaria…</li>
-        </ul>
       </div>
     </section>
 
-    <!-- Programa -->
-    <div id="schedule-container" class="mt-8 space-y-6"></div>
-
-    <!-- Pie -->
-    <footer class="text-center text-sm text-gray-700 mt-12 p-6 rounded-xl">
-      <p>
-        Contacto:
-        <a class="underline" href="mailto:eventosepusach@usach.cl">eventosepusach@usach.cl</a>
-        ·
-        <a class="underline" href="https://psicologiaruralcomunitaria.cl" target="_blank" rel="noopener">psicologiaruralcomunitaria.cl</a>
-      </p>
-      <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
-        <button id="shareBtn" class="px-3 py-2 rounded-lg border">Compartir este programa</button>
-        <button id="pdfBtn" class="px-3 py-2 rounded-lg border">Descargar PDF</button>
+    <!-- Controles -->
+    <div id="controls" class="sticky-top top-4 z-10 bg-white/70 backdrop-blur rounded-xl border p-4 mb-6">
+      <div class="flex flex-wrap gap-2 items-center mb-3">
+        <span class="text-sm font-semibold mr-2">Vista:</span>
+        <button id="viewByAxis" class="btn active">Por Día / Eje</button>
+        <button id="viewByTime" class="btn">Por Horario (todos los días)</button>
       </div>
+      <div id="dayTabs" class="flex flex-wrap gap-2 mb-3">
+        <button class="btn active" data-day="Martes 7">Martes 7</button>
+        <button class="btn" data-day="Miércoles 8">Miércoles 8</button>
+        <button class="btn" data-day="Jueves 9">Jueves 9</button>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="text-sm font-semibold mr-2">Eje:</span>
+        <button class="btn-ghost chip chip-eje active" data-eje="all">Todos</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 1">Eje 1</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 2">Eje 2</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 3">Eje 3</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 4">Eje 4</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 5">Eje 5</button>
+        <button class="btn-ghost chip chip-eje" data-eje="Eje 6">Eje 6</button>
+      </div>
+      <!-- Filtros Horario (vista por horario) -->
+      <div id="timeControls" class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-end hidden">
+        <div>
+          <label class="block text-sm font-semibold mb-1">Rango rápido</label>
+          <select id="quickTime" class="w-full border rounded-lg p-2">
+            <option value="all">Todos los horarios</option>
+            <option value="09:00-10:00">09:00–10:00</option>
+            <option value="10:00-11:00">10:00–11:00</option>
+            <option value="11:00-12:00">11:00–12:00</option>
+            <option value="12:00-13:30">12:00–13:30</option>
+            <option value="14:30-15:30">14:30–15:30</option>
+            <option value="15:30-16:30">15:30–16:30</option>
+            <option value="16:30-18:00">16:30–18:00</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1">Desde / hasta</label>
+          <div class="flex gap-2">
+            <input id="fromTime" type="time" class="border rounded-lg p-2 w-full"/>
+            <input id="toTime" type="time" class="border rounded-lg p-2 w-full"/>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button id="applyCustom" class="btn w-full">Aplicar</button>
+          <button id="clearTime" class="btn-ghost w-full">Limpiar</button>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <button id="shareBtn" class="btn-ghost">Compartir</button>
+        <button id="pdfBtn" class="btn-ghost">Descargar PDF</button>
+      </div>
+      <p id="timeScopeNote" class="text-sm text-gray-600 mt-2 hidden">Mostrando actividades de <b>todos los días</b> filtradas por horario.</p>
+    </div>
+
+    <div id="content" class="space-y-8"></div>
+
+    <footer class="text-center text-sm text-gray-600 mt-10">
+      <p>Contacto: <a class="underline" href="mailto:eventosepusach@usach.cl">eventosepusach@usach.cl</a></p>
     </footer>
   </div>
 
-  <script>
-    /* ================== DATOS ================== */
-    const scheduleData = {
-      "Martes 7": [
-        { room:"Patio USACH", location:"Campus USACH", talks:[
-          { time:"09:00–15:30", title:"Registro y acreditación" },
-          { time:"11:00–17:00", title:"Feria de productos locales" },
-          { time:"10:00–10:30", title:"Recorrido memoria histórica USACH (previa inscripción; cupo 30)" },
-          { time:"11:30–12:00", title:"Taller: Danza terapia y comunidad", speakers:["Silvia Pimentel"], notes:"(previa inscripción; cupo 50)" },
-          { time:"12:30–13:30", title:"Taller: Cierre simbólico actividades precongreso" },
-          { time:"14:30–15:00", title:"Presentación de La Hebra Migrante (colectivo por la paz en Palestina)" }
-        ]},
-        { room:"Salón de Honor", location:"Campus USACH", talks:[
-          { time:"15:00–16:00", title:"Ceremonia de inauguración del congreso" },
-          { time:"16:00–17:00", title:"Conferencia", speakers:["Dr. Fernando Landini"] },
-          { time:"17:00–18:00", title:"Conferencia", speakers:["Dra. Alba Zambrano"] }
-        ]},
-        { room:"Salón VIME 1", location:"Campus USACH", talks:[
-          { time:"09:00–10:00", title:"Reunión Red Latinoamericana de Psicología Rural" },
-          { time:"11:00–11:30", title:"Mesa de diálogo: “Cuidando a los que cuidan”. Acción Comunitaria en Cuidadoras/es de la Comuna de Macul", speakers:["Proyecto Espiral","Universidad de Chile"] },
-          { time:"11:30–12:30", title:"Conferencia (modalidad online; modera: Liliana Parra-Valencia)", speakers:["Silvia Marcos"] },
-          { time:"12:30–13:30", title:"Astronomía y pueblos originarios", speakers:["Proyecto CIRAS (USACH)"] },
-          { time:"16:00–16:30", title:"Presentación de libro: Complicidades y tramas feministas", speakers:["Yanina Gutiérrez Valdés","Javiera Cubillos Almendra","Genoveva Echeverría Gálvez"] },
-          { time:"16:30–17:00", title:"Presentación de libro: Saúde Mental Escolar", speakers:["Dr. Luiz Paulo Ribeiro","Dra. Fátima Moraes Garcia"] },
-          { time:"17:00–17:30", title:"Presentación de libro: Subjetividad y Desarrollo en Contextos Rurales", speakers:["Dr. Pablo Fossa","Dra. Verónica Serruto"] }
-        ]},
-        { room:"Salón VIME 2", location:"Campus USACH", talks:[
-          { time:"10:00–11:00", title:"Reunión Sociedad de Psicología Comunitaria" },
-          { time:"11:00–11:30", title:"Presentación de libro: Orgullosamente Afro", speakers:["Lic. Ana Carolina Amaral"] },
-          { time:"11:30–12:00", title:"Presentación de libro: Decolonialidad y comunidades posibles", speakers:["Dr. Germán Rozas","Dra. Mónica Villarroel"] },
-          { time:"16:00–16:30", title:"Presentación de libro: Psicología Ambiental Comunitaria y Resiliencia Comunitaria", speakers:["Rodolfo Mardones Barrera","José Sandoval Díaz"] },
-          { time:"16:30–17:00", title:"Presentación de libro: Psicología de las emergencias y desastres en América Latina", speakers:["José Sandoval Díaz","Eduardo Sandoval Obando"] }
-        ]},
-        { room:"Salón de Cine", location:"Campus USACH", talks:[
-          { time:"16:00–16:30", title:"Presentación de libro: Tukukan Wall Mapu Mew – El habla de la huerta", speakers:["Camila Jara Villalobos"] },
-          { time:"16:30–17:00", title:"Audiovisual: Respuestas locales a la gestión de las aguas en Chiloé." },
-          { time:"17:00–17:30", title:"Audiovisual: Diversidades y Ciclos Vitales" },
-          { time:"17:30–18:00", title:"Audiovisual: Horizontes de la Psicología Comunitaria" }
-        ]}
-      ],
-
-      "Miércoles 8": [
-        { room:"Visitas a territorios", location:"(cupo 15 · mañana)", talks:[
-          { time:"09:00–13:00", title:"Visita a Corporación La Caleta y Centro comunitario de La Legua Emergencia." },
-          { time:"", title:"Punto de encuentro: Por definir." }
-        ]},
-        { room:"Auditorio", location:"CEPEC USACH", talks:[
-          { time:"09:00–10:00", title:"Conferencia", speakers:["Dr. Alicia Rodríguez"] },
-          { time:"10:00–11:00", title:"MD3 – Experiencias de mujeres afrodescendientes e indígenas (mesa de diálogo)", notes:"Modera: María Antonieta Campos. Participan: Mabel López, Genoveva Neculmán, Ana Carolina Amaral, Genoveva Reuca" },
-          { time:"11:00–12:00", title:"MD6 – Perspectivas de psicología con comunidades indígenas y rurales", notes:"Modera: Silvia Pimentel Aguilar. Participan: Marcelo Calegare, Saulo L. Fernandes, Ana María Vera, Gonzalo Bustamante" },
-          { time:"12:00–13:00", title:"MD2 – Epistemologías del Sur y saberes comunitarios", notes:"Modera: Javier Bravo. Participan: Socorro Nina, María Antonieta Campos, German Rozas" },
-          { time:"14:30–15:30", title:"MD3 – Respuestas de resistencia frente a crisis sociales y políticas", notes:"Modera: Carla Nuñez. Participan: Evelyn Palma, Fabián Nichel, Yuly A. Botero, Colectivos de NNA" },
-          { time:"15:30–16:30", title:"Conferencia", speakers:["Dra. Irene Magaña"] },
-          { time:"16:30–17:30", title:"Conferencia", speakers:["Dr. Hector Berroeta"] }
-        ]},
-        { room:"Cowork 2", location:"CEPEC USACH", talks:[
-          { time:"12:30–13:30", title:"Taller: Proyecto comunitario. Diálogos: One Health – Küme Mugnen", speakers:["Sharon Viscardi"] },
-          { time:"15:30–16:30", title:"MD10 – Salud mental y convivencia educativa en comunidades rurales", notes:"Modera: Rodrigo Rojas-Andrade. Participan: Yonatan Encina, Gabriel Prosser, Constanza Méndez, Loreto Cofré, Carlos Labra" },
-          { time:"17:00–18:00", title:"MD7 – Activismos de Mujeres y Justicia Hídrica / Feminismos Ecoterritoriales", notes:"Modera: Ana María Vera Haro. Participan: Francisca Fernández, Paloma Gajardo, Evelyn Arriagada" }
-        ]},
-        { room:"Cowork 3", location:"CEPEC USACH", talks:[
-          { time:"11:30–12:30", title:"MD8 – Políticas públicas dirigidas a mujeres: tensiones y desafíos", notes:"Modera: María Isabel Reyes-Espejo. Participan: Jaime Alfaro, Valentina Vallejo, Nicolás Gómez, Lorena Fuentes" },
-          { time:"14:30–15:30", title:"Ludoteca móvil: EN MARCHA." }
-        ]},
-
-        /* ===== SALAS PARALELAS (Ejes) ===== */
-        { room:"SALA 301 (Eje 1)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 1", time:"09:00 - 10:15", title:"Bloque A: Saberes ancestrales y espiritualidad", talks:[
-            { time:"09:00 - 09:20", title:"Salud intercultural. Experiencia Huarpe Guanacache", speakers:["Roque Andres Soria Seguin"] },
-            { time:"09:20 - 09:40", title:"Saberes ancestrales como pilares de la resiliencia comunitaria", speakers:["Luidienne Joseph"] },
-            { time:"09:40 - 10:00", title:"Impactos psicológicos de los saberes ancestrales en jóvenes haitianos", speakers:["Geniald Dorvil"] },
-            { time:"10:00 - 10:03", title:"Tesis 3 min: Red de cuidado colectivo con adolescentes desde metodología participativa", speakers:["Leslie Reyna"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"12:30 - 13:30", title:"Bloque B: Racismo y comunidades quilombolas", talks:[
-            { time:"12:30 - 12:50", title:"Racismo, Políticas Públicas e seus Impactos na Saúde Mental da Comunidade Quilombola", speakers:["Geovanna Pinheiro Moura","Suely Emilia de Barros Santos"] },
-            { time:"12:50 - 13:10", title:"Saúde Mental e Saberes Ancestrais: caminhos para o cuidado comunitário", speakers:["Giselle Oliveira Santos","Suely Emilia de Barros Santos","Clarissa de Oliveira Marques da Cunha","Ingrid Jessiane Vieira Lima","Anael Robson Barbosa Ferreira"] },
-            { time:"13:10 - 13:30", title:"Metodologias Coparticipativas em Territórios Quilombolas e Camponeses", speakers:["Suely Emilia de Barros Santos","Clarissa de Oliveira Marques da Cunha","Giselle Oliveira Santos","Thalita Analyane Bezerra De Albuquerque"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"14:30 - 15:30", title:"Bloque C: Interculturalidad y territorialidad", talks:[
-            { time:"14:30 - 14:50", title:"Malestar y cuerpo en tensiones de interculturalidad en salud mental", speakers:["María Francisca Romero León"] },
-            { time:"14:50 - 15:10", title:"Territorio Williche y Crisis del Agua. Defensa de Derechos Colectivos", speakers:["Andrea Hain","Silvia Retamal"] },
-            { time:"15:10 - 15:30", title:"As reverberações do conhecimento indígena para a transformação social", speakers:["Thais de Negreiros Sales"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"15:30 - 16:30", title:"Bloque D: Educación y juventudes indígenas", talks:[
-            { time:"15:30 - 15:50", title:"Desafíos de la enseñanza de la lengua mapuche en un liceo rural", speakers:["Ximena Tocornal Montt"] },
-            { time:"15:50 - 16:10", title:"Participación de jóvenes étnicos en Política Nacional de Salud Mental", speakers:["Iliana Curiel Arismendy","Martha Gutiérrez Bonilla","Carlos Gómez Restrepo","Danuby Adriana Buitrago"] },
-            { time:"16:10 - 16:30", title:"Afrontamiento y vivencias universitarias de becarios amazónicos", speakers:["Damaris Abigail Pajar Rengifo","John Espinoza"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"16:30 - 17:30", title:"Bloque E: Cuidado de semillas y memorias colectivas", talks:[
-            { time:"16:30 - 16:50", title:"Significaciones de las cuidadoras de semillas sobre conservación e intercambio", speakers:["Macarena Luque Sepúlveda"] },
-            { time:"16:50 - 17:10", title:"Memorias que resisten: Tradiciones populares y reparación colectiva", speakers:["Ana María Valencia Varón","Juan Carlos Arboleda Ariza"] }
-          ]}
-        ]},
-
-        { room:"SALA 302 (Eje 2)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 2", time:"09:00 - 10:10", title:"Bloque A: Conflictos socioambientales y extractivismo", talks:[
-            { time:"09:00 - 09:20", title:"Impactos de empreendimentos eólicos na saúde mental", speakers:["Felipe Cazeiro"] },
-            { time:"09:20 - 09:40", title:"Resistencias del pueblo chango frente a la industrialización", speakers:["Katherin Castillo Morales","Christian Vásquez Labbé"] },
-            { time:"09:40 - 10:00", title:"Água, desenvolvimento e injustiça ambiental: Complexo Castanhão", speakers:["Marina Calisto Alves","Filipe A. X. Lima"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"10:15 - 11:15", title:"Bloque B: Impactos extractivos en infraestructura", talks:[
-            { time:"10:15 - 10:35", title:"Impacto psico-sociocultural del aeropuerto de Chinchero", speakers:["Ana Paula Beleván Herrán","John Espinoza"] },
-            { time:"10:35 - 10:55", title:"Usinas Eólicas en el Nordeste Brasileño", speakers:["Danielle De Andrade Paes Leme","Suely E. de Barros Santos"] },
-            { time:"10:55 - 11:15", title:"Escola de Sargentos en APA Aldeia-Beberibe", speakers:["Danielle De Andrade Paes Leme","Savio D. V. Pereira"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"11:15 - 12:15", title:"Bloque C: Bienestar comunitario y gestión del riesgo", talks:[
-            { time:"11:15 - 11:35", title:"Bienestar comunitario en incendios forestales (revisión)", speakers:["Ru Calixto","María José Poblete Almendras"] },
-            { time:"11:35 - 11:55", title:"Gobernanza en tensión: gestión de incendios", speakers:["Jerónimo Vega Ortega","Marcelo Toro Espinoza","José Sandoval Díaz","Camila Navarrete Valladares"] },
-            { time:"11:55 - 12:15", title:"Gestión comunitaria del riesgo: cuidado y ética-política", speakers:["María Paz Lillo","Andalucía Corvarán"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"12:15 - 13:15", title:"Bloque D: Cartografías sociales y comunicación", talks:[
-            { time:"12:15 - 12:35", title:"Cartografía social en escuelas en crisis", speakers:["Paula Ascorra","Karen Cárdenas Mancilla","Macarena Morales"] },
-            { time:"12:35 - 12:55", title:"Alertas tempranas en comunicación comunitaria", speakers:["Valentina Vera Caro","Esperanza Romero Muñoz","Catalina Reyes Sepúlveda","José Sandoval Díaz"] },
-            { time:"12:55 - 13:15", title:"Cartografías sociales ante riesgo de desastre", speakers:["Consuelo Paz Suazo Muñoz","José Sandoval Díaz","Camila Navarrete Valladares"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"14:30 - 15:10", title:"Bloque E: Resiliencia e identidad territorial", talks:[
-            { time:"14:30 - 14:50", title:"Resiliencia ante incendios forestales en el centro-sur", speakers:["Camila Navarrete Valladares","Consuelo Paz Suazo Muñoz","Mónica Valenzuela Orrego","José Sandoval Díaz","Valentina Vera Caro","Juan P. Gallegos Riquelme","Jerónimo Vega Ortega"] },
-            { time:"14:50 - 15:10", title:"Identidad sociocultural Changa", speakers:["Alessandro A. Sciaraffia Llanos","Jordán A. Cortes Rojas","Katherin Castillo Morales"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"15:30 - 16:30", title:"Bloque F: Patrimonio y metodologías participativas", talks:[
-            { time:"15:30 - 15:50", title:"Patrimonio y desastre: colchanderas de Ninhue", speakers:["Juan P. Gallegos Riquelme","José Sandoval Díaz"] },
-            { time:"15:50 - 16:10", title:"Mapear, Caminar y Fotografiar", speakers:["René Squella"] },
-            { time:"16:10 - 16:30", title:"AUDIOVISUAL: Crisis Socioambiental y Salud Mental (Valle del Elqui)", speakers:["Erland Zhigley","Álvaro Hurtado","Bárbara Yevenes","Paz Astudillo","Axel Coopman","Lenard Torres"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"16:30 - 17:00", title:"Bloque G: Síntesis territorial", talks:[
-            { time:"16:30 - 16:50", title:"Conflictos socioambientales en el Wallmapu", speakers:["Camila Jara Villalobos"] },
-            { time:"16:50 - 17:10", title:"Vínculos afectivos en territorios en crisis", speakers:["Celeste M. Orrego Olivares","Paula Ascorra","Pablo Mansilla","Patricio Pérez"] }
-          ]}
-        ]},
-
-        { room:"SALA 303 (Eje 3)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 3", time:"09:00 - 10:15", title:"Bloque A: Salud/cuidados comunitarios y ruralidades", talks:[
-            { time:"09:00 - 09:20", title:"Trabajadoras comunitarias de salud mental en México rural", speakers:["Verónica Ortega García","Aurora Luna Martínez"] },
-            { time:"09:20 - 09:40", title:"Saúde Mental de mulheres que vivem no campo", speakers:["Lara de Araújo Miranda","Pamela Vasconcellos"] },
-            { time:"09:40 - 10:00", title:"Grupos de apoyo psicoespirituales con mujeres indígenas", speakers:["Nancy Millán Echeverria","Adriana Velasco"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"10:15 - 11:15", title:"Bloque B: Escucha y tramas de cuidado", talks:[
-            { time:"10:15 - 10:35", title:"La escucha en contextos rurales", speakers:["Angélica de Souza Lima"] },
-            { time:"10:35 - 10:55", title:"Cuidado informal en zonas rurales", speakers:["Verónica Monreal"] },
-            { time:"10:55 - 11:15", title:"Tramas colectivas de cuidado en un mundo en crisis", speakers:["Lucía Barreto","Nazarena Guerra","Elena Hernández","Daniela Osorio-Cabrera","Alicia Rodríguez"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"11:15 - 12:15", title:"Bloque C: Trabajo agrícola y protagonismo femenino", talks:[
-            { time:"11:15 - 11:35", title:"Protagonismo femenino en la Amazonía", speakers:["Angélica de Souza Lima"] },
-            { time:"11:35 - 11:55", title:"División social y familiar del trabajo en agricultura", speakers:["Gloria Miryam Mora Guerrero","Jorge Constanzo Belmar"] },
-            { time:"11:55 - 12:15", title:"TESIS 3 MIN: La escuela como proyecto comunitario", speakers:["Jennifer Cortes"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"12:15 - 13:35", title:"Bloque D: Cuidados, territorios y ruralidades", talks:[
-            { time:"12:15 - 12:35", title:"Nueva ruralidad y giro afectivo en familias", speakers:["Catalina Sepúlveda"] },
-            { time:"12:35 - 12:55", title:"Cuidado comunitario y soberanía alimentaria haitiana", speakers:["Mimine Facile"] },
-            { time:"12:55 - 13:15", title:"Cuidado y ruralidad por mujeres mapuche", speakers:["Rayén Pizarro Abarca","Rodrigo Román Miranda","Gabriela Tapia Campos","Sofía Vega Contreras","Gloria Mora Guerrero"] },
-            { time:"13:15 - 13:35", title:"Personas en situación de calle: respeto y género", speakers:["Svenska Arensburg","Juan Zabala","Milo Kallens","Awkan Moya"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"14:30 - 15:30", title:"Bloque E: Empoderamiento y agroecología feminista", talks:[
-            { time:"14:30 - 14:50", title:"Sembrando Resistencia", speakers:["Maritza Martínez G."] },
-            { time:"14:50 - 15:10", title:"Agroecología Valle del Chota", speakers:["Alexandra León Bernardo"] },
-            { time:"15:10 - 15:30", title:"Agroecologías de cuidado colectivo y justo", speakers:["Yanina Gutiérrez Valdés","Pablo Saravia Ramos","María C. Alvarado Aspillaga"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"15:30 - 16:30", title:"Bloque F: Territorios y resistencias agroecológicas", talks:[
-            { time:"15:30 - 15:50", title:"Criar en territorio", speakers:["Luna Bedoya"] },
-            { time:"15:50 - 16:10", title:"Organización de mujeres campesinas en Chile", speakers:["Mónica Cantillo"] },
-            { time:"16:10 - 16:30", title:"Islas Verdes de resistencia", speakers:["Camila Ferraz Bortolini","María Juracy Toneli","João Manuel de Oliveira"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"16:30 - 18:00", title:"Bloque G: Saberes ancestrales y territorios", talks:[
-            { time:"16:30 - 16:50", title:"Micelio del cuidado", speakers:["Krisna Tolentino Toro"] },
-            { time:"16:50 - 17:10", title:"PÓSTER: Vinos con cuerpos de mujer", speakers:["María Carolina Alvarado Aspillaga"] },
-            { time:"17:10 - 17:30", title:"PRESENTACIÓN DE LIBRO: Cuentos Latinoamericanos", speakers:["Catalina Valenzuela"] },
-            { time:"17:30 - 17:50", title:"Colectivo de travestis en pandemia", speakers:["Fábio H. Almeida D.","Isabel M. Farias F.","Ilana Lemos de Paiva"] },
-            { time:"17:50 - 18:00", title:"PÓSTER: Mujeres, cuidados y territorios", speakers:["J. Estevam da Fonseca","J. B. da Silva Dantas","F. F. Gurgel"] }
-          ]}
-        ]},
-
-        { room:"SALA 206 (Eje 4)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 4", time:"09:00 - 10:00", title:"Bloque A: Opresión/liberación y autogestión", talks:[
-            { time:"09:00 - 09:20", title:"Opresión/liberación en instituciones hospitalarias", speakers:["Rodrigo Quiroz","Antonia Cruz Covarrubias"] },
-            { time:"09:20 - 09:40", title:"Talleres con NNA como autogestión", speakers:["Amanda Borba Ramos Silva"] },
-            { time:"09:40 - 10:00", title:"Grupos motores para el cuidado infantil en Calama", speakers:["Sebastián Concha Peña"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"10:15 - 11:15", title:"Bloque B: Narrativas territoriales y bienestar juvenil", talks:[
-            { time:"10:15 - 10:35", title:"Narrativas territoriales de jóvenes rurales", speakers:["Tatiana Aguirre","Rodrigo Yáñez"] },
-            { time:"10:35 - 10:55", title:"Fragilidad emocional urbana", speakers:["Nabil Morocho"] },
-            { time:"10:55 - 11:15", title:"TESIS 3 MIN: Formación en educación del campo", speakers:["Angélica de Souza Lima","Juliana da Silva Nobrega"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"11:15 - 12:15", title:"Bloque C: Educación del campo y salud mental escolar", talks:[
-            { time:"11:15 - 11:35", title:"Prácticas de cuidado en Escuela Familia Agrícola", speakers:["Catarina Prado Sakai","Luiz Paulo Ribeiro"] },
-            { time:"11:35 - 11:55", title:"Da escola do campo à universidade", speakers:["Fátima Moraes Garcia","Josimario Marques Dos Santos"] },
-            { time:"11:55 - 12:15", title:"PÓSTER: Salud mental adolescente en zonas rurales", speakers:["Carmen C. Vigo Valle","Kristy M. García Montenegro","John Espinoza"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"12:15 - 13:15", title:"Bloque D: Diálogos interculturales y mentalidad democrática", talks:[
-            { time:"12:15 - 12:35", title:"Psicología y Comunidades Mapuche", speakers:["Fernanda Marilicán","Felipe A. Quintano Méndez"] },
-            { time:"12:35 - 12:55", title:"Mentalidad democrática e individuación", speakers:["Lina Marcela Gil Congote"] },
-            { time:"12:55 - 13:15", title:"MST: reforma agraria y justicia social", speakers:["Cíntia A. Campos Pontes"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"14:30 - 15:30", title:"Bloque E: Patrimonio cultural y trayectorias rurales", talks:[
-            { time:"14:30 - 14:50", title:"Educación rural y patrimonio cultural", speakers:["Paula Andrea Torres Homez"] },
-            { time:"14:50 - 15:10", title:"Trayectorias de profesores rurales", speakers:["Paula A. Torres Homez","Marcelo Arancibia"] },
-            { time:"15:10 - 15:30", title:"Proyectos de vida y traslado territorial", speakers:["Cristian F. Cortés Tapia","Nathalie Infante"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"15:30 - 16:30", title:"Bloque F: Diversidad sexual y crítica queer", talks:[
-            { time:"15:30 - 15:50", title:"Salud mental comunitaria y crítica queer", speakers:["Claudia Calquín"] },
-            { time:"15:50 - 16:10", title:"Ciclos vitales trans y resistencia estética", speakers:["Karen Mora Durán"] },
-            { time:"16:10 - 16:30", title:"Prejuicio contra personas con VIH/SIDA", speakers:["G. H. Mendes de Abreu","Paulo R. da Silva Jr."] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"16:30 - 17:30", title:"Bloque G: Espacios públicos y vínculos territoriales", talks:[
-            { time:"16:30 - 16:50", title:"Apego al lugar y espacio público", speakers:["Samuel Octavio Fuentealba Perez"] },
-            { time:"16:50 - 17:10", title:"Comunidad rural, política habitacional y vínculos", speakers:["Nicolás Felipe Barrera","Soledad Ruiz Jabbaz"] },
-            { time:"17:10 - 17:30", title:"Escuela rural en luchas territoriales", speakers:["Carmen Núñez"] }
-          ]}
-        ]},
-
-        { room:"SALA 207 (Eje 5)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 5", time:"09:00 - 10:00", title:"Bloque A: Marcos metodológicos fundacionales", talks:[
-            { time:"09:00 - 09:20", title:"Círculo de Cultura: dimensión metodológica", speakers:["Giovanni Sampaio Queiroz","María Valquíria Nogueira do Nascimento"] },
-            { time:"09:20 - 09:40", title:"Psicologías en ruralidades (Uruguay)", speakers:["Gabriel Picos"] },
-            { time:"09:40 - 10:00", title:"Claves metodológicas para psicología territorial", speakers:["Angélica Fierro","Sandra Frieri Gilchrist"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"10:15 - 11:30", title:"Bloque B: Historia y construcción de saberes", talks:[
-            { time:"10:15 - 10:35", title:"Helena Antipoff y escuela rural brasileña", speakers:["Catarina Prado Sakai","Pina Marsico","Regina H. de Freitas Campos"] },
-            { time:"10:35 - 10:55", title:"Investigaciones históricas en educación rural", speakers:["Juan David Millán"] },
-            { time:"10:55 - 10:58", title:"TESIS 3 MIN: Psicología y ruralidades", speakers:["Daniel González Fajardo"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"12:30 - 13:30", title:"Bloque C: Trayectorias y narrativas", talks:[
-            { time:"12:30 - 12:50", title:"PRONERA: trayectos para Psicología Rural", speakers:["Maria Letícia D. O. Bianchini","Dolores Galindo"] },
-            { time:"12:50 - 13:10", title:"Narrativas (auto)biográficas", speakers:["Luiz Paulo Ribeiro"] },
-            { time:"13:10 - 13:30", title:"Trayectorias de Psicología rural", speakers:["Jader Ferreira Leite","Magda Dimenstein","Cândida Maria Bezerra Dantas"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"14:30 - 15:30", title:"Bloque D: Diálogos interdisciplinarios y desarrollo rural", talks:[
-            { time:"14:30 - 14:50", title:"Agroecología: diálogo de saberes", speakers:["María Julia Sabez"] },
-            { time:"14:50 - 15:10", title:"Comunidades de Prácticas Virtuales", speakers:["Fernando Landini"] },
-            { time:"15:10 - 15:30", title:"PRESENTACIÓN DE LIBRO: Subjetividad y Desarrollo", speakers:["Pablo Fossa","Verónica Serruto"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"15:30 - 16:30", title:"Bloque E: Extensión e innovación", talks:[
-            { time:"15:30 - 15:50", title:"Innovación y desarrollo en extensión rural", speakers:["Manuela Martínez"] },
-            { time:"15:50 - 16:10", title:"Extensão e educação do campo", speakers:["G. Pinheiro Moura","J. E. Costa Gueiros","J. C. B. Brasilino"] },
-            { time:"16:10 - 16:30", title:"Adopción de prácticas de conservación del suelo", speakers:["Alexander Neaman"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"16:30 - 17:30", title:"Bloque F: Formación y construcción disciplinaria", talks:[
-            { time:"16:30 - 16:50", title:"Formación y prácticas desde las ruralidades", speakers:["Daniel González Fajardo","Gustavo Melo","Nathan Almeida da Silva"] },
-            { time:"16:50 - 17:10", title:"Hacer camino en lo rural", speakers:["Sandra Emilia Hoffman Martins"] },
-            { time:"17:10 - 17:30", title:"Psicologías maritorias", speakers:["Krisna Tolentino Toro"] }
-          ]},
-          { type:"block", axis:"Eje 5", time:"17:30 - 18:30", title:"Bloque G: Pósters y síntesis metodológica", talks:[
-            { time:"17:30 - 17:45", title:"PÓSTER: Saberes da floresta e da escuta", speakers:["Adiele N. A. Lopes","Heloana F. O. Dias","Vanessa Cardoso Prestes"] },
-            { time:"17:45 - 18:00", title:"PÓSTER: Cartas, voces de estudiantes rurales", speakers:["Maria Elisa Carneiro Pereira Pinto","Sandra Ferraz"] },
-            { time:"18:00 - 18:15", title:"PÓSTER: La psicología y la educación rural en Brasil", speakers:["Valdirene Gonçalves","Sandra Ferraz"] },
-            { time:"18:15 - 18:18", title:"TESIS 3 MIN: Prácticas agroecológicas y salud integral", speakers:["María Julia Sabez"] }
-          ]}
-        ]},
-
-        { room:"SALA 208 (Eje 6)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 6", time:"10:15 - 11:00", title:"Bloque A: Formación y docencia", talks:[
-            { time:"10:15 - 10:35", title:"Diálogo de la Psicología Comunitaria con la Educación Popular", speakers:["Maria V. Nogueira do Nascimento","Giovanni Sampaio Queiroz"] },
-            { time:"10:35 - 10:55", title:"Aprendizaje-Servicio en Intervención Psicosocial", speakers:["Valentina Vera Caro","José Sandoval Díaz","Jerónimo Vega Ortega","Camila Navarrete Valladares","Consuelo Paz Suazo Muñoz"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"11:30 - 12:15", title:"Bloque B: Formación y sistematización", talks:[
-            { time:"11:30 - 11:50", title:"PÓSTER: Experiencia de Formación (UPLA)", speakers:["Isidora Ascencio Carrozza","Macarena Hernández Castillo","Eduardo Robles Araya","Eduardo Guesalaga Cebreros","José L. Pérez Flores"] },
-            { time:"11:50 - 12:10", title:"PÓSTER: Ações Comunitárias no Contexto Amazônico", speakers:["Janaína Duarte Ferreira Vieiralves","Dra. Socorro Nina"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"17:00 - 17:45", title:"Bloque C: Prácticas emergentes", talks:[
-            { time:"17:00 - 17:20", title:"Duelo colectivo en comunidad escolar", speakers:["Mariela Muñoz Rodríguez","Juan Miguel Flores"] },
-            { time:"17:20 - 17:40", title:"Circo Social e intervención comunitaria", speakers:["Marcelo A. Pérez Daza","Pía Barrios Valenzuela","Ángel Ruiz"] }
-          ]}
-        ]},
-        { room:"Cowork 2 (Eje 6)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 6", time:"10:15 - 11:00", title:"Sesión A: Territorio y comunalidad", talks:[
-            { time:"10:15 - 10:35", title:"Rostros y Rastros: Papachos Sentipensantes", speakers:["Jose Dario Patarroyo Gomez","Carlos Leal Ruano"] },
-            { time:"10:35 - 10:55", title:"Co-razonar los territorios en Valparaíso", speakers:["Gino Grondona Opazo","Marcelo Rodríguez","Pablo Saravia Ramos"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"11:30 - 12:15", title:"Sesión B: Innovación y metodologías", talks:[
-            { time:"11:30 - 11:50", title:"Innovación ciudadana y mundos por-venir", speakers:["Claudia Calquín","Carlos Ramírez-Vargas","Cristopher Yañez-Urbina"] },
-            { time:"11:50 - 12:10", title:"Análisis multimodal de la Plaza de la Independencia", speakers:["Juan Urzúa","Esteban Pacheco Yáñez"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"16:30 - 17:10", title:"Presentaciones de libros", talks:[
-            { time:"16:30 - 16:50", title:"Alegorías en la porfía. 40 años de La Caleta", speakers:["Carla Núñez"] },
-            { time:"16:50 - 17:10", title:"Ateliê de Filosofia na Escola", speakers:["Rosângela Da Luz Matos","Raquel Maciel Paulo dos Anjos"] }
-          ]}
-        ]}
-      ],
-
-      "Jueves 9": [
-        { room:"Visita a territorio", location:"(cupo 15 · mañana)", talks:[
-          { time:"09:00–13:00", title:"Visita a Villa Solidaridad Alsino." },
-          { time:"", title:"Punto de encuentro: Por definir." }
-        ]},
-        { room:"Auditorio", location:"CEPEC USACH", talks:[
-          { time:"09:00–10:00", title:"Conferencia", speakers:["Dr. Jader Leite"] },
-          { time:"10:00–11:00", title:"Conferencia", speakers:["Dr. German Rozas"] },
-          { time:"11:30–12:30", title:"MD5 – Cuidados comunitarios, territorio y prácticas de resistencia", notes:"Modera: Ana María Vera Haro. Participan: Javiera Cubillos, Genoveva Echeverría, Javiera Pavez, Yanina Gutiérrez" },
-          { time:"12:45–13:45", title:"MD4 – Trayectorias y derivas de la Psicología Comunitaria en Chile", notes:"Modera: Oscar Muñoz. Participan: Alba Zambrano, Jaime Alfaro Inzunza, George Unger" },
-          { time:"16:30–17:00", title:"Ceremonia de cierre" }
-        ]},
-        { room:"Cowork 2", location:"CEPEC USACH", talks:[
-          { time:"10:00–11:00", title:"MD11 – Mujeres, cuidados y territorios ancestrales (Colombia, Brasil y Chile)", notes:"Modera: Gloria Mora. Participan: Liliana Parra-Valencia, Socorro Nina, María Isabel Reyes" },
-          { time:"11:30–12:30", title:"MD9 – Formar para implicarse: desafíos críticos en la enseñanza", notes:"Modera: Paula Riveros. Participan: Mariadne Molina, Eduardo Candia, Bárbara Olivares, Alejandra Pezoa, Javiera Pávez, Egresados, Organizaciones sociales" },
-          { time:"15:30–16:30", title:"MD12 – Respuestas comunitarias frente a la crisis socioambiental", notes:"Modera: Rodolfo Mardones. Participan: Arlex Angarita, Alejandra Sánchez, René Squella" }
-        ]},
-        { room:"Cowork 3", location:"CEPEC USACH", talks:[
-          { time:"11:30–12:30", title:"Círculo de escucha", notes:"Corporación Escuchar (previa inscripción; cupo 50)" },
-        ]},
-
-        /* ===== SALAS PARALELAS (Ejes) ===== */
-        { room:"SALA 301 (Eje 1)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 1", time:"09:00 - 10:00", title:"Bloque F: Colonialidad y resistencia andina", talks:[
-            { time:"09:00 - 09:20", title:"Colonialidad del ser, racialización y autoorganización en estallido andino peruano", speakers:["Vanessa Verastegui Olle"] },
-            { time:"09:20 - 09:40", title:"Colonialismo y Subjetivación Mapuche-Williche en Rahue", speakers:["Héctor Manuel Ahumada Alvarado"] },
-            { time:"09:40 - 10:00", title:"Saberes ancestrales y planes de vida", speakers:["Gino Grondona Opazo"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"10:15 - 11:15", title:"Bloque G: Revitalización ontopolítica territorial", talks:[
-            { time:"10:15 - 10:35", title:"Revitalización Ontopolítica en el Wadalafkenmapu", speakers:["Javier Bravo"] },
-            { time:"10:35 - 10:55", title:"La comunidad relacional: visión onto-política", speakers:["Javier Bravo"] },
-            { time:"10:55 - 11:15", title:"Normas Consuetudinarias y formación policial", speakers:["Patricia Mercado"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"11:15 - 12:15", title:"Bloque H: Descolonización y convivencia intercultural", talks:[
-            { time:"11:15 - 11:35", title:"Descolonizando, despatriarcalizando e indigenizando la Psicología Comunitaria", speakers:["María Antonieta Campos Melo","Maritza Tranamil Nahuelpi"] },
-            { time:"11:35 - 11:55", title:"Claves para la promoción de la convivencia intercultural", speakers:["Alba Zambrano","María Antonieta Campos Melo"] },
-            { time:"11:55 - 12:15", title:"Caminos y cruces: interculturalidad y anticolaonial", speakers:["Lucrecia Petit"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"12:15 - 13:15", title:"Bloque I: Corporalidad y danza comunitaria", talks:[
-            { time:"12:15 - 12:35", title:"Bailar también es resistir: el cuerpo como memoria y comunidad", speakers:["Camila Prieto Callejas"] },
-            { time:"12:35 - 12:55", title:"El campo chileno como territorio que resiste", speakers:["Cristóbal Cataldo Esparza"] },
-            { time:"12:55 - 13:15", title:"AUDIOVISUAL: Gira Caprina con enfoque agroecológico", speakers:["Erwin Hans Carlsson Morales","Enzo Solari Musa","Claudio Martínez Urquiza"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"14:30 - 15:30", title:"Bloque J: Agroecología y resistencia territorial", talks:[
-            { time:"14:30 - 14:50", title:"Agroecología y resistencia en Valle Marga Marga", speakers:["María C. Alvarado Aspillaga","Juan Carlos Molina"] },
-            { time:"14:50 - 15:10", title:"Trafkintuwe Panguipulli: trabajo asociativo", speakers:["Karla Ramírez Barril"] },
-            { time:"15:10 - 15:30", title:"PÓSTER: saberes tradicionales en comunidad quilombola", speakers:["Andreia Nazareno dos Santos","Antônio Alves Filho"] }
-          ]},
-          { type:"block", axis:"Eje 1", time:"15:30 - 16:30", title:"Bloque K: Justicia indígena y bienestar infantil", talks:[
-            { time:"15:30 - 15:50", title:"Justicia indígena ecuatoriana como ritual terapéutico", speakers:["Iván Villafuerte"] },
-            { time:"15:50 - 16:10", title:"Infancias mapuche y bienestar socioemocional", speakers:["Belén Ulloa Llanquileo","Ana María Vera","Lisette Urrutia","Ana María Alarcón Muñoz","Marcela Castro Garrido"] }
-          ]}
-        ]},
-
-        { room:"SALA 302 (Eje 2)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 2", time:"09:00 - 10:00", title:"Bloque H: Agricultura familiar y sistemas alimentarios", talks:[
-            { time:"09:00 - 09:20", title:"Políticas públicas, agricultura familiar e segurança alimentar", speakers:["Florença M. Gonçalves","Filipe A. X. Lima","César A. L. L. de Freitas"] },
-            { time:"09:20 - 09:40", title:"Relación ACFEyC y Psicología Rural", speakers:["Arlex Angarita Leiton"] },
-            { time:"09:40 - 10:00", title:"Cooperativas ganaderas y comunidades mapuche en Río Negro", speakers:["Santiago Conti","Franca Bidinost"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"10:15 - 11:15", title:"Bloque I: Innovación agropecuaria y transformaciones campesinas", talks:[
-            { time:"10:15 - 10:35", title:"Desencuentros en innovación agropecuaria", speakers:["Fernando Landini","Santiago Conti"] },
-            { time:"10:35 - 10:55", title:"Transformaciones socio-territoriales y salud del campesinado", speakers:["Luz María Correa Vélez"] },
-            { time:"10:55 - 11:15", title:"Turismo y sostenibilidad con cartografía social (R. Toribio)", speakers:["Diana María Ahumada","Eduar Malamut Gómez"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"11:15 - 12:15", title:"Bloque J: Educación ambiental y territorios", talks:[
-            { time:"11:15 - 11:35", title:"Tendencias en psicología sobre comunidad y naturaleza", speakers:["Alejandra Olivera Méndez"] },
-            { time:"11:35 - 11:55", title:"Recados de la educación ambiental rural", speakers:["Gabriel Prosser Bravo","Marcela Pérez Lienqueo"] },
-            { time:"11:55 - 12:15", title:"TESIS 3 MIN: Educação Ambiental e o Materialismo Histórico-Dialético", speakers:["Fátima Moraes Garcia","Sillas Oliveira Santos"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"12:15 - 13:15", title:"Bloque K: Problemas medioambientales y adaptación climática", talks:[
-            { time:"12:15 - 12:35", title:"Representaciones sociales de problemas medioambientales", speakers:["Matías Eduardo Peña Garay","José Sandoval Díaz"] },
-            { time:"12:35 - 12:55", title:"Repertorios sobre adaptación al cambio climático", speakers:["Camila Carrizo","Sara Arenas"] },
-            { time:"12:55 - 13:15", title:"TESIS 3 MIN: Educación ambiental en zona minera", speakers:["Francisca Paola Sanchez Mercado"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"14:30 - 15:30", title:"Bloque L: Marcos teóricos y críticas epistémicas", talks:[
-            { time:"14:30 - 14:50", title:"Psicologización del Cambio Climático", speakers:["Rodolfo Mardones Barrera"] },
-            { time:"14:50 - 15:10", title:"Discurso psicológico en la Ley Marco de CC en Chile", speakers:["Gabriela Badilla","Camila Cortez","María Eckholt","Nicole Cortés","Rodolfo Mardones Barrera"] },
-            { time:"15:10 - 15:30", title:"Intervenciones en salud mental y Cambio Climático", speakers:["Margarita Loubat"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"15:30 - 16:30", title:"Bloque M: Ecoexistencia y vulnerabilidades", talks:[
-            { time:"15:30 - 15:50", title:"Ecoexistencia y psicología desde las grietas", speakers:["Josefina González Gutierrez"] },
-            { time:"15:50 - 16:10", title:"Crises sistêmicas no Haiti", speakers:["Herlins Coeurly Jean-Pierre"] },
-            { time:"16:10 - 16:30", title:"Resiliencia comunitaria en zonas rurales de Haití", speakers:["Linsky Fenelon","Ignace Ilsabeth"] }
-          ]},
-          { type:"block", axis:"Eje 2", time:"16:30 - 17:30", title:"Bloque N: Gestión juvenil de desastres y percepción", talks:[
-            { time:"16:30 - 16:50", title:"Jóvenes emprendedores y gestión de desastres en Haití", speakers:["Carlens Ybrahim"] },
-            { time:"16:50 - 17:10", title:"Percepción emocional ante estímulos ambientales", speakers:["Monserrat Romero Miranda","Niels Martínez Guevara","Alejandra Olivera Méndez","Ernesto Peredo Rivera","Gerardo Loera Alvarado"] },
-            { time:"17:10 - 17:30", title:"PRESENTACIÓN DE LIBRO: De las emergencias a la transformación", speakers:["Yanina Gutiérrez Valdés","Sebastián Ortiz Mallegas","Marlen Figueroa Varela"] }
-          ]}
-        ]},
-
-        { room:"SALA 303 (Eje 3)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 3", time:"09:00 - 10:00", title:"Bloque H: Feminismos negros y comunidades quilombolas", talks:[
-            { time:"09:00 - 09:20", title:"Casa de la Mujer Quilombola", speakers:["Giovanni Sampaio Queiroz","Jader Ferreira Leite"] },
-            { time:"09:20 - 09:40", title:"Feminino e Ancestralidade", speakers:["Lara de Araújo Miranda"] },
-            { time:"09:40 - 10:00", title:"Práticas parentais na primeira infância", speakers:["Renan V. Guerra da Costa","Adria de Lima Sousa"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"10:00 - 10:50", title:"Bloque I: Saberes extractivistas y narrativas indígenas (con pósters)", talks:[
-            { time:"10:00 - 10:15", title:"Conocimiento extrativista del Pequi", speakers:["Rafaela Alves da Silva","Filipe A. X. Lima"] },
-            { time:"10:00 - 10:10", title:"PÓSTER: Red Latinoamericana de Defensoras digitales", speakers:["Mayra Daniela Martínez Cruz"] },
-            { time:"10:10 - 10:20", title:"PÓSTER: Consejería anticonceptiva (implementación)", speakers:["Amayrani Juárez Pérez"] },
-            { time:"10:20 - 10:40", title:"PÓSTER: Saberes y empoderamiento mapuche-lafkenche", speakers:["Millaray Malen Nahuelhual Epunir"] },
-            { time:"10:40 - 10:50", title:"PÓSTER: Buen vivir y salud mental (Villa Alemana)", speakers:["Marcela Vargas Tobon","Melissa Vargas Paredes","Victoria Rosales Manivet","Agrupación Bienestar Consciente"] },
-            { time:"10:50 - 11:00", title:"PÓSTER: Acceso a dispositivo Centro de la Mujer", speakers:["Damaris Melo Uribe"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"11:15 - 12:15", title:"Bloque J: Narrativas indígenas femeninas y gestión agrícola", talks:[
-            { time:"11:15 - 11:35", title:"Narrativas indígenas femeninas sobre clima en transformación", speakers:["Cristina G. Rodrigues","Gian Carlos Cruz Pereira","Socorro Nina"] },
-            { time:"11:35 - 11:55", title:"Participación femenina en gestión de agricultura familiar", speakers:["Moacir de Souza Junior","Lafaete A. O. Mesquita","Ana Karina Holanda","Filipe A. X. Lima"] },
-            { time:"11:55 - 12:15", title:"TESIS 3 MIN: Cuidado psicossocial por anciãs indígenas", speakers:["Thais de Negreiros Sales"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"12:15 - 13:35", title:"Bloque K: Resistencias y cuidados ancestrales", talks:[
-            { time:"12:15 - 12:35", title:"Corpo-território e resistência", speakers:["Jhanine Magalhães Cabral","Adria de Lima Sousa"] },
-            { time:"12:35 - 12:55", title:"Cuidar en silencio: voces del cuidado informal", speakers:["Verónica Monreal"] },
-            { time:"12:55 - 13:15", title:"PRESENTACIÓN DE LIBRO: Complicidades y tramas feministas", speakers:["Yanina Gutiérrez Valdés","Javiera Cubillos Almendra","Genoveva Echeverría Gálvez"] },
-            { time:"13:15 - 13:35", title:"Construir cuidadanía en tiempos de crueldad", speakers:["Silvia Romero","Yanina Daniela Riccitelli"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"14:30 - 15:30", title:"Bloque L: Políticas públicas y enfoque comunitario", talks:[
-            { time:"14:30 - 14:50", title:"Mujer Emprende: rol de lo comunitario", speakers:["Antonia González Seguel","L. Mera Adasme"] },
-            { time:"14:50 - 15:10", title:"Enfoque comunitario en política pública (Programa Mujeres Rurales)", speakers:["Bárbara Olivares"] },
-            { time:"15:10 - 15:30", title:"Participación social en barrios vulnerables", speakers:["Teresa Ropert"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"15:30 - 16:30", title:"Bloque M: Autoetnografías y experiencias feministas", talks:[
-            { time:"15:30 - 15:50", title:"Aportaciones autoetnográficas desde el encierro", speakers:["Alejandra Acevedo Placeres","Alex A. Placeres"] },
-            { time:"15:50 - 16:10", title:"Salud materna de mujeres pehuenche", speakers:["Elda Jara Pacheco"] },
-            { time:"16:10 - 16:30", title:"Expresión de las comunidades (experiencias)", speakers:["Greidys Chacon","Francisca Alucema","Pablo Suarez"] }
-          ]},
-          { type:"block", axis:"Eje 3", time:"16:30 - 17:30", title:"Bloque N: Liderazgos femeninos y cartografías territoriales", talks:[
-            { time:"16:30 - 16:50", title:"Liderazgos femeninos rurales", speakers:["Ginny Rocio Luna Rodríguez","Sindy Katrina Orozco Monsalve","Mayerly Lucía Paredes Ardila"] },
-            { time:"16:50 - 17:10", title:"Cartografiar cuerpos-territorios (Uruguay)", speakers:["Nat Tommasino Comesaña"] },
-            { time:"17:10 - 17:30", title:"Geografías del rechazo y resistencia feminista", speakers:["Juan Urzúa","Esteban Pacheco Yáñez"] }
-          ]}
-        ]},
-
-        { room:"SALA 206 (Eje 4)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 4", time:"09:00 - 10:00", title:"Bloque H: Bienestar sociocomunitario y experiencias vividas", talks:[
-            { time:"09:00 - 09:20", title:"Bienestar sociocomunitario y salud mental", speakers:["Juan Carlos Cea Madrid"] },
-            { time:"09:20 - 09:40", title:"Ayuda solidaria en barrios populares", speakers:["Horacio Román Navarro","Elisandra M. Andrades","María Fernanda González","Soledad Ruiz Jabbaz"] },
-            { time:"09:40 - 10:00", title:"TESIS 3 MIN: Terceros espacios y lazos sociales en infancias", speakers:["Mateo Mancedo"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"10:15 - 11:50", title:"Bloque I: Acompañamiento psicosocial y comunidades escolares", talks:[
-            { time:"10:15 - 10:35", title:"Trayectorias educativas de juventudes rurales", speakers:["David Sánchez Sánchez"] },
-            { time:"10:35 - 10:55", title:"Comunidades escolares organizadas (Nueva Escuela Mexicana)", speakers:["Nancy Robles Marín"] },
-            { time:"10:55 - 11:30", title:"AUDIOVISUAL: Vinculación comunitaria y memoria colectiva", speakers:["Millaray Belén Burgos Massri"] },
-            { time:"11:30 - 11:50", title:"Adolescencia y espectro autista", speakers:["Paulina Cea"] }
-          ]},
-          { type:"block", axis:"Eje 4", time:"12:30 - 13:15", title:"Bloque J: Ciclos vitales y comunidad (pósters)", talks:[
-            { time:"12:30 - 12:45", title:"Envejecimientos en asentamiento rural (Actor-Red)", speakers:["Sarah Magela Morais","Laura Vilela e Souza"] },
-            { time:"12:45 - 13:00", title:"Sentido de comunidad y bienestar de personas mayores", speakers:["Francisco Araya Carrasco"] },
-            { time:"13:00 - 13:15", title:"Niñeces mapuche-lafkenche: condiciones de vida y exclusión", speakers:["Constanza Rayen Manquian Huichqueo","Alba Zambrano"] }
-          ]}
-        ]},
-
-        { room:"SALA 208 (Eje 6)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 6", time:"10:15 - 11:00", title:"Bloque D: Metodologías críticas", talks:[
-            { time:"10:15 - 10:35", title:"Psicología comunitaria y políticas prefigurativas", speakers:["Andrés Gutiérrez Vásquez","Millaray Coderch García","Andrés Jara Silva"] },
-            { time:"10:35 - 10:50", title:"Narración Oral Escénica y Comunitaria", speakers:["Bran Montiel"] },
-            { time:"10:50 - 11:00", title:"Guía para cabildos ciudadanos", speakers:["Matías Montenegro C."] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"11:30 - 12:15", title:"Bloque E: Epistemologías decoloniales", talks:[
-            { time:"11:30 - 11:50", title:"Sistematización de Experiencias y Psicología Comunitaria", speakers:["Eduardo Guesalaga Cebreros","José L. Pérez Flores"] },
-            { time:"11:50 - 12:10", title:"Sitio de Memoria en La Araucanía: Miraflores #724", speakers:["Vicente M. Jofré Rojas","Daniel Henríquez Fernández"] },
-            { time:"12:10 - 12:13", title:"TESIS 3 MIN: Memorias, saberes e identidades (comunidad mapuche)", speakers:["Lucrecia Petit"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"14:30 - 15:15", title:"Bloque F: Salud mental y bienestar", talks:[
-            { time:"14:30 - 14:50", title:"Bienestar emocional autopercibido en universitarios", speakers:["Iván E. Kyle Pérez Hernández","Gherson S. López Poblete","Nicolás S. Muñoz Schmidt"] },
-            { time:"14:50 - 15:10", title:"Promoção em Saúde Mental (Educa Mais Bahia)", speakers:["Rosângela Da Luz Matos"] },
-            { time:"15:10 - 15:13", title:"TESIS 3 MIN: Salud mental y trabajo en UBS Rural", speakers:["Pamela Vasconcellos"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"15:45 - 16:30", title:"Bloque G: Interseccionalidad y derechos", talks:[
-            { time:"15:45 - 16:05", title:"Interseccionalidad y DD.HH. en contextos rurales", speakers:["Andrea Hain"] },
-            { time:"16:05 - 16:25", title:"Vulnerabilidad estructural y malestar psíquico en migrantes aymaras", speakers:["Verónica Paola Jiménez Rocha"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"16:30 - 17:30", title:"Bloque H: Territorialidad y síntesis", talks:[
-            { time:"16:30 - 16:50", title:"Notas para una Tékhne de lo común", speakers:["Francisco Jeanneret"] },
-            { time:"16:50 - 17:10", title:"Cuidar como forma política y enclave de lo común", speakers:["Francisco Jeanneret","María José Reyes Andreani","María Angélica Cruz Contreras"] },
-            { time:"17:10 - 17:30", title:"AUDIOVISUAL: Un pase al compañero (Domingo Asún)", speakers:["Javiera Pavez Mena","Valeria Yáñez","Álvaro Ayala","Hellen Cisternas","Pablo Romero","Trinidad Correa","Jaime Alfaro","Georg Unger","Francisco Jeanneret","Eduardo Guesalaga Cebreros","Gonzalo Martínez Zelaya"] }
-          ]}
-        ]},
-        { room:"Cowork 2 (Eje 6)", location:"CEPEC USACH", talks:[
-          { type:"block", axis:"Eje 6", time:"10:15 - 11:00", title:"Sesión C: Salud comunitaria rural", talks:[
-            { time:"10:15 - 10:35", title:"Salud de la familia en territorio rural (relato)", speakers:["Sarah Magela Morais","Paula Neves Tannous Dib"] },
-            { time:"10:35 - 10:55", title:"Escutar para cuidar: crianças amazônidas", speakers:["Adiele Nataly Alves Lopes","Heloana Fernanda de Oliveira Dias"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"11:30 - 12:15", title:"Sesión D: Prácticas en salud rural", talks:[
-            { time:"11:30 - 11:50", title:"Experiencia en una UBS Rural (Brasil)", speakers:["Pamela Vasconcellos","Bruna Eduarda Alecrim Gomes"] },
-            { time:"11:50 - 12:10", title:"Apoyo social y entramados comunitarios (Mendoza)", speakers:["Mariela Muñoz Rodríguez","Santiago Martin"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"12:30 - 13:30", title:"Presentaciones de libros", talks:[
-            { time:"12:30 - 12:50", title:"Un pase al compañero: Domingo Asún", speakers:["Javiera Pavez Mena","Valeria Yáñez","Álvaro Ayala","Hellen Cisternas","Pablo Romero","Trinidad Correa","Jaime Alfaro","Georg Unger","Francisco Jeanneret","Eduardo Guesalaga Cebreros","Gonzalo Martínez Zelaya"] },
-            { time:"12:50 - 13:10", title:"Resquicios de la clínica tradicional y prácticas comunitarias", speakers:["Rayane Gomes de Oliveira"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"14:30 - 15:15", title:"Sesión E: Educación y diversidad", talks:[
-            { time:"14:30 - 14:50", title:"PÓSTER: Psicoeducación en estilos parentales (Perú)", speakers:["Efecto DeMente","Jordy A. Parra-Chiroque","Shary Z. Leyton Vigo"] },
-            { time:"14:50 - 15:10", title:"Participación y agencia de estudiantes mapuches", speakers:["Estermania Vanessa Salazar Contreras"] }
-          ]},
-          { type:"block", axis:"Eje 6", time:"15:45 - 16:30", title:"Sesión F: Intervención especializada", talks:[
-            { time:"15:45 - 16:05", title:"Consejería anticonceptiva en universitarios (estudio híbrido)", speakers:["Amayrani Juárez Pérez"] },
-            { time:"16:05 - 16:25", title:"Intervención comunitaria en consumo de drogas adolescente", speakers:["Diego Sebastián Venegas Poblete"] }
-          ]}
-        ]}
-      ]
-    };
-
-    /* ================== LÓGICA ================== */
-    const scheduleContainer = document.getElementById('schedule-container');
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const filterButtons = document.querySelectorAll('.filter-button');
-    const toggleInfoBtn = document.getElementById('toggle-info');
-    const generalInfoContainer = document.getElementById('general-info-container');
-
-    let selectedDay = 'Martes 7';
-    let selectedAxis = 'all';
-
-    function roomHasAxis(room, axis){
-      if (axis==='all') return true;
-      if (room.room?.includes(axis)) return true;
-      if (!room.talks) return false;
-      return room.talks.some(t=>{
-        if (t?.axis===axis) return true;
-        if (t?.type==='block' && t?.axis===axis) return true;
-        return false;
-      });
-    }
-    function axesInRoom(room){
-      const set = new Set();
-      if (room.room){
-        const m = room.room.match(/\(Eje\s+\d\)/i);
-        if (m) set.add(m[0].replace(/[()]/g,''));
-      }
-      (room.talks||[]).forEach(t=>{
-        if (t?.axis) set.add(t.axis);
-      });
-      return [...set];
-    }
-
-    function renderSchedule(){
-      const dayData = scheduleData[selectedDay] || [];
-      const visibleRooms = dayData.filter(r=>roomHasAxis(r, selectedAxis));
-
-      if (!visibleRooms.length){
-        scheduleContainer.innerHTML = `<p class="text-center text-gray-500 text-lg py-10">No hay eventos para los filtros seleccionados.</p>`;
-        return;
-      }
-
-      let html = '';
-      visibleRooms.forEach(room=>{
-        const sectionId = `sec-${room.room.replace(/\s/g,'-')}-${selectedDay.replace(/\s/g,'-')}`;
-        const chips = axesInRoom(room);
-        const chipsHtml = chips.length ? `<div class="mt-2 flex flex-wrap gap-2">${chips.map(c=>`<span class="eje-chip">${c}</span>`).join('')}</div>` : '';
-
-        let talksHtml = '';
-        (room.talks||[]).forEach(t=>{
-          if (t.type==='block'){
-            const blockId = `blk-${(t.title||'').replace(/\s/g,'-')}-${sectionId}`;
-            talksHtml += `
-              <article class="bg-gray-100 p-4 rounded-lg shadow-inner">
-                <button class="room-toggle" aria-expanded="false" aria-controls="${blockId}">
-                  <div class="text-left">
-                    <h4 class="font-bold mb-0">${t.title||''}</h4>
-                    <p class="text-sm text-gray-600 mb-0">${t.time||''}</p>
-                  </div>
-                </button>
-                <div id="${blockId}" class="hidden mt-3 space-y-2">
-                  ${ (t.talks||[]).map(sub=>`
-                    <div class="talk w-full text-left p-3 rounded-md border">
-                      <p class="text-xs text-gray-500">${sub.time||''}</p>
-                      <h5 class="font-medium">${sub.title||''}</h5>
-                      ${sub.speakers?.length ? `<p class="autores text-sm mt-1">${sub.speakers.join(', ')}</p>` : ''}
-                      ${sub.notes ? `<p class="text-sm mt-1 italic opacity-80">${sub.notes}</p>` : ''}
-                    </div>
-                  `).join('') }
-                </div>
-              </article>
-            `;
-          } else {
-            talksHtml += `
-              <div class="talk w-full text-left p-4 rounded-lg border">
-                <p class="text-sm text-gray-500">${t.time||''}</p>
-                <h5 class="font-semibold">${t.title||''}</h5>
-                ${t.speakers?.length ? `<p class="autores text-sm mt-1">${t.speakers.join(', ')}</p>` : ''}
-                ${t.notes ? `<p class="text-sm mt-1 italic opacity-80">${t.notes}</p>` : ''}
-              </div>
-            `;
-          }
-        });
-
-        html += `
-          <section class="bg-white p-5 rounded-xl shadow-lg border border-gray-200">
-            <button class="room-toggle" aria-expanded="false" aria-controls="${sectionId}">
-              <div class="text-left">
-                <h3 class="mb-0">${room.room}</h3>
-                <p class="text-sm text-gray-600 mb-0">${room.location||''}</p>
-                ${chipsHtml}
-              </div>
-            </button>
-            <div id="${sectionId}" class="hidden mt-4 space-y-3">
-              ${talksHtml}
-            </div>
-          </section>
-        `;
-      });
-
-      scheduleContainer.innerHTML = html;
-
-      // Toggles (salas y bloques)
-      document.querySelectorAll('.room-toggle').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const id = btn.getAttribute('aria-controls');
-          const target = document.getElementById(id);
-          const expanded = btn.getAttribute('aria-expanded')==='true';
-          btn.setAttribute('aria-expanded', !expanded);
-          target.classList.toggle('hidden');
-        });
-      });
-    }
-
-    function updateTabs(){
-      tabButtons.forEach(b=>{
-        const isActive = (b.dataset.day === selectedDay);
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
-    }
-    function updateFilters(){
-      filterButtons.forEach(b=>{
-        const isActive = (b.dataset.filter === selectedAxis);
-        b.classList.toggle('active', isActive);
-      });
-    }
-
-    function readStateFromHash(){
-      const p = new URLSearchParams(location.hash.replace('#',''));
-      const dia = p.get('dia'); const eje = p.get('eje');
-      if (dia && scheduleData[dia]) selectedDay = dia;
-      if (eje && [...filterButtons].some(o=>o.dataset.filter===eje)) selectedAxis = eje;
-    }
-    function writeStateToHash(){
-      const p = new URLSearchParams();
-      p.set('dia', selectedDay);
-      if (selectedAxis!=='all') p.set('eje', selectedAxis);
-      location.hash = p.toString();
-    }
-    window.addEventListener('hashchange', ()=>{ readStateFromHash(); updateTabs(); updateFilters(); renderSchedule(); });
-
-    // Eventos UI
-    tabButtons.forEach(b=>{
-      b.addEventListener('click', ()=>{
-        selectedDay = b.dataset.day;
-        selectedAxis = 'all';
-        updateTabs(); updateFilters(); renderSchedule(); writeStateToHash();
-      });
-    });
-    filterButtons.forEach(b=>{
-      b.addEventListener('click', ()=>{
-        selectedAxis = b.dataset.filter;
-        updateFilters(); renderSchedule(); writeStateToHash();
-      });
-    });
-
-    // Info general
-    toggleInfoBtn.addEventListener('click', ()=>{
-      generalInfoContainer.classList.toggle('hidden');
-      toggleInfoBtn.textContent = generalInfoContainer.classList.contains('hidden') ? 'Ver Información General' : 'Ocultar Información General';
-    });
-
-    // Compartir
-    document.getElementById('shareBtn')?.addEventListener('click', async ()=>{
-      const url = location.href, title = document.title;
-      if (navigator.share) { try{ await navigator.share({title, url}); }catch(e){} }
-      else { try{ await navigator.clipboard.writeText(url); alert('Enlace copiado'); }catch(e){} }
-    });
-
-    // PDF
-    document.getElementById('pdfBtn')?.addEventListener('click', ()=>{
-      const element = document.querySelector('.container-main');
-      html2pdf().from(element).save('programa_congreso.pdf');
-    });
-
-    // Inicial
-    document.addEventListener('DOMContentLoaded', ()=>{
-      readStateFromHash(); updateTabs(); updateFilters(); renderSchedule();
-    });
-  </script>
-
-  <!-- Librería PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script>
+    // ===== Helpers =====
+    const talk = (time, title, speakers=null, notes=null, moderator=null) => ({ time, title, speakers, notes, moderator });
+    const block = (label) => ({ type:"block", label });
+    const toMin = hhmm => { const [h,m]=hhmm.replace('–','-').split(':').map(Number); return h*60+(m||0); };
+    const parseRange = s => { if(!s) return null; const clean=s.replace(/–/g,'-'); const m=/([0-2]?\d:\d{2})\s*-\s*([0-2]?\d:\d{2})/.exec(clean); if(!m) return null; return [toMin(m[1]),toMin(m[2])]; };
+
+    // ===== DATA EXACTA (con códigos y BLOQUES como subtítulos) =====
+    // MARTES 7 — Campus USACH
+    const martes = [
+      { room:"Patio USACH", location:"Campus USACH", axis:null, items:[
+        talk("09:00–15:30","Registro y acreditación"),
+        talk("11:00–17:00","Feria de productos locales"),
+        talk("10:00–10:30","Recorrido memoria histórica USACH",null,"previa inscripción; cupo 30"),
+        talk("11:30–12:00","Taller: Danza terapia y comunidad — Silvia Pimentel",null,"previa inscripción; cupo 50"),
+        talk("12:30–13:30","Taller: Cierre simbólico actividades precongreso"),
+        talk("14:30–15:00","Presentación de La Hebra Migrante (colectivo por la paz en Palestina)")
+      ]},
+      { room:"Salón de Honor", location:"Campus USACH", axis:null, items:[
+        talk("15:00–16:00","Ceremonia de inauguración del congreso"),
+        talk("16:00–17:00","Conferencia: Dr. Fernando Landini"),
+        talk("17:00–18:00","Conferencia: Dra. Alba Zambrano")
+      ]},
+      { room:"Salón VIME 1", location:"Campus USACH", axis:null, items:[
+        talk("09:00–10:00","Reunión Red Latinoamericana de Psicología Rural"),
+        talk("11:00–11:30","Mesa de diálogo: “Cuidando a los que cuidan”. Acción Comunitaria en Cuidadoras/es de la Comuna de Macul — Proyecto Espiral, Universidad de Chile"),
+        talk("11:30–12:30","Conferencia: Silvia Marcos",null,"modalidad online; modera: Liliana Parra-Valencia"),
+        talk("12:30–13:30","Astronomía y pueblos originarios — Proyecto CIRAS (USACH)"),
+        talk("16:00–16:30","Presentación de libro: Complicidades y tramas feministas — Yanina Gutiérrez Valdés, Javiera Cubillos Almendra & Genoveva Echeverría Gálvez"),
+        talk("16:30–17:00","Presentación de libro: Saúde Mental Escolar — Dr. Luiz Paulo Ribeiro & Dra. Fátima Moraes Garcia"),
+        talk("17:00–17:30","Presentación de libro: Subjetividad y Desarrollo en Contextos Rurales — Dr. Pablo Fossa & Dra. Verónica Serruto")
+      ]},
+      { room:"Salón VIME 2", location:"Campus USACH", axis:null, items:[
+        talk("10:00–11:00","Reunión Sociedad de Psicología Comunitaria"),
+        talk("11:00–11:30","Presentación de libro: Orgullosamente Afro: Experiencias comunitarias y afrofeministas — Lic. Ana Carolina Amaral"),
+        talk("11:30–12:00","Presentación de libro: Decolonialidad y comunidades posibles — Dr. Germán Rozas y Dra. Mónica Villarroel"),
+        talk("16:00–16:30","Presentación de libro: Psicología Ambiental Comunitaria y Resiliencia Comunitaria — Rodolfo Mardones Barrera & José Sandoval Díaz"),
+        talk("16:30–17:00","Presentación de libro: Psicología de las emergencias y desastres en América Latina — José Sandoval Díaz, Eduardo Sandoval Obando")
+      ]},
+      { room:"Salón de Cine", location:"Campus USACH", axis:null, items:[
+        talk("16:00–16:30","Presentación de libro: Tukukan Wall Mapu Mew – El habla de la huerta — Camila Jara Villalobos"),
+        talk("16:30–17:00","Audiovisual: Respuestas locales a la gestión de las aguas en Chiloé."),
+        talk("17:00–17:30","Audiovisual: Diversidades y Ciclos Vitales"),
+        talk("17:30–18:00","Audiovisual: Horizontes de la Psicología Comunitaria")
+      ]}
+    ];
+
+    // MIÉRCOLES 8 — CEPEC USACH
+    const miercoles = [
+      { room:"Visitas a territorios", location:"CEPEC USACH", axis:null, items:[
+        talk("09:00–13:00","Visita a Corporación La Caleta y Centro comunitario de La Legua Emergencia.",null,"Actividad exclusiva de la mañana. Previa inscripción; cupo 15"),
+        talk("—","Punto de encuentro: Por definir.")
+      ]},
+      { room:"Auditorio", location:"CEPEC USACH", axis:null, items:[
+        talk("09:00–10:00","Conferencia: Dr. Alicia Rodríguez"),
+        talk("10:00–11:00","MD3 – Mesa de diálogo: Experiencias de mujeres afrodescendientes e indígenas en contextos rurales y comunitarios.",["Mabel López","Genoveva Neculmán","Ana Carolina Amaral","Genoveva Reuca"],null,"Modera: María Antonieta Campos"),
+        talk("11:00–12:00","MD6 – Mesa de diálogo: Perspectivas de psicología: Aportes y miradas críticas con comunidades indígenas y rurales.",["Marcelo Calegare","Saulo Luders Fernandes","Ana María Vera","Gonzalo Bustamante"],null,"Modera: Silvia Pimentel Aguilar"),
+        talk("12:00–13:00","MD2 – Mesa de diálogo: Epistemologías del Sur y saberes comunitarios: desafíos para una psicología decolonial y territorialmente situada.",["Socorro Nina","María Antonieta Campos","German Rozas"],null,"Modera: Javier Bravo"),
+        talk("14:30–15:30","MD3 – Mesa de diálogo: Respuestas de resistencia frente a crisis sociales y políticas actuales en la actoría social de grupos socialmente invisibilizados.",["Evelyn Palma","Fabián Nichel","Yuly Andrea Botero","Colectivos de NNA"],null,"Modera: Carla Nuñez"),
+        talk("15:30–16:30","Conferencia: Dra. Irene Magaña."),
+        talk("16:30–17:30","Conferencia: Dr. Hector Berroeta.")
+      ]},
+      { room:"Cowork 2", location:"CEPEC USACH", axis:null, items:[
+        talk("12:30–13:30","Taller: Proyecto comunitario. Diálogos: One Health – Küme Mugnen — Sharon Viscardi."),
+        talk("15:30–16:30","MD10 – Mesa de diálogo: Salud mental y convivencia educativa en comunidades educativas rurales.",["Yonatan Encina","Gabriel Prosser","Constanza Méndez","Loreto Cofré","Carlos Labra"],null,"Modera: Rodrigo Rojas-Andrade"),
+        talk("17:00–18:00","MD7 – Mesa de diálogo: Experiencia de investigación colaborativa: Activismos de Mujeres y Justicia Hídrica. Feminismos Ecoterritoriales: Juicios ético-feministas. Movimientos Sociales y Gestión Comunitaria del Agua.",["Francisca Fernández Droguett","Paloma Gajardo","Evelyn Arriagada"],null,"Modera: Ana María Vera Haro")
+      ]},
+      { room:"Cowork 3", location:"CEPEC USACH", axis:null, items:[
+        talk("11:30–12:30","MD8 – Mesa de diálogo: Tensiones y desafíos para las políticas públicas dirigidas a mujeres. ¿son una alternativa transformadora los enfoques comunitarios.",["Jaime Alfaro","Valentina Vallejo Correa","Nicolás Gómez","Lorena Fuentes"],null,"Modera: María Isabel Reyes-Espejo"),
+        talk("14:30–15:30","Ludoteca móvil: EN MARCHA.")
+      ]},
+
+      /* Salas paralelas — Ejes, con BLOQUES exactos */
+      // EJE 1 — SALA 301
+      { room:"SALA 301 (Eje 1)", location:"CEPEC USACH", axis:"Eje 1", items:[
+        block("Bloque A: Saberes ancestrales y espiritualidad (09:00 - 10:15)"),
+        talk("09:00 - 09:20",'EJE1 1.13: "Salud intercultural. Experiencia Huarpe Guanacache" (Roque Andres Soria Seguin)'),
+        talk("09:20 - 09:40",'EJE1 1.22: "Saberes ancestrales como pilares de la resiliencia comunitaria" (Luidienne Joseph)'),
+        talk("09:40 - 10:00",'EJE1 1.23: "Impactos psicológicos de los saberes ancestrales en jóvenes haitianos" (Geniald Dorvil)'),
+        talk("10:00 - 10:03",'EJE1 3.1: "Tesis 3 min: Red de cuidado colectivo con adolescentes desde metodología participativa" (Leslie Reyna)'),
+
+        block("Bloque B: Racismo y comunidades quilombolas (12:30 - 13:30)"),
+        talk("12:30 - 12:50",'EJE1 1.16: "Racismo, Políticas Públicas e seus Impactos na Saúde Mental da Comunidade Quilombola" (Geovanna Pinheiro Moura, Suely Emilia de Barros Santos)'),
+        talk("12:50 - 13:10",'EJE1 1.18: "Saúde Mental e Saberes Ancestrais: caminhos para o cuidado comunitário" (Giselle Oliveira Santos, Suely Emilia de Barros Santos, Clarissa de Oliveira Marques da Cunha, Ingrid Jessiane Vieira Lima, Anael Robson Barbosa Ferreira)'),
+        talk("13:10 - 13:30",'EJE1 1.14: "Metodologias Coparticipativas em Territórios Quilombolas e Camponeses" (Suely Emilia de Barros Santos, Clarissa de Oliveira Marques da Cunha, Giselle Oliveira Santos, Thalita Analyane Bezerra De Albuquerque)'),
+
+        block("Bloque C: Interculturalidad y territorialidad (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE1 1.1: "Malestar y cuerpo en las tensiones de la interculturalidad en salud mental" (María Francisca Romero León)'),
+        talk("14:50 - 15:10",'EJE1 1.15: "Territorio Williche y Crisis del Agua. Defensa de Derechos Colectivos" (Andrea Hain, Silvia Retamal)'),
+        talk("15:10 - 15:30",'EJE1 1.9: "As reverberações do conhecimento indígena para a transformação social" (Thais de Negreiros Sales)'),
+
+        block("Bloque D: Educación y juventudes indígenas (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE1 1.3: "Desafíos de la enseñanza de la lengua mapuche en un liceo rural" (Ximena Tocornal Montt)'),
+        talk("15:50 - 16:10",'EJE1 1.5: "Participación de jóvenes étnicos en Política Nacional de Salud Mental" (Iliana Curiel Arismendy, Martha Gutiérrez Bonilla, Carlos Gómez Restrepo, Danuby Adriana Buitrago)'),
+        talk("16:10 - 16:30",'EJE1 1.26: "Afrontamiento y vivencias universitarias de becarios amazónicos" (Damaris Abigail Pajar Rengifo, John Espinoza)'),
+
+        block("Bloque E: Cuidado de semillas y memorias colectivas (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'EJE1 1.8: "Significaciones de las cuidadoras de semillas sobre conservación e intercambio" (Macarena Luque Sepúlveda)'),
+        talk("16:50 - 17:10",'EJE1 1.10: "Memorias que resisten: Tradiciones populares y procesos de reparación colectiva" (Ana María Valencia Varón, Juan Carlos Arboleda Ariza)')
+      ]},
+
+      // EJE 2 — SALA 302
+      { room:"SALA 302 (Eje 2)", location:"CEPEC USACH", axis:"Eje 2", items:[
+        block("Bloque A: Conflictos socioambientales y extractivismo (09:00 - 10:10)"),
+        talk("09:00 - 09:20",'EJE2 1.1: "Impactos de empreendimentos eólicos na saúde mental de comunidades camponesas" (Felipe Cazeiro)'),
+        talk("09:20 - 09:40",'EJE2 1.2: "Resistencias del pueblo chango frente a la industrialización en Caleta Cobija" (Katherin Castillo Morales, Christian Vásquez Labbé)'),
+        talk("09:40 - 10:00",'EJE2 1.3: "Água, desenvolvimento e injustiça ambiental: Complexo Castanhão" (Marina Calisto Alves, Filipe Augusto Xavier Lima)'),
+
+        block("Bloque B: Impactos extractivos en infraestructura (10:15 - 11:15)"),
+        talk("10:15 - 10:35",'EJE2 1.7: "Impacto psico-sociocultural de la implementación del aeropuerto de Chinchero" (Ana Paula Beleván Herrán, John Espinoza)'),
+        talk("10:35 - 10:55",'EJE2 1.15: "Impactos Socioambientais das Usinas Eólicas no Nordeste Brasileiro" (Danielle De Andrade Paes Leme, Suely Emilia de Barros Santos)'),
+        talk("10:55 - 11:15",'EJE2 1.16: "Impactos socioambientais da construção da Escola de Sargentos na APA Aldeia-Beberibe" (Danielle De Andrade Paes Leme, Savio Delano Vasconcelos Pereira)'),
+
+        block("Bloque C: Bienestar comunitario y gestión del riesgo (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE2 1.5: "Revisión de literatura sobre bienestar comunitario en contextos de incendios forestales" (Ru Calixto, María José Poblete Almendras)'),
+        talk("11:35 - 11:55",'EJE2 1.26: "Gobernanza en tensión: gestión de incendios forestales" (Jerónimo Vega Ortega, Marcelo Toro Espinoza, José Sandoval Díaz, Camila Navarrete Valladares)'),
+        talk("11:55 - 12:15",'EJE2 1.27: "Gestión comunitaria del riesgo como práctica de cuidado y posicionamiento ético-político" (María Paz Lillo, Andalucía Corvarán)'),
+
+        block("Bloque D: Cartografías sociales y comunicación comunitaria (12:15 - 13:15)"),
+        talk("12:15 - 12:35",'EJE2 1.9: "Cartografía social en escuelas en contextos de crisis" (Paula Ascorra, Karen Cárdenas Mancilla, Macarena Morales)'),
+        talk("12:35 - 12:55",'EJE2 1.10: "El rol de las alertas tempranas en la comunicación comunitaria del riesgo" (Valentina Vera Caro, Esperanza Romero Muñoz, Catalina Reyes Sepúlveda, José Sandoval Díaz)'),
+        talk("12:55 - 13:15",'EJE2 1.11: "Uso de cartografías sociales ante situaciones de riesgo de desastre" (Consuelo Paz Suazo Muñoz, José Sandoval Díaz, Camila Navarrete Valladares)'),
+
+        block("Bloque E: Resiliencia comunitaria e identidad territorial (14:30 - 15:10)"),
+        talk("14:30 - 14:50",'EJE2 1.12: "Resiliencia comunitaria ante incendios forestales en el centro-sur" (Camila Navarrete Valladares, Consuelo Paz Suazo Muñoz, Mónica Valenzuela Orrego, José Sandoval Díaz, Valentina Vera Caro, Juan Pablo Gallegos Riquelme, Jerónimo Vega Ortega)'),
+        talk("14:50 - 15:10",'EJE2 2.1: "Experiencias de reconocimiento y preservación de la identidad sociocultural Changa" (Alessandro Antonio Sciaraffia Llanos, Jordán Antonio Cortes Rojas, Katherin Castillo Morales)'),
+
+        block("Bloque F: Patrimonio y metodologías participativas (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE2 1.21: "Patrimonio en contextos de vulnerabilidad y desastre: colchanderas de Ninhue" (Juan Pablo Gallegos Riquelme, José Sandoval Díaz)'),
+        talk("15:50 - 16:10",'EJE2 1.20: "Mapear, Caminar y Fotografiar: Metodologías para conocer problemáticas socioambientales" (René Squella)'),
+        talk("16:10 - 16:30",'EJE2 4.2: AUDIOVISUAL: "Crisis Socioambiental y Salud Mental en el Valle del Elqui" (Erland Zhigley, Álvaro Hurtado, Bárbara Yevenes, Paz Astudillo, Axel Coopman, Lenard Torres)'),
+
+        block("Bloque G: Síntesis territorial (16:30 - 17:00)"),
+        talk("16:30 - 16:50",'EJE2 1.22: "Conflictos socioambientales en el Wallmapu: perspectivas de infancias y comunidades" (Camila Jara Villalobos)'),
+        talk("16:50 - 17:10",'EJE2 1.4: "Vínculos Afectivos en Territorios en Crisis: Las Voces de Niños" (Celeste M. Orrego Olivares, Paula Ascorra, Pablo Mansilla, Patricio Pérez)')
+      ]},
+
+      // EJE 3 — SALA 303
+      { room:"SALA 303 (Eje 3)", location:"CEPEC USACH", axis:"Eje 3", items:[
+        block("Bloque A: Salud/cuidados comunitarios y ruralidades (09:00 - 10:15)"),
+        talk("09:00 - 09:20",'EJE3 1.6: "Trabajadoras comunitarias de salud mental, acompañando violencias en México rural" (Verónica Ortega García, Aurora Luna Martínez)'),
+        talk("09:20 - 09:40",'EJE3 1.7: "Feminino e rural: Saúde Mental de mulheres que vivem no campo" (Lara de Araújo Miranda, Pamela Vasconcellos)'),
+        talk("09:40 - 10:00",'EJE3 1.8: "Grupos de apoyo psicoespirituales con mujeres indígenas frente a las violencias de género" (Nancy Millán Echeverria, Adriana Velasco)'),
+
+        block("Bloque B: Escucha y tramas de cuidado en contextos rurales (10:15 - 11:15)"),
+        talk("10:15 - 10:35",'EJE3 1.19: "Relato de un grupo con mujeres campesinas: la escucha en contextos rurales" (Angélica de Souza Lima)'),
+        talk("10:35 - 10:55",'EJE3 1.20: "Relatos del cuidado informal en zonas rurales: Estrategias de afrontamiento e identidad narrativa" (Verónica Monreal)'),
+        talk("10:55 - 11:15",'EJE3 1.22: "Tramas colectivas de cuidado en un mundo en crisis" (Lucía Barreto, Nazarena Guerra, Elena Hernández, Daniela Osorio-Cabrera, Alicia Rodríguez)'),
+
+        block("Bloque C: Trabajo agrícola y protagonismo femenino (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE3 1.23: "Género y ruralidades en la psicología: reflexiones sobre protagonismo femenino en la Amazonía" (Angélica de Souza Lima)'),
+        talk("11:35 - 11:55",'EJE3 1.25: "Las mujeres en la división social, sexual y familiar del trabajo en la agricultura familiar" (Gloria Miryam Mora Guerrero, Jorge Constanzo Belmar)'),
+        talk("11:55 - 12:15",'EJE3 3.1: TESIS 3 MIN: "La escuela como proyecto comunitario: integración de perspectivas de mujeres pescadoras" (Jennifer Cortes)'),
+
+        block("Bloque D: Cuidados, territorios y ruralidades (12:15 - 13:35)"),
+        talk("12:15 - 12:35",'EJE3 1.26: "Enfermedades terminales y la nueva ruralidad: el giro afectivo en familias" (Catalina Sepúlveda)'),
+        talk("12:35 - 12:55",'EJE3 1.27: "Resistencia cotidiana y cuidado comunitario: el rol de las mujeres en la soberanía alimentaria rural haitiana" (Mimine Facile)'),
+        talk("12:55 - 13:15",'EJE3 1.28: "Cuidado y ruralidad por mujeres mapuche desde los feminismos comunitarios e indígenas" (Rayén Pizarro Abarca, Rodrigo Román Miranda, Gabriela Tapia Campos, Sofía Vega Contreras, Gloria Mora Guerrero)'),
+        talk("13:15 - 13:35",'EJE3 1.17: "Personas en situación de calle: búsqueda de respeto y performance de género en la vida cotidiana" (Svenska Arensburg, Juan Zabala, Milo Kallens, Awkan Moya)'),
+
+        block("Bloque E: Empoderamiento y agroecología feminista (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE3 1.9: "Sembrando Resistencia: Empoderamiento de Mujeres Campesinas en alta montaña de Boyacá" (Maritza Martínez G.)'),
+        talk("14:50 - 15:10",'EJE3 1.10: "Identificación y caracterización prácticas agroecológicas para la soberanía alimentaria Valle del Chota" (Alexandra León Bernardo)'),
+        talk("15:10 - 15:30",'EJE3 1.11: "Hacia agroecologías de cuidado colectivo y justo: prácticas de cuidado en mujeres rurales" (Yanina Gutiérrez Valdés, Pablo Saravia Ramos, María Carolina Alvarado Aspillaga)'),
+
+        block("Bloque F: Territorios y resistencias agroecológicas (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE3 1.12: "Criar en territorio: una experiencia desde el Pacífico colombiano" (Luna Bedoya)'),
+        talk("15:50 - 16:10",'EJE3 1.13: "Experiencia de organización de mujeres campesinas en Chile: etnografía y microhistoria" (Mónica Cantillo)'),
+        talk("16:10 - 16:30",'EJE3 1.18: "Islas Verdes de resistencia: la vida de las mujeres agroecologistas en el sur de Brasil" (Camila Ferraz Bortolini, María Juracy Toneli, João Manuel de Oliveira)'),
+
+        block("Bloque G: Saberes ancestrales y territorios (16:30 - 18:00)"),
+        talk("16:30 - 16:50",'EJE3 1.36: "Micelio del cuidado: Usos comunitarios de los honguitos entre mujeres en territorios rurales de Chiloé" (Krisna Tolentino Toro)'),
+        talk("16:50 - 17:10",'EJE3 2.1: PÓSTER: "Vinos con cuerpos de mujer en los territorios: sosteniendo la vida en una botella" (María Carolina Alvarado Aspillaga)'),
+        talk("17:10 - 17:30",'EJE3 5.2: PRESENTACIÓN DE LIBRO: "Cuentos Latinoamericanos: Mujeres y Madre Tierra" (Catalina Valenzuela)'),
+        talk("17:30 - 17:50",'EJE3 1.33: "História e resistência de um coletivo de travestis sob o contexto de pandemia no sertão brasileiro" (Fábio Henrique Almeida Dantas, Isabel Maria Farias Fernandes, Ilana Lemos de Paiva)'),
+        talk("17:50 - 18:00",'EJE3 2.3: PÓSTER: "Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales" (Jizlayne Estevam da Fonseca, João Batista da Silva Dantas, Fernanda Fernandes Gurgel)')
+      ]},
+
+      // EJE 4 — SALA 206
+      { room:"SALA 206 (Eje 4)", location:"CEPEC USACH", axis:"Eje 4", items:[
+        block("Bloque A: Opresión/liberación y autogestión comunitaria (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE4 1.1: "La experiencia de opresión/liberación en usuarios instituciones hospitalarias chilenas" (Rodrigo Quiroz, Antonia Cruz Covarrubias)'),
+        talk("09:20 - 09:40",'EJE4 1.2: "Talleres con niños y adolescentes como propuesta de autogestión comunitaria" (Amanda Borba Ramos Silva)'),
+        talk("09:40 - 10:00",'EJE4 1.8: "Grupos motores para el cuidado infantil, facilitados con cuidadores/as extensos en Calama" (Sebastián Concha Peña)'),
+
+        block("Bloque B: Narrativas territoriales y bienestar juvenil rural (10:15 - 11:15)"),
+        talk("10:15 - 10:35",'EJE4 1.3: "Fotografías y narrativas territoriales de jóvenes rurales sobre el bienestar" (Tatiana Aguirre, Rodrigo Yáñez)'),
+        talk("10:35 - 10:55",'EJE4 1.9: "Fragilidad emocional urbana: una propuesta de solución comunitaria intergeneracional" (Nabil Morocho)'),
+        talk("10:55 - 11:15",'EJE4 3.1: TESIS 3 MIN: "Sentidos en la formación del curso de licenciatura en educación del campo" (Angélica de Souza Lima, Juliana da Silva Nobrega)'),
+
+        block("Bloque C: Educación del campo y salud mental escolar (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE4 1.4: "Salud Mental Escolar y Educación del Campo: prácticas de cuidado en una Escuela Familia Agrícola" (Catarina Prado Sakai, Luiz Paulo Ribeiro)'),
+        talk("11:35 - 11:55",'EJE4 1.6: "Da escola do campo à universidade, do aluno ao professor: a construção da representação social" (Fátima Moraes Garcia, Josimario Marques Dos Santos)'),
+        talk("11:55 - 12:15",'EJE4 2.2: PÓSTER: "La salud mental adolescente en zonas rurales: el rol comunitario en la disminución de barreras" (Carmen Cristina Vigo Valle, Kristy Mariel García Montenegro, John Espinoza)'),
+
+        block("Bloque D: Diálogos interculturales y mentalidad democrática (12:15 - 13:15)"),
+        talk("12:15 - 12:35",'EJE4 1.5: "Diálogos y Tensiones entre la Psicología y las Comunidades Mapuche" (Fernanda Marilicán, Felipe Andrés Quintano Méndez)'),
+        talk("12:35 - 12:55",'EJE4 1.7: "Mentalidad democrática e individuación" (Lina Marcela Gil Congote)'),
+        talk("12:55 - 13:15",'EJE4 1.17: "Movimento dos Trabalhadores Sem Terra - MST: Uma luta pela reforma agrária e justiça social" (Cíntia Aparecida Campos Pontes)'),
+
+        block("Bloque E: Patrimonio cultural y trayectorias rurales (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE4 1.10: "Dialogo sobre la educación rural y patrimonio cultural: talleres en Pichidegua" (Paula Andrea Torres Homez)'),
+        talk("14:50 - 15:10",'EJE4 1.11: "Trayectorias de profesores rurales: aportes para comprender la escuela rural de Los Ríos" (Paula Andrea Torres Homez, Marcelo Arancibia)'),
+        talk("15:10 - 15:30",'EJE4 1.12: "Proyectos de vida y experiencias de traslado de localidad por continuidad de estudios en Ollagüe" (Cristian Fernando Cortés Tapia, Nathalie Infante)'),
+
+        block("Bloque F: Diversidad sexual y crítica queer (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE4 1.13: "Salud mental comunitaria y critica queer: ¿todas las comunidades y sus problemas son heterosexuales?" (Claudia Calquín)'),
+        talk("15:50 - 16:10",'EJE4 1.18: "Camuflajes disidentes: ciclos vitales trans, deseo y resistencia estética en territorios rurales" (Karen Mora Durán)'),
+        talk("16:10 - 16:30",'EJE4 1.15: "Estigma, justiça social e implicações da psicologia comunitária: combate ao preconceito contra pessoas que vivem com AIDS e HIV" (Gustavo Henrique Mendes de Abreu, Paulo Roberto da Silva Junior)'),
+
+        block("Bloque G: Espacios públicos y vínculos territoriales (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'EJE4 1.14: "Apego al lugar y espacio público en personas en situación de calle" (Samuel Octavio Fuentealba Perez)'),
+        talk("16:50 - 17:10",'EJE4 1.19: "Vínculos en transformación: Comunidad rural, política habitacional y vínculos sociales en El Monte" (Nicolás Felipe Barrera, Soledad Ruiz Jabbaz)'),
+        talk("17:10 - 17:30",'EJE4 1.20: "Restituir el lugar de la escuela rural en las luchas por el territorio" (Carmen Núñez)')
+      ]},
+
+      // EJE 5 — SALA 207
+      { room:"SALA 207 (Eje 5)", location:"CEPEC USACH", axis:"Eje 5", items:[
+        block("Bloque A: Marcos metodológicos fundacionales (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE5 1.1: "Círculo de Cultura: dimensión metodológica, espacio de escucha y atención colectiva en una comunidad rural" (Giovanni Sampaio Queiroz, María Valquíria Nogueira do Nascimento)'),
+        talk("09:20 - 09:40",'EJE5 1.2: "Procedencias de las psicologías en las ruralidades: gubernamentalidad y Extensión Universitaria en Uruguay" (Gabriel Picos)'),
+        talk("09:40 - 10:00",'EJE5 1.4: "Claves metodológicas reflexivas y contextualizadas para la psicología territorial: aprendizajes de la Amazonía" (Angélica Fierro, Sandra Frieri Gilchrist)'),
+
+        block("Bloque B: Historia y construcción de saberes (10:15 - 11:30)"),
+        talk("10:15 - 10:35",'EJE5 1.3: "Helena Antipoff e a Construção de Práticas e Saberes para a Escola Rural Brasileira" (Catarina Prado Sakai, Pina Marsico, Regina Helena de Freitas Campos)'),
+        talk("10:35 - 10:55",'EJE5 1.8: ""Sin duda, no hay fase de la educación pública sobre la que sepamos menos que la educación rural": Investigaciones en Journal of Educational Psychology (1910-1932)" (Juan David Millán)'),
+        talk("10:55 - 10:58",'EJE5 3.1: TESIS 3 MIN: "Psicología y ruralidades: una revisión de la producción nacional para elucidar el campo" (Daniel González Fajardo)'),
+
+        block("Bloque C: Trayectorias profesionales y narrativas (12:30 - 13:30)"),
+        talk("12:30 - 12:50",'EJE5 1.5: "Turmas especiais de Psicologia no PRONERA: novos trajetos para a Psicologia Rural no Brasil" (Maria Letícia De Oliveira Bianchini, Dolores Galindo)'),
+        talk("12:50 - 13:10",'EJE5 1.6: "Narrativas (auto)biográficas de relaciones (im)pensables entre psicología, ruralidad y Educación Rural en Brasil" (Luiz Paulo Ribeiro)'),
+        talk("13:10 - 13:30",'EJE5 1.7: "Trajetórias da Psicologia rural: reflexões a partir dos movimentos sociais, relações de gênero e saúde mental" (Jader Ferreira Leite, Magda Dimenstein, Cândida Maria Bezerra Dantas)'),
+
+        block("Bloque D: Diálogos interdisciplinarios y desarrollo rural (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE5 1.9: ""Construyendo agroecología en diálogo de saberes y vivires" Sistematización de experiencia del S.P.G. Agroecológico Eco Oasis" (María Julia Sabez)'),
+        talk("14:50 - 15:10",'EJE5 1.10: "Comunidades de Prácticas Virtuales como Herramienta de Formación y Encuentro de Profesionales Geográficamente Dispersos" (Fernando Landini)'),
+        talk("15:10 - 15:30",'EJE5 5.1: PRESENTACIÓN DE LIBRO: "Subjetividad y Desarrollo en Contextos Rurales" (Pablo Fossa, Verónica Serruto)'),
+
+        block("Bloque E: Extensión universitaria e innovación (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE5 1.11: "Facilitadores y obstaculizadores de procesos de innovación y desarrollo en el ámbito de la extensión rural y agricultura familiar de Misiones" (Manuela Martínez)'),
+        talk("15:50 - 16:10",'EJE5 1.12: "Extensão universitária e educação do campo: ações do lacs/nueges com jovens e adultos em comunidades quilombolas" (Geovanna Pinheiro Moura, Jorge Edielson Costa Gueiros, Jullyane Chagas Barboza Brasilino)'),
+        talk("16:10 - 16:30",'EJE5 1.13: "Factores psicológicos de adopción de prácticas de conservación del suelo: El rol de la conexión emocional de los agricultores" (Alexander Neaman)'),
+
+        block("Bloque F: Formación y construcción disciplinaria (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'EJE5 1.14: "O campo na Psicologia: a formação e práticas a partir das ruralidades" (Daniel González Fajardo, Gustavo Melo, Nathan Almeida da Silva)'),
+        talk("16:50 - 17:10",'EJE5 1.15: "Hacer camino en lo rural: Red Latinoamericana de Psicología Rural y la construcción de una psicología situada" (Sandra Emilia Hoffman Martins)'),
+        talk("17:10 - 17:30",'EJE5 1.16: "Psicologías maritorias: desafíos, aprendizajes y proyecciones de la psicología rural en territorios insulares del sur austral de Chile" (Krisna Tolentino Toro)'),
+
+        block("Bloque G: Pósters y síntesis metodológica (17:30 - 18:30)"),
+        talk("17:30 - 17:45",'EJE5 2.1: PÓSTER: "Saberes da floresta e da escuta: práticas psicossociais com mulheres amazônidas" (Adiele Nataly Alves Lopes, Heloana Fernanda de Oliveira Dias, Vanessa Cardoso Prestes)'),
+        talk("17:45 - 18:00",'EJE5 2.2: PÓSTER: "Cartas: las voces de los estudiantes rurales" (Maria Elisa Carneiro Pereira Pinto, Sandra Ferraz)'),
+        talk("18:00 - 18:15",'EJE5 2.3: PÓSTER: "La psicología y su contribución a la educación rural en Brasil" (Valdirene Gonçalves, Sandra Ferraz)'),
+        talk("18:15 - 18:18",'EJE5 3.2: TESIS 3 MIN: "Procesos psicosociales asociados a la adopción de prácticas agroecológicas. Significados e impacto en la salud integral" (María Julia Sabez)')
+      ]},
+
+      // EJE 6 — SALA 208 + Cowork 2 (Miércoles)
+      { room:"SALA 208 (Eje 6)", location:"CEPEC USACH", axis:"Eje 6", items:[
+        block("Bloque A: Formación y docencia (10:15 - 11:00)"),
+        talk("10:15 - 10:35",'E6 1.3: "El diálogo de la Psicología Comunitaria con la Educación Popular en la Formación" (Maria Valquíria Nogueira do Nascimento, Giovanni Sampaio Queiroz)'),
+        talk("10:35 - 10:55",'E6 1.10: "Fortaleciendo la formación integral en psicología comunitaria: impacto del Aprendizaje-Servicio en la Intervención Psicosocial" (Valentina Vera Caro, José Sandoval Díaz, Jerónimo Vega Ortega, Camila Navarrete Valladares, Consuelo Paz Suazo Muñoz)'),
+
+        block("Bloque B: Formación y sistematización (11:30 - 12:15)"),
+        talk("11:30 - 11:50",'E6 2.2: PÓSTER: "Sistematización de la Experiencia de Formación de Estudiantes de Psicología (Universidad Playa Ancha, Chile)" (Isidora Ascencio Carrozza, Macarena Hernández Castillo, Eduardo Robles Araya, Eduardo Guesalaga Cebreros, José Luís Pérez Flores)'),
+        talk("11:50 - 12:10",'E6 2.3: PÓSTER: "Ações Comunitárias no Contexto Amazônico: Reflexões da Psicologia Comunitária a partir da Experiência Docente" (Janaína Duarte Ferreira Vieiralves, Dra. Socorro Nina)'),
+
+        block("Bloque C: Prácticas emergentes (17:00 - 17:45)"),
+        talk("17:00 - 17:20",'E6 1.4: "Abordaje interdisciplinario e intersectorial de un proceso de duelo colectivo en una comunidad escolar" (Mariela Muñoz Rodríguez, Juan Miguel Flores)'),
+        talk("17:20 - 17:40",'E6 1.12: "El Circo Social como herramienta de intervención comunitaria" (Marcelo Antonio Pérez Daza, Pía Barrios Valenzuela, Ángel Ruiz)')
+      ]},
+      { room:"Cowork 2 (Eje 6)", location:"CEPEC USACH", axis:"Eje 6", items:[
+        block("Sesión paralela A: Territorio y comunalidad (10:15 - 11:00)"),
+        talk("10:15 - 10:35",'E6 1.8: "Rostros y Rastros: Papachos Sentipensantes" (Jose Dario Patarroyo Gomez, Carlos Leal Ruano)'),
+        talk("10:35 - 10:55",'E6 1.20: "Co-razonar los territorios en Valparaíso: escuela de formación popular para la universidad y comunidades organizadas" (Gino Grondona Opazo, Marcelo Rodríguez, Pablo Saravia Ramos)'),
+
+        block("Sesión paralela B: Innovación y metodologías (11:30 - 12:15)"),
+        talk("11:30 - 11:50",'E6 1.9: "Innovación ciudadana y mundos por-venir ¿un nuevo paradigma para la psicología comunitaria?" (Claudia Calquín, Carlos Ramírez-Vargas, Cristopher Yañez-Urbina)'),
+        talk("11:50 - 12:10",'E6 1.26: "Más allá de lo visible: análisis multimodal crítico de la Plaza de la Independencia" (Juan Urzúa, Esteban Pacheco Yáñez)'),
+
+        block("Presentaciones de libros (16:30 - 17:10)"),
+        talk("16:30 - 16:50",'E6 5.2: "Alegorías en la porfía. 40 años de historia de La Caleta" (Carla Núñez)'),
+        talk("16:50 - 17:10",'E6 5.1: "Ateliê de Filosofia na Escola: experimentações para los años finales do Ensino Fundamental" (Rosângela Da Luz Matos, Raquel Maciel Paulo dos Anjos)')
+      ]}
+    ];
+
+    // JUEVES 9 — CEPEC USACH
+    const jueves = [
+      { room:"Visita a territorio", location:"CEPEC USACH", axis:null, items:[
+        talk("09:00–13:00","Visita a Villa Solidaridad Alsino.",null,"Actividad exclusiva de la mañana. Previa inscripción; cupo 15"),
+        talk("—","Punto de encuentro: Por definir.")
+      ]},
+      { room:"Auditorio", location:"CEPEC USACH", axis:null, items:[
+        talk("09:00–10:00","Conferencia: Dr. Jader Leite"),
+        talk("10:00–11:00","Conferencia: Dr. German Rozas."),
+        talk("11:30–12:30","MD5 – Mesa de diálogo: Cuidados comunitarios, territorio y prácticas de resistencia rurales y urbanas, en clave interseccional.",["Javiera Cubillos","Genoveva Echeverría","Javiera Pavez","Yanina Gutiérrez"],null,"Modera: Ana María Vera Haro"),
+        talk("12:45–13:45","MD4 – Trayectorias y derivas de la Psicología Comunitaria en Chile: un testimonio vivo.",["Alba Zambrano","Jaime Alfaro Inzunza","George Unger"],null,"Modera: Oscar Muñoz"),
+        talk("16:30–17:00","Ceremonia de cierre.")
+      ]},
+      { room:"Cowork 2", location:"CEPEC USACH", axis:null, items:[
+        talk("10:00–11:00","MD11 – Mujeres, cuidados y territorios ancestrales en Latinoamérica: Colombia, Brasil y Chile.",["Liliana Parra-Valencia","Socorro Nina","María Isabel Reyes"],null,"Modera: Gloria Mora"),
+        talk("11:30–12:30","MD9 – Mesa de diálogo: Formar para implicarse: desafíos críticos en la enseñanza de la Psicología Comunitaria desde el Sur.",["Mariadne Molina","Eduardo Candia","Bárbara Olivares","Alejandra Pezoa","Javiera Pávez","Egresados de Psicología","Representantes de organizaciones sociales"],null,"Modera: Paula Riveros"),
+        talk("15:30–16:30","MD12 – Mesa de diálogo: Respuestas comunitarias frente a la crisis socioambiental.",["Arlex Angarita","Alejandra Sánchez","René Squella"],null,"Modera: Rodolfo Mardones")
+      ]},
+      { room:"Cowork 3", location:"CEPEC USACH", axis:null, items:[
+        talk("11:30–12:30","Círculo de escucha — Corporación Escuchar",null,"previa inscripción; cupo 50"),
+        talk("—","Mesa histórica.")
+      ]},
+
+      // EJE 1 — SALA 301 (Jueves)
+      { room:"SALA 301 (Eje 1)", location:"CEPEC USACH", axis:"Eje 1", items:[
+        block("Bloque F: Colonialidad y resistencia andina (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE1 1.2: "Colonialidad del ser, racialización y autoorganización comunitaria en el estallido andino peruano" (Vanessa Verastegui Olle)'),
+        talk("09:20 - 09:40",'EJE1 1.17: "Colonialismo y Subjetivación Mapuche-Williche en Rahue" (Héctor Manuel Ahumada Alvarado)'),
+        talk("09:40 - 10:00",'EJE1 1.25: "Saberes ancestrales y planes de vida en comunidades indígenas" (Gino Grondona Opazo)'),
+
+        block("Bloque G: Revitalización ontopolítica territorial (10:15 - 11:15)"),
+        talk("10:15 - 10:35",'EJE1 1.24: "Revitalización Ontopolítica en el Wadalafkenmapu" (Javier Bravo)'),
+        talk("10:35 - 10:55",'EJE1 1.11: "La comunidad relacional: Hacia una visión onto-política del concepto de comunidad" (Javier Bravo)'),
+        talk("10:55 - 11:15",'EJE1 1.12: "Normas Consuetudinarias y formación policial" (Patricia Mercado)'),
+
+        block("Bloque H: Descolonización y convivencia intercultural (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE1 1.19: "Descolonizando, despatriarcalizando e indigenizando la Psicología Comunitaria" (María Antonieta Campos Melo, Maritza Tranamil Nahuelpi)'),
+        talk("11:35 - 11:55",'EJE1 1.27: "Claves para la promoción de la convivencia intercultural en territorios mapuche" (Alba Zambrano, María Antonieta Campos Melo)'),
+        talk("11:55 - 12:15",'EJE1 1.21: "Caminos y cruces en el accionar desde la interculturalidad y lo anticolonial" (Lucrecia Petit)'),
+
+        block("Bloque I: Corporalidad y danza comunitaria (12:15 - 13:15)"),
+        talk("12:15 - 12:35",'EJE1 2.2: "Bailar también es resistir: el cuerpo como memoria y comunidad" (Camila Prieto Callejas)'),
+        talk("12:35 - 12:55",'EJE1 1.28: "El campo chileno como territorio que resiste: identidad del sabio popular" (Cristóbal Cataldo Esparza)'),
+        talk("12:55 - 13:15",'EJE1 4.1: "AUDIOVISUAL: Producción de conocimiento situado: Gira Caprina con enfoque agroecológico" (Erwin Hans Carlsson Morales, Enzo Solari Musa, Claudio Martínez Urquiza)'),
+
+        block("Bloque J: Agroecología y resistencia territorial (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE1 1.6: "Agroecología y resistencia en el Valle Marga Marga" (María Carolina Alvarado Aspillaga, Juan Carlos Molina)'),
+        talk("14:50 - 15:10",'EJE1 1.7: "Representaciones Sociales del trabajo asociativo del Trafkintuwe Panguipulli" (Karla Ramírez Barril)'),
+        talk("15:10 - 15:30",'EJE1 2.1: "Poster: os saberes tradicionais de uma comunidade quilombola favorecendo a geração de renda" (Andreia Nazareno dos Santos, Antônio Alves Filho)'),
+
+        block("Bloque K: Justicia indígena y bienestar infantil (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE1 1.4: "La justicia indígena ecuatoriana como ritual terapéutico" (Iván Villafuerte)'),
+        talk("15:50 - 16:10",'EJE1 1.20: "Infancias mapuche y bienestar socioemocional en contextos de violencia" (Belén Ulloa Llanquileo, Ana María Vera, Lisette Urrutia, Ana María Alarcón Muñoz, Marcela Castro Garrido)')
+      ]},
+
+      // EJE 2 — SALA 302 (Jueves)
+      { room:"SALA 302 (Eje 2)", location:"CEPEC USACH", axis:"Eje 2", items:[
+        block("Bloque H: Agricultura familiar y sistemas alimentarios (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE2 1.8: "Políticas públicas, agricultura familiar e segurança alimentar: Projeto Paulo Freire" (Florença Moreira Gonçalves, Filipe Augusto Xavier Lima, César Augustus Labre Lemos de Freitas)'),
+        talk("09:20 - 09:40",'EJE2 1.17: "Relación entre Agricultura Campesina Familiar, Étnica y Comunitaria y la Psicología Rural" (Arlex Angarita Leiton)'),
+        talk("09:40 - 10:00",'EJE2 1.18: "Ahora es la carne: cooperativas ganaderas y comunidades mapuche en Río Negro" (Santiago Conti, Franca Bidinost)'),
+
+        block("Bloque I: Innovación agropecuaria y transformaciones campesinas (10:15 - 11:15)"),
+        talk("10:15 - 10:35",'EJE2 1.14: "Desencuentros, conflictos y desajustes en la construcción de temas de investigación para la innovación agropecuaria" (Fernando Landini, Santiago Conti)'),
+        talk("10:35 - 10:55",'EJE2 1.29: "Transformación de los modos de vida y la salud del campesinado en relación con las reconfiguraciones socio-territoriales" (Luz María Correa Vélez)'),
+        talk("10:55 - 11:15",'EJE2 1.6: "Evaluación del impacto turístico y sostenibilidad mediante cartografía social en la Cuenca del Río Toribio" (Diana María Ahumada, Eduar Malamut Gómez)'),
+
+        block("Bloque J: Educación ambiental y territorios (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE2 1.13: "Tendencias en psicología sobre comunidad y naturaleza en contextos rurales latinoamericanos" (Alejandra Olivera Méndez)'),
+        talk("11:35 - 11:55",'EJE2 1.25: "Recados de la educación ambiental rural: Perspectivas de educadores ambientales rurales" (Gabriel Prosser Bravo, Marcela Pérez Lienqueo)'),
+        talk("11:55 - 12:15",'EJE2 3.1: TESIS 3 MIN: "Educação Ambiental e o Materialismo Histórico-Dialético" (Fátima Moraes Garcia, Sillas Oliveira Santos)'),
+
+        block("Bloque K: Problemas medioambientales y adaptación climática (12:15 - 13:15)"),
+        talk("12:15 - 12:35",'EJE2 1.23: "Representaciones sociales de los problemas medioambientales en contextos rurales" (Matías Eduardo Peña Garay, José Sandoval Díaz)'),
+        talk("12:35 - 12:55",'EJE2 1.24: "Repertorios Interpretativos sobre la Adaptación al Cambio Climático de pequeños agricultores" (Camila Carrizo, Sara Arenas)'),
+        talk("12:55 - 13:15",'EJE2 3.2: TESIS 3 MIN: "La educación ambiental en una zona minera de alta actividad extractiva" (Francisca Paola Sanchez Mercado)'),
+
+        block("Bloque L: Marcos teóricos y críticas epistémicas (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE2 1.32: "Psicologización del Cambio Climático: tensiones teóricas en la psicología frente a la crisis socioecológica" (Rodolfo Mardones Barrera)'),
+        talk("14:50 - 15:10",'EJE2 1.33: "El discurso psicológico en la Ley Marco del Cambio Climático en Chile" (Gabriela Badilla, Camila Cortez, María Eckholt, Nicole Cortés, Rodolfo Mardones Barrera)'),
+        talk("15:10 - 15:30",'EJE2 1.34: "Intervenciones en salud mental y Cambio Climático" (Margarita Loubat)'),
+
+        block("Bloque M: Ecoexistencia y vulnerabilidades sistémicas (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE2 1.30: "Aprender a vivir otra vez: Ecoexistencia y psicología desde las grietas" (Josefina González Gutierrez)'),
+        talk("15:50 - 16:10",'EJE2 1.31: "Crises sistêmicas e vulnerabilidades socioambientais no Haiti" (Herlins Coeurly Jean-Pierre)'),
+        talk("16:10 - 16:30",'EJE2 1.28: "Resiliencia comunitaria frente a crisis sistémicas en zonas rurales de Haití" (Linsky Fenelon, Ignace Ilsabeth)'),
+
+        block("Bloque N: Gestión juvenil de desastres y percepción ambiental (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'EJE2 1.35: "El rol de los jóvenes emprendedores en la gestión de desastres y el desarrollo comunitario en Haití" (Carlens Ybrahim)'),
+        talk("16:50 - 17:10",'EJE2 1.19: "Percepción emocional ante estímulos ambientales en estudiantes de nivel básico" (Monserrat Romero Miranda, Niels Martínez Guevara, Alejandra Olivera Méndez, Ernesto Peredo Rivera, Gerardo Loera Alvarado)'),
+        talk("17:10 - 17:30",'EJE2 5.2: PRESENTACIÓN DE LIBRO: "De las emergencias a la transformación: aprendizajes para la acción social y educativa" (Yanina Gutiérrez Valdés, Sebastián Ortiz Mallegas, Marlen Figueroa Varela)')
+      ]},
+
+      // EJE 3 — SALA 303 (Jueves)
+      { room:"SALA 303 (Eje 3)", location:"CEPEC USACH", axis:"Eje 3", items:[
+        block("Bloque H: Feminismos negros y comunidades quilombolas (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE3 1.1: "Casa de la Mujer Quilombola: espacio de referencia y cuidado en el Quilombo Grilo" (Giovanni Sampaio Queiroz, Jader Ferreira Leite)'),
+        talk("09:20 - 09:40",'EJE3 1.30: "Feminino e Ancestralidade: A transmissão de saberes tradicionais entre mulheres quilombolas" (Lara de Araújo Miranda)'),
+        talk("09:40 - 10:00",'EJE3 1.34: "Práticas parentais na primeira infância em comunidades quilombolas na perspectiva dos papéis de gênero" (Renan Vinicius Guerra da Costa, Adria de Lima Sousa)'),
+
+        block("Bloque I: Saberes extractivistas y narrativas indígenas (10:00 - 10:50)"),
+        talk("10:00 - 10:15",'EJE3 1.3: "Saberes, transmissão e protagonismo feminino no conhecimento extrativista do Pequi" (Rafaela Alves da Silva, Filipe Augusto Xavier Lima)'),
+        talk("10:00 - 10:10",'EJE3 2.4: PÓSTER: "Hilado del tejido colectivo de la Red Latinoamericana de Defensoras digitales" (Mayra Daniela Martínez Cruz)'),
+        talk("10:10 - 10:20",'EJE3 2.5: PÓSTER: "Efectividad e Implementación de un Programa de Consejería Anticonceptiva" (Amayrani Juárez Pérez)'),
+        talk("10:20 - 10:40",'EJE3 2.6: PÓSTER: "Saberes, liderazgo y empoderamiento comunitario en mujeres mapuche-lafkenche" (Millaray Malen Nahuelhual Epunir)'),
+        talk("10:40 - 10:50",'EJE3 2.7: PÓSTER:"Sentipensando el buenvivir y salud mental desde Villa Alemana" (Marcela Vargas Tobon, Melissa Vargas Paredes, Victoria Rosales Manivet, Agrupación Bienestar Consciente)'),
+        talk("10:50 - 11:00",'EJE3 2.2: POSTER: "Análisis de acceso efectivo al dispositivo Centro de la Mujer en las mujeres rurales" (Damaris Melo Uribe)'),
+
+        block("Bloque J: Narrativas indígenas femeninas y gestión agrícola (11:15 - 12:15)"),
+        talk("11:15 - 11:35",'EJE3 1.4: "Entre a floresta e o asfalto: narrativas indígenas femininas sobre um clima em transformação" (Cristina Gonçalves Rodrigues, Gian Carlos Cruz Pereira, Socorro Nina)'),
+        talk("11:35 - 11:55",'EJE3 1.5: "O projeto São José e a participação feminina na gestão da agricultura familiar" (Moacir de Souza Junior, Lafaete Almeida de Oliveira Mesquita, Ana Karina Holanda, Filipe Augusto Xavier Lima)'),
+        talk("11:55 - 12:15",'EJE3 3.2: TESIS 3 MIN: "O cuidado psicossocial exercido por anciãs indígenas para o enfrentamento do sofrimento colonial" (Thais de Negreiros Sales)'),
+
+        block("Bloque K: Resistencias y cuidados ancestrales (12:15 - 13:35)"),
+        talk("12:15 - 12:35",'EJE3 1.35: "Corpo-território e resistência: Estratégias de uma mujer indígena citadina na educación" (Jhanine Magalhães Cabral, Adria de Lima Sousa)'),
+        talk("12:35 - 12:55",'EJE3 1.21: "Cuidar en silencio, voces del cuidado informal en ruralidad" (Verónica Monreal)'),
+        talk("12:55 - 13:15",'EJE3 5.1: PRESENTACIÓN DE LIBRO: "Complicidades y tramas feministas. Conversaciones críticas sobre feminismos e interseccionalidades" (Yanina Gutiérrez Valdés, Javiera Cubillos Almendra, Genoveva Echeverría Gálvez)'),
+        talk("13:15 - 13:35",'EJE3 1.37: "Construir cuidadanía en tiempos de crueldad" (Silvia Romero, Yanina Daniela Riccitelli)'),
+
+        block("Bloque L: Políticas públicas y enfoque comunitario (14:30 - 15:30)"),
+        talk("14:30 - 14:50",'EJE3 1.14: "Mujer Emprende: el rol de lo comunitario en la política pública dirigida a mujeres en Chile" (Antonia González Seguel, L. Mera Adasme)'),
+        talk("14:50 - 15:10",'EJE3 1.24: "El enfoque comunitario en la política pública. La perspectiva de los implementadores en el Programa Mujeres Rurales" (Bárbara Olivares)'),
+        talk("15:10 - 15:30",'EJE3 1.29: "Participación social en barrios vulnerables de Santiago de Chile desde una perspectiva de género" (Teresa Ropert)'),
+
+        block("Bloque M: Autoetnografías y experiencias feministas (15:30 - 16:30)"),
+        talk("15:30 - 15:50",'EJE3 1.15: ""Aportaciones autoetnográficas en la construcción de conocimiento feminista desde el encierro"" (Alejandra Acevedo Placeres, Alex A. Placeres)'),
+        talk("15:50 - 16:10",'EJE3 1.2: "Gestar y parir con derechos: El caso de la atención en salud materna de las mujeres pehuenche" (Elda Jara Pacheco)'),
+        talk("16:10 - 16:30",'EJE3 1.16: " La expresión de las comunidades. Intervenciones con la Comunidad Terapéutica Mixta y la Comunidad porteña de mujeres" (Greidys Chacon, Francisca Alucema, Pablo Suarez)'),
+
+        block("Bloque N: Liderazgos femeninos y cartografías territoriales (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'EJE3 1.31: "Liderazgos femeninos rurales: el poder del cuidado para la transformación territorial" (Ginny Rocio Luna Rodríguez, Sindy Katrina Orozco Monsalve, Mayerly Lucía Paredes Ardila)'),
+        talk("16:50 - 17:10",'EJE3 1.32: "Cuidar la vida: cartografiar cuerpos-territorios con mujeres rurales en Uruguay" (Nat Tommasino Comesaña)'),
+        talk("17:10 - 17:30",'EJE3 1.38: "Arquitecturas que muerden: geografías del rechazo y la resistencia feminista en territorios urbanos" (Juan Urzúa, Esteban Pacheco Yáñez)')
+      ]},
+
+      // EJE 4 — SALA 206 (Jueves)
+      { room:"SALA 206 (Eje 4)", location:"CEPEC USACH", axis:"Eje 4", items:[
+        block("Bloque H: Bienestar sociocomunitario y experiencias vividas (09:00 - 10:00)"),
+        talk("09:00 - 09:20",'EJE4 1.16: "Bienestar sociocomunitario y salud mental: narrativas de personas con experiencia vivida que participan en organizaciones sociales" (Juan Carlos Cea Madrid)'),
+        talk("09:20 - 09:40",'EJE4 1.21: "Construcciones discursivas sobre beneficiarios de ayuda solidaria en dos barrios populares de Santiago" (Horacio Román Navarro, Elisandra Macarena Andrades, María Fernanda González, Soledad Ruiz Jabbaz)'),
+        talk("09:40 - 10:00",'EJE4 3.2: TESIS 3 MIN: "La influencia de los terceros espacios en la construcción de lazos sociales entre las infancias" (Mateo Mancedo)'),
+
+        block("Bloque I: Acompañamiento psicosocial y comunidades escolares (10:15 - 11:50)"),
+        talk("10:15 - 10:35",'EJE4 1.22: "Acompañamiento psicosocial a trayectorias educativas de juventudes rurales: entre violencias territoriales y acumulación de desventajas" (David Sánchez Sánchez)'),
+        talk("10:35 - 10:55",'EJE4 1.23: "Procesos psicosociales de las comunidades escolares organizadas en el contexto de la Nueva Escuela Mexicana" (Nancy Robles Marín)'),
+        talk("10:55 - 11:30",'EJE4 4.1: AUDIOVISUAL: "Vinculación comunitaria y memoria colectiva: Sistematización de la experiencia de la población Camilo Henríquez" (Millaray Belén Burgos Massri)'),
+        talk("11:30 - 11:50",'EJE4 1.24: "Adolescencia en Condición del Espectro Autista: una aproximación a su autocomprensión desde la percepción de las madres cuidadoras" (Paulina Cea)'),
+
+        block("Bloque J: Ciclos vitales y comunidad (12:30 - 13:15)"),
+        talk("12:30 - 12:45",'EJE4 2.1: PÓSTER: "Envejecimientos en un asentamiento rural desde la perspectiva de la Teoría Actor-Red" (Sarah Magela Morais, Laura Vilela e Souza)'),
+        talk("12:45 - 13:00",'EJE4 2.3: PÓSTER: "Sentido de comunidad y bienestar subjetivo de las personas mayores de la \'Comunidad Vida Sana\' de La Serena" (Francisco Araya Carrasco)'),
+        talk("13:00 - 13:15",'EJE4 2.4: PÓSTER: "Niñeces mapuche-lafkenche: condiciones de vida, exclusión estructural y orientaciones para la transformación institucional" (Constanza Rayen Manquian Huichqueo, Alba Zambrano)')
+      ]},
+
+      // EJE 6 — SALA 208 + Cowork 2 (Jueves)
+      { room:"SALA 208 (Eje 6)", location:"CEPEC USACH", axis:"Eje 6", items:[
+        block("Bloque D: Metodologías críticas (10:15 - 11:00)"),
+        talk("10:15 - 10:35",'E6 1.13: "Psicología comunitaria y políticas prefigurativas: El potencial prefigurativo de la intervención comunitaria" (Andrés Gutiérrez Vásquez, Millaray Coderch García, Andrés Jara Silva)'),
+        talk("10:35 - 10:50",'E6 1.16: "Narración Oral Escénica y Comunitaria: la Narración Oral Escénica como herramienta metodológica participativa para la transformación social" (Bran Montiel)'),
+        talk("10:50 - 11:00",'E6 1.17: "Breve guía para realizar cabildos ciudadanos que generan incidencia en la institucionalidad local" (Matías Montenegro C.)'),
+
+        block("Bloque E: Epistemologías decoloniales (11:30 - 12:15)"),
+        talk("11:30 - 11:50",'E6 1.14: "Sistematización de Experiencias y Psicología Comunitaria: Trayectorias, Convergencias, y la innegable necesidad de su articulación para la formación profesional en Psicología Comunitaria en Chile" (Eduardo Guesalaga Cebreros, José Luís Pérez Flores)'),
+        talk("11:50 - 12:10",'E6 1.22: "Construyendo un Sitio de Memoria en La Araucanía: El caso de Miraflores #724" (Vicente Martín Jofré Rojas, Daniel Henríquez Fernández)'),
+        talk("12:10 - 12:13",'E6 3.2: Tesis 3 min: "Memorias, saberes e identidades: construcciones psico-sociales de una comunidad mapuche" (Lucrecia Petit)'),
+
+        block("Bloque F: Salud mental y bienestar (14:30 - 15:15)"),
+        talk("14:30 - 14:50",'E6 1.1: "Bienestar emocional autopercibido en estudiantes universitarios en Chile" (Iván Erich Kyle Pérez Hernández, Gherson Scott López Poblete, Nicolás Santiago Muñoz Schmidt)'),
+        talk("14:50 - 15:10",'E6 1.11: "Promoção em Saúde Mental no âmbito do Programa Educa Mais Bahia" (Rosângela Da Luz Matos)'),
+        talk("15:10 - 15:13",'E6 3.1: Tesis 3 min: "Saúde Mental e Trabalho em UBS Rural: Vivências Subjetivas de Profissionais da Atenção Primária no Distrito Federal" (Pamela Vasconcellos)'),
+
+        block("Bloque G: Interseccionalidad y derechos (15:45 - 16:30)"),
+        talk("15:45 - 16:05",'E6 1.15: "Interseccionalidad como enfoque crítico en la Protección y Defensa de Derechos Humanos en Contextos Rurales" (Andrea Hain)'),
+        talk("16:05 - 16:25",'E6 1.25: "Vulnerabilidad estructural y malestar psíquico en migrantes aymaras de la XV región de Chile" (Verónica Paola Jiménez Rocha)'),
+
+        block("Bloque H: Territorialidad y síntesis (16:30 - 17:30)"),
+        talk("16:30 - 16:50",'E6 1.18: "Notas para una Tékhne de lo común" (Francisco Jeanneret)'),
+        talk("16:50 - 17:10",'E6 1.19: "Cuidar como forma política y enclave de lo común" (Francisco Jeanneret, María José Reyes Andreani, María Angélica Cruz Contreras)'),
+        talk("17:10 - 17:30",'E6 5.4: Audiovisual: "Un pase al compañero: espacio de memoria a la figura y pensamiento de Domingo Asún" (Javiera Pavez Mena, Valeria Yáñez, Álvaro Ayala, Hellen Cisternas, Pablo Romero, Trinidad Correa, Jaime Alfaro, Georg Unger, Francisco Jeanneret, Eduardo Guesalaga Cebreros, Gonzalo Martínez Zelaya)')
+      ]},
+      { room:"Cowork 2 (Eje 6)", location:"CEPEC USACH", axis:"Eje 6", items:[
+        block("Sesión paralela C: Salud comunitaria rural (10:15 - 11:00)"),
+        talk("10:15 - 10:35",'E6 1.5: "Psicología en la salud de la familia en territorio rural: relato de experiencia con prácticas integradas" (Sarah Magela Morais, Paula Neves Tannous Dib)'),
+        talk("10:35 - 10:55",'E6 1.6: "Escutar para cuidar: experiências em saúde mental com crianças amazônidas." (Adiele Nataly Alves Lopes, Heloana Fernanda de Oliveira Dias)'),
+
+        block("Sesión paralela D: Prácticas en salud rural (11:30 - 12:15)"),
+        talk("11:30 - 11:50",'E6 1.7: "Caminhos da Psicologia Comunitária: Relato de Experiência em uma UBS Rural no Brasil" (Pamela Vasconcellos, Bruna Eduarda Alecrim Gomes)'),
+        talk("11:50 - 12:10",'E6 1.2: "Apoyo social y entramados comunitarios en un área rural de Mendoza, Argentina" (Mariela Muñoz Rodríguez, Santiago Martin)'),
+
+        block("Presentaciones de libros (12:30 - 13:30)"),
+        talk("12:30 - 12:50",'E6 5.4: "Un pase al compañero: Espacio de memoria a la figura y pensamiento de Domingo Asún" (Javiera Pavez Mena, Valeria Yáñez, Álvaro Ayala, Hellen Cisternas, Pablo Romero, Trinidad Correa, Jaime Alfaro, Georg Unger, Francisco Jeanneret, Eduardo Guesalaga Cebreros, Gonzalo Martínez Zelaya)'),
+        talk("12:50 - 13:10",'E6 5.5: "Resquicios de la clínica tradicional y las prácticas comunitarias: relato de experiencia" (Rayane Gomes de Oliveira)'),
+
+        block("Sesión paralela E: Educación y diversidad (14:30 - 15:15)"),
+        talk("14:30 - 14:50",'E6 2.1: PÓSTER: "Psicoeducación en estilos parentales y sentido de bienestar familiar en Sauce, San Martín, Perú" (Efecto DeMente, Jordy Anthony Parra-Chiroque, Shary Zulliet Leyton Vigo)'),
+        talk("14:50 - 15:10",'E6 1.24: "Participación y agencia de estudiantes mapuches en contexto escolar rural" (Estermania Vanessa Salazar Contreras)'),
+
+        block("Sesión paralela F: Intervención especializada (15:45 - 16:30)"),
+        talk("15:45 - 16:05",'E6 1.21: "Efectividad e Implementación de un Programa de Consejería Anticonceptiva centrado en el Estudiante Universitario: Estudio híbrido" (Amayrani Juárez Pérez)'),
+        talk("16:05 - 16:25",'E6 4.1: "Intervención comunitaria en consumo de drogas adolescente: prácticas participativas desde paradigmas emergentes" (Diego Sebastián Venegas Poblete)')
+      ]}
+    ];
+
+    // ====== RENDER ======
+    const DAYS = { "Martes 7": martes, "Miércoles 8": miercoles, "Jueves 9": jueves };
+    const contentEl = document.getElementById('content');
+    const dayTabs = document.querySelectorAll('#dayTabs .btn');
+    const ejeChips = document.querySelectorAll('[data-eje]');
+    const viewByAxisBtn = document.getElementById('viewByAxis');
+    const viewByTimeBtn = document.getElementById('viewByTime');
+    const timeControls = document.getElementById('timeControls');
+    const timeScopeNote = document.getElementById('timeScopeNote');
+    const quickTime = document.getElementById('quickTime');
+    const fromTime = document.getElementById('fromTime');
+    const toTime = document.getElementById('toTime');
+    const applyCustom = document.getElementById('applyCustom');
+    const clearTime = document.getElementById('clearTime');
+
+    let currentDay = "Martes 7";
+    let currentEje = "all";
+    let currentView = "axis"; // axis | time
+    let timeFilter = null; // [min, max] in minutes
+
+    const renderBlock = (label)=>`
+      <div class="mt-4 mb-2">
+        <h4 class="text-sm font-extrabold tracking-wide uppercase text-gray-600">
+          ${label}
+        </h4>
+      </div>`;
+
+    function renderDayAxis(day, ejeFilter="all"){
+      const rows = DAYS[day];
+      let html = "";
+      rows.forEach(room=>{
+        // Eje filter: si se elige un eje, mostramos solo salas de ese eje
+        if(ejeFilter !== "all" && room.axis !== ejeFilter) return;
+        html += `<section class="card p-4">
+          <h3 class="section-title text-lg font-bold">${room.room} <span class="chip chip-sala ml-2">${room.location}</span> ${room.axis? `<span class="chip chip-eje ml-2">${room.axis}</span>`:""}</h3>
+        `;
+        room.items.forEach(entry=>{
+          if(entry.type==="block"){
+            html += renderBlock(entry.label);
+            return;
+          }
+          const { time, title, speakers, notes, moderator } = entry;
+          html += `
+            <div class="talk p-3 sm:p-4 rounded-lg mb-2">
+              <div class="flex flex-wrap items-baseline gap-2">
+                <span class="font-bold">${time}</span>
+                <span class="text-gray-700">${title}</span>
+              </div>
+              ${speakers ? `<div class="text-sm text-gray-700 mt-1"><b>Participan:</b> ${Array.isArray(speakers)? speakers.join(", "): speakers}</div>` : ""}
+              ${moderator ? `<div class="text-sm text-gray-500">${moderator}</div>` : ""}
+              ${notes ? `<div class="text-xs text-gray-500 mt-1">${notes}</div>` : ""}
+            </div>`;
+        });
+        html += `</section>`;
+      });
+      if(!html) html = `<div class="text-sm text-gray-600">No hay actividades para este eje en este día.</div>`;
+      contentEl.innerHTML = html;
+    }
+
+    function allTalksFlatten(ejeFilter="all"){
+      const list = [];
+      Object.entries(DAYS).forEach(([day, rooms])=>{
+        rooms.forEach(room=>{
+          if(ejeFilter!=="all" && room.axis!==ejeFilter) return;
+          let currentBlock = "";
+          room.items.forEach(item=>{
+            if(item.type==="block"){ currentBlock = item.label; return; }
+            const r = parseRange(item.time);
+            list.push({
+              day, room: room.room, location: room.location, axis: room.axis, block: currentBlock,
+              time: item.time, range: r, title: item.title, speakers: item.speakers, notes: item.notes, moderator: item.moderator
+            });
+          });
+        });
+      });
+      return list;
+    }
+
+    function renderByTime(ejeFilter="all"){
+      const list = allTalksFlatten(ejeFilter).sort((a,b)=>{
+        const am = a.range? a.range[0] : 1e9;
+        const bm = b.range? b.range[0] : 1e9;
+        return am - bm;
+      }).filter(it=>{
+        if(!timeFilter) return true;
+        if(!it.range) return true; // sin hora exacta, se muestran igual
+        const [a,b] = it.range; const [c,d]=timeFilter;
+        // si hay overlap con el rango elegido, mostrar
+        return (a<d && c<b);
+      });
+
+      let html = `<section class="card p-4"><h3 class="section-title text-lg font-bold">Todas las actividades (por horario)</h3>`;
+      list.forEach(it=>{
+        html += `
+          <div class="talk p-3 sm:p-4 rounded-lg mb-2">
+            <div class="flex flex-wrap items-baseline gap-2">
+              <span class="font-bold">${it.time || "—"}</span>
+              <span class="text-gray-700">${it.title}</span>
+            </div>
+            <div class="text-xs text-gray-600 mt-1">
+              <b>${it.day}</b> · ${it.room} · ${it.location} ${it.axis? `· <span class="chip chip-eje">${it.axis}</span>`:""}
+            </div>
+            ${it.block ? `<div class="text-[11px] text-gray-500 mt-1">${it.block}</div>`:""}
+            ${it.speakers ? `<div class="text-sm text-gray-700 mt-1"><b>Participan:</b> ${Array.isArray(it.speakers)? it.speakers.join(", "): it.speakers}</div>` : ""}
+            ${it.moderator ? `<div class="text-sm text-gray-500">${it.moderator}</div>` : ""}
+            ${it.notes ? `<div class="text-xs text-gray-500 mt-1">${it.notes}</div>` : ""}
+          </div>`;
+      });
+      html += `</section>`;
+      contentEl.innerHTML = html;
+    }
+
+    // ====== Interacción ======
+    function setActive(elList, el){
+      elList.forEach(b=>b.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    dayTabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        currentDay = btn.dataset.day;
+        setActive(dayTabs, btn);
+        if(currentView==="axis") renderDayAxis(currentDay, currentEje);
+      });
+    });
+
+    ejeChips.forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        ejeChips.forEach(x=>x.classList.remove('active'));
+        ch.classList.add('active');
+        currentEje = ch.dataset.eje;
+        if(currentView==="axis") renderDayAxis(currentDay, currentEje);
+        else renderByTime(currentEje);
+      });
+    });
+
+    viewByAxisBtn.addEventListener('click', ()=>{
+      currentView = "axis";
+      viewByAxisBtn.classList.add('active'); viewByTimeBtn.classList.remove('active');
+      timeControls.classList.add('hidden'); timeScopeNote.classList.add('hidden');
+      renderDayAxis(currentDay, currentEje);
+    });
+
+    viewByTimeBtn.addEventListener('click', ()=>{
+      currentView = "time";
+      viewByTimeBtn.classList.add('active'); viewByAxisBtn.classList.remove('active');
+      timeControls.classList.remove('hidden'); timeScopeNote.classList.remove('hidden');
+      renderByTime(currentEje);
+    });
+
+    quickTime.addEventListener('change', ()=>{
+      if(quickTime.value==='all'){ timeFilter=null; fromTime.value=""; toTime.value=""; renderByTime(currentEje); return; }
+      const [a,b] = quickTime.value.split('-');
+      timeFilter = [toMin(a), toMin(b)];
+      fromTime.value=a; toTime.value=b;
+      renderByTime(currentEje);
+    });
+
+    applyCustom.addEventListener('click', ()=>{
+      if(!fromTime.value || !toTime.value){ timeFilter=null; renderByTime(currentEje); return; }
+      timeFilter = [toMin(fromTime.value), toMin(toTime.value)];
+      renderByTime(currentEje);
+    });
+
+    clearTime.addEventListener('click', ()=>{
+      timeFilter=null; quickTime.value='all'; fromTime.value=""; toTime.value="";
+      renderByTime(currentEje);
+    });
+
+    // Compartir / PDF
+    document.getElementById('shareBtn').addEventListener('click', async ()=>{
+      try{
+        await navigator.share({ title: document.title, url: location.href });
+      }catch(e){ navigator.clipboard.writeText(location.href); alert("Enlace copiado al portapapeles"); }
+    });
+    document.getElementById('pdfBtn').addEventListener('click', ()=>{
+      const opt={ margin:10, filename:'programa-congreso-usach.pdf', image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}};
+      html2pdf().set(opt).from(document.body).save();
+    });
+
+    // Init
+    renderDayAxis(currentDay, currentEje);
+  </script>
 </body>
 </html>
-
