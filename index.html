@@ -140,8 +140,19 @@
     // ===== Helpers =====
     const talk = (time, title, speakers=null, notes=null, moderator=null) => ({ time, title, speakers, notes, moderator });
     const block = (label) => ({ type:"block", label });
-    const toMin = hhmm => { const [h,m]=hhmm.replace('–','-').split(':').map(Number); return h*60+(m||0); };
-    const parseRange = s => { if(!s) return null; const clean=s.replace(/–/g,'-'); const m=/([0-2]?\d:\d{2})\s*-\s*([0-2]?\d:\d{2})/.exec(clean); if(!m) return null; return [toMin(m[1]),toMin(m[2])]; };
+
+    // Normaliza guiones y espacios, y parsea 09:00-10:15 / 09:00–10:15 / 09:00 — 10:15
+    const toMin = hhmm => {
+      const [h,m]=hhmm.split(':').map(Number);
+      return h*60+(m||0);
+    };
+    const parseRange = s => {
+      if(!s) return null;
+      const clean = s.replace(/—|–/g,'-').replace(/\s*-\s*/g,'-').trim();
+      const m = /^([0-2]?\d:\d{2})-([0-2]?\d:\d{2})$/.exec(clean);
+      if(!m) return null;
+      return [toMin(m[1]), toMin(m[2])];
+    };
 
     // ===== DATA EXACTA (con códigos y BLOQUES como subtítulos) =====
     // MARTES 7 — Campus USACH
@@ -412,7 +423,7 @@
 
         block("Sesión paralela B: Innovación y metodologías (11:30 - 12:15)"),
         talk("11:30 - 11:50",'E6 1.9: "Innovación ciudadana y mundos por-venir ¿un nuevo paradigma para la psicología comunitaria?" (Claudia Calquín, Carlos Ramírez-Vargas, Cristopher Yañez-Urbina)'),
-        talk("11:50 - 12:10",'E6 1.26: "Más allá de lo visible: análisis multimodal crítico de la Plaza de la Independencia" (Juan Urzúa, Esteban Pacheco Yáñez)'),
+        talk("11:50 - 12:10",'E6 1.26: "Más allá de lo visible: análisis multimodal crítico de la Plaza de la Independencia" (Juan Urzúa, Esteban Pacheco Yañez)'),
 
         block("Presentaciones de libros (16:30 - 17:10)"),
         talk("16:30 - 16:50",'E6 5.2: "Alegorías en la porfía. 40 años de historia de La Caleta" (Carla Núñez)'),
@@ -654,7 +665,6 @@
       const rows = DAYS[day];
       let html = "";
       rows.forEach(room=>{
-        // Eje filter: si se elige un eje, mostramos solo salas de ese eje
         if(ejeFilter !== "all" && room.axis !== ejeFilter) return;
         html += `<section class="card p-4">
           <h3 class="section-title text-lg font-bold">${room.room} <span class="chip chip-sala ml-2">${room.location}</span> ${room.axis? `<span class="chip chip-eje ml-2">${room.axis}</span>`:""}</h3>
@@ -690,7 +700,7 @@
           let currentBlock = "";
           room.items.forEach(item=>{
             if(item.type==="block"){ currentBlock = item.label; return; }
-            const r = parseRange(item.time);
+            const r = parseRange(item.time.replace(/—|–/g,'-').replace(/\s*-\s*/g,'-'));
             list.push({
               day, room: room.room, location: room.location, axis: room.axis, block: currentBlock,
               time: item.time, range: r, title: item.title, speakers: item.speakers, notes: item.notes, moderator: item.moderator
@@ -710,8 +720,7 @@
         if(!timeFilter) return true;
         if(!it.range) return true; // sin hora exacta, se muestran igual
         const [a,b] = it.range; const [c,d]=timeFilter;
-        // si hay overlap con el rango elegido, mostrar
-        return (a<d && c<b);
+        return (a<d && c<b); // solapa
       });
 
       let html = `<section class="card p-4"><h3 class="section-title text-lg font-bold">Todas las actividades (por horario)</h3>`;
@@ -773,6 +782,8 @@
       renderByTime(currentEje);
     });
 
+    const toMinUI = v => v ? toMin(v) : null;
+
     quickTime.addEventListener('change', ()=>{
       if(quickTime.value==='all'){ timeFilter=null; fromTime.value=""; toTime.value=""; renderByTime(currentEje); return; }
       const [a,b] = quickTime.value.split('-');
@@ -783,7 +794,7 @@
 
     applyCustom.addEventListener('click', ()=>{
       if(!fromTime.value || !toTime.value){ timeFilter=null; renderByTime(currentEje); return; }
-      timeFilter = [toMin(fromTime.value), toMin(toTime.value)];
+      timeFilter = [toMinUI(fromTime.value), toMinUI(toTime.value)];
       renderByTime(currentEje);
     });
 
