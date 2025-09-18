@@ -1,488 +1,491 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>V Congreso Latinoamericano de Psicología Rural</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>V Congreso Latinoamericano de Psicología Rural</title>
 
-  <!-- SEO básico -->
-  <meta name="description" content="Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria (USACH). Filtra por días y ejes temáticos." />
-  <link rel="canonical" href="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
-  <meta name="robots" content="index,follow" />
+    <meta name="description" content="Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria (USACH). Filtra por días y ejes temáticos." />
+    <link rel="canonical" href="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
+    <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph / WhatsApp -->
-  <meta property="og:site_name" content="Psicología Rural & Comunitaria" />
-  <meta property="og:title" content="V Congreso Latinoamericano de Psicología Rural" />
-  <meta property="og:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
-  <meta property="og:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
-  <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Psicología Rural & Comunitaria" />
+    <meta property="og:title" content="V Congreso Latinoamericano de Psicología Rural" />
+    <meta property="og:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
+    <meta property="og:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/" />
+    <meta property="og:type" content="website" />
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="V Congreso Latinoamericano de Psicología Rural" />
-  <meta name="twitter:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
-  <meta name="twitter:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="V Congreso Latinoamericano de Psicología Rural" />
+    <meta name="twitter:description" content="Programa interactivo del Congreso. Explora por días y ejes." />
+    <meta name="twitter:image" content="https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png" />
 
-  <!-- Favicon opcional (no visible el logo dentro de la página) -->
-  <link rel="icon" type="image/png" href="LOGO.png" />
+    <link rel="icon" type="image/png" href="LOGO.png" />
+    <meta name="theme-color" content="#1e3a8a" />
 
-  <!-- Fuentes y Tailwind -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    /* ===== Paleta tierra ===== */
-    :root{
-      --arena:#F4E9D8;      /* fondo tarjetas de sala */
-      --arena-suave:#EFE6D9;/* barras/filtros */
-      --marron:#8B6B4A;     /* títulos sala/botones activos */
-      --verde:#7BA84F;      /* acentos */
-      --gris:#2E2E2E;       /* texto principal */
+    <style>
+        /* Paleta del logo integrada en variables CSS */
+        :root {
+            --azul-principal: #476C8E;
+            --verde-acento: #7BA84F;
+            --beige-dorado: #D6AE6D;
+            --gris-oscuro: #2E2E2E;
+            --gris-fondo: #f9fafb;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--gris-fondo); color: var(--gris-oscuro); }
+        .container-main { max-width: 1200px; }
+
+        /* Estilos para los botones de día */
+        .tab-button { border: 1px solid var(--azul-principal); color: var(--azul-principal); transition: all 0.2s; }
+        .tab-button.active { background-color: var(--azul-principal); color: #fff; }
+        .tab-button:hover:not(.active) { background-color: var(--beige-dorado); color: var(--gris-oscuro); }
+
+        /* Estilos para los botones de filtro de eje (Nueva usabilidad) */
+        .filter-button { background-color: #e5e7eb; border-radius: 9999px; padding: 0.5rem 1rem; font-weight: 600; font-size: 0.875rem; transition: all 0.2s; border: 1px solid transparent; }
+        .filter-button.active { background-color: var(--verde-acento); color: #fff; border-color: var(--verde-acento); }
+        .filter-button:hover:not(.active) { background-color: #d1d5db; }
+
+        /* Botones de actividades (con color de acento) */
+        .talk-button { transition: all 0.2s; border-left: 4px solid var(--azul-principal); }
+        .talk-button:hover {
+            transform: scale(1.01);
+            background-color: var(--verde-acento);
+            color: #fff;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-left-color: var(--azul-principal);
+        }
+        .talk-button:hover h5, .talk-button:hover p, .talk-button:hover span { color: #fff; }
+
+        /* Links */
+        a { color: var(--azul-principal); text-decoration: underline; }
+        a:hover { color: var(--verde-acento); }
+
+        /* Footer */
+        footer { background-color: #f3f4f6; }
+        footer a { color: var(--azul-principal); font-weight: 600; }
+        footer a:hover { color: var(--verde-acento); }
+
+        /* Impresión básica */
+        @media print {
+            nav, #toggle-info, .shadow-inner, .shadow-lg, .shadow-xl, #shareBtn, #pdfBtn, .filter-button { display: none !important; }
+            body { background: #fff; }
+            .container-main { box-shadow: none; padding: 0; }
+            .talk-button { border: 1px solid #ddd; box-shadow: none; }
+        }
+
+        /* Skeleton loader */
+        .skeleton {
+            background-color: #e2e8f0;
+            animation: pulse 1.5s infinite ease-in-out;
+            border-radius: 0.5rem;
+        }
+        .skeleton-title { width: 80%; height: 1.5rem; margin-bottom: 0.5rem; }
+        .skeleton-text { width: 90%; height: 1rem; margin-bottom: 0.25rem; }
+        .skeleton-talk { height: 4rem; width: 100%; margin-bottom: 0.75rem; }
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "V Congreso Latinoamericano de Psicología Rural",
+        "startDate": "2025-10-07",
+        "endDate": "2025-10-09",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {"@type": "Place", "name": "USACH / CEPEC USACH", "address": "Santiago, Chile"},
+        "image": ["https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png"],
+        "description": "Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria.",
+        "organizer": {"@type": "Organization", "name": "Universidad de Santiago de Chile (USACH)", "url": "https://psicologiaruralcomunitaria.github.io/programainteractivo/"}
     }
-
-    body{ font-family: 'Inter', sans-serif; background:#fcfaf7; color:var(--gris); }
-    .container-main{ max-width:1200px; }
-
-    /* Tabs (días) */
-    .tab-button{ border:1px solid var(--marron); color:var(--marron); transition:.15s; border-radius:.5rem; }
-    .tab-button.active{ background:var(--marron); color:#fff; }
-    .tab-button:hover{ background:#e5d5c5; color:#4b3727; }
-
-    /* Tarjeta de sala */
-    .sala-card{ background:var(--arena); border:1px solid #e3d6c5; }
-    .sala-title{ color:var(--marron); }
-
-    /* Chips de ejes por sala */
-    .eje-chip{
-      background:#dfead6; color:#2f6b2f; border:1px solid #c7ddbc;
-      font-size:12px; padding:4px 8px; border-radius:999px;
-    }
-
-    /* Actividades */
-    .talk-button{ background:#fff; border:1px solid #e8e1d6; transition:.15s; }
-    .talk-button:hover{
-      background:#eaf3e3; /* verde muy claro */
-      transform: translateY(-1px);
-      box-shadow:0 4px 10px rgba(0,0,0,.06);
-    }
-    .autores{ font-style:italic; color:#616161; }
-
-    /* Píldoras de filtro de ejes */
-    .axis-pill{
-      padding:6px 12px; border-radius:999px; border:1px solid #cdb79b;
-      background:#fff; color:#6b4e37; font-weight:600; transition:.15s;
-    }
-    .axis-pill:hover{ background:#f3e9dc; }
-    .axis-active{ background:var(--marron); color:#fff; border-color:var(--marron); }
-
-    /* Bloque Información General (destacado) */
-    .info-general{
-      background:#fff5e6;               /* distinto al resto */
-      border:1px solid #f0d7b2;
-    }
-    .info-general h2{ color:#6b4e37; }
-    .info-general h3{ color:#6b4e37; }
-
-    /* Enlaces */
-    a{ color:#2C6B8E; text-decoration:underline; }
-    a:hover{ color:var(--verde); }
-
-    /* Footer */
-    footer{ background:#f3f1ec; }
-
-    /* Impresión básica */
-    @media print{
-      nav, #toggle-info, .shadow-inner, .shadow-lg, .shadow-xl, #shareBtn, #pdfBtn { display:none !important; }
-      body{ background:#fff; }
-      .container-main{ box-shadow:none; padding:0; }
-      .talk-button{ border:1px solid #ddd; box-shadow:none; }
-    }
-  </style>
-
-  <!-- Datos estructurados (Event) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "V Congreso Latinoamericano de Psicología Rural",
-    "startDate": "2025-10-07",
-    "endDate": "2025-10-09",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {"@type": "Place", "name": "USACH / CEPEC USACH", "address": "Santiago, Chile"},
-    "image": ["https://psicologiaruralcomunitaria.github.io/programainteractivo/LOGO.png"],
-    "description": "Programa interactivo del V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria.",
-    "organizer": {"@type": "Organization", "name": "Universidad de Santiago de Chile (USACH)", "url": "https://psicologiaruralcomunitaria.github.io/programainteractivo/"}
-  }
-  </script>
+    </script>
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
-  <div class="container-main mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10">
+    <div class="container-main mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 leading-tight mb-2">
+                V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
+            </h1>
+            <p class="text-lg text-gray-600 mb-4"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
+            <p class="text-gray-500 max-w-2xl mx-auto mb-6">
+                Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria. Este evento ha sido diseñado como un espacio crucial para la reflexión y el intercambio de conocimientos.
+            </p>
+        </header>
 
-    <!-- Header -->
-    <header class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-2" style="color:#4b3727;">
-        V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
-      </h1>
-      <p class="text-lg text-gray-700 mb-4"><span class="font-semibold">Fechas:</span> 7 al 9 de octubre de 2025</p>
-      <p class="text-gray-600 max-w-2xl mx-auto mb-6">
-        Bienvenidas y Bienvenidos a este V Congreso Latinoamericano de Psicología Rural y III Congreso Nacional de Psicología Comunitaria.
-      </p>
-    </header>
+        <nav role="tablist" aria-label="Días" class="flex justify-center mb-8 bg-gray-200 rounded-xl p-2 shadow-inner">
+            <button id="tab-martes" role="tab" aria-selected="true" aria-controls="panel-martes" data-day="Martes 7" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Martes 7</button>
+            <button id="tab-miercoles" role="tab" aria-selected="false" aria-controls="panel-miercoles" data-day="Miércoles 8" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Miércoles 8</button>
+            <button id="tab-jueves" role="tab" aria-selected="false" aria-controls="panel-jueves" data-day="Jueves 9" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg rounded-lg">Jueves 9</button>
+        </nav>
 
-    <!-- Tabs (Días) -->
-    <nav role="tablist" aria-label="Días" class="flex justify-center mb-8 bg-gray-200 rounded-xl p-2 shadow-inner">
-      <button id="tab-martes" role="tab" aria-selected="true" aria-controls="panel-martes" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Martes 7</button>
-      <button id="tab-miercoles" role="tab" aria-selected="false" aria-controls="panel-miercoles" class="tab-button px-4 py-2 sm:px-6 sm:py-3 font-semibold text-lg">Miércoles 8</button>
-      <button id="tab-jueves" role="tab" aria-selected="false" aria-controls="panel-jueves" class="tab-button px-4 py-2 sm:py-3 sm:px-6 font-semibold text-lg">Jueves 9</button>
-    </nav>
-
-    <!-- Filtros por eje (píldoras) -->
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 rounded-lg shadow-sm" style="background:var(--arena-suave);">
-      <div class="w-full">
-        <div class="flex flex-wrap gap-2 items-center">
-          <span class="text-sm font-semibold" style="color:#6b4e37;">Filtrar por eje:</span>
-          <div id="axis-pills" class="flex flex-wrap gap-2 mt-2">
-            <button class="axis-pill axis-active" data-axis="all">Todos</button>
-            <button class="axis-pill" data-axis="Eje 1">Eje 1</button>
-            <button class="axis-pill" data-axis="Eje 2">Eje 2</button>
-            <button class="axis-pill" data-axis="Eje 3">Eje 3</button>
-            <button class="axis-pill" data-axis="Eje 4">Eje 4</button>
-            <button class="axis-pill" data-axis="Eje 5">Eje 5</button>
-            <button class="axis-pill" data-axis="Eje 6">Eje 6</button>
-          </div>
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 p-4 bg-blue-50 rounded-lg shadow-sm">
+            <div class="w-full flex flex-wrap gap-2 justify-center mb-4 sm:mb-0">
+                <button data-filter="all" class="filter-button active">Todos los Ejes</button>
+                <button data-filter="Eje 1" class="filter-button">Eje 1</button>
+                <button data-filter="Eje 2" class="filter-button">Eje 2</button>
+                <button data-filter="Eje 3" class="filter-button">Eje 3</button>
+                <button data-filter="Eje 4" class="filter-button">Eje 4</button>
+                <button data-filter="Eje 5" class="filter-button">Eje 5</button>
+                <button data-filter="Eje 6" class="filter-button">Eje 6</button>
+            </div>
+            <div class="w-full sm:w-1/3 flex justify-end">
+                <button id="toggle-info" class="px-4 py-2" style="background: var(--azul-principal); color: #fff; border-radius: 0.5rem;">Ver Información General</button>
+            </div>
         </div>
-      </div>
-      <div class="w-full sm:w-auto flex justify-end mt-3 sm:mt-0">
-        <button id="toggle-info" class="px-4 py-2 rounded-lg font-semibold" style="background: var(--marron); color:#fff;">Ver Información General</button>
-      </div>
+
+        <div id="general-info-container" class="hidden mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200 shadow-inner">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Información General</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Sedes:</h3>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><span class="font-medium">Martes 7:</span> Campus USACH – Estación Central (L1 METRO USACH)</li>
+                    <li><span class="font-medium">Miércoles 8 y Jueves 9:</span> CEPEC USACH – Apoquindo (L1 METRO ESCUELA MILITAR)</li>
+                </ul>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Datos Clave:</h3>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><span class="font-medium">Acreditación:</span> martes 7 de octubre, de 09:00 a 15:30.</li>
+                    <li><span class="font-medium">Actividades con inscripción:</span> Algunos talleres y visitas a territorios tienen cupos limitados y requieren inscripción previa.</li>
+                </ul>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Ejes Temáticos:</h3>
+                <ul class="list-decimal list-inside text-gray-600 space-y-2">
+                    <li>Pueblos indígenas y afrodescendientes: saberes ancestrales, comunidades rurales y prácticas comunitarias</li>
+                    <li>Crisis sistémicas, sostenibilidad y transformaciones socioambientales en territorios rurales y urbanos</li>
+                    <li>Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales en resistencia</li>
+                    <li>Diversidades, ciclos vitales y territorios: reconocimiento e inclusión de sujetos históricamente invisibilizados</li>
+                    <li>Trayectorias de la Psicología Rural en Latinoamérica</li>
+                    <li>Trayectorias y horizontes emergentes de la Psicología Comunitaria en Latinoamérica: desarrollos, desafíos y transformaciones</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="schedule-container" class="mt-8 space-y-8">
+            <div id="schedule-skeleton" class="space-y-8 p-6 bg-white rounded-xl shadow-xl">
+                <div class="flex items-center gap-4">
+                    <div class="skeleton w-3/4 h-8"></div>
+                </div>
+                <div class="space-y-4">
+                    <div class="skeleton-talk"></div>
+                    <div class="skeleton-talk"></div>
+                    <div class="skeleton-talk"></div>
+                </div>
+                <div class="flex items-center gap-4 mt-8">
+                    <div class="skeleton w-3/4 h-8"></div>
+                </div>
+                <div class="space-y-4">
+                    <div class="skeleton-talk"></div>
+                    <div class="skeleton-talk"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-sm text-gray-500 mt-12 p-6 rounded-xl">
+            <p>Contacto: <a class="underline" href="mailto:eventosepusach@usach.cl">eventosepusach@usach.cl</a> ·
+                <a class="underline" href="https://psicologiaruralcomunitaria.cl" target="_blank" rel="noopener">psicologiaruralcomunitaria.cl</a></p>
+            <button id="shareBtn" class="mt-3 px-3 py-2 rounded-lg border">Compartir este programa</button>
+            <button id="pdfBtn" class="mt-3 px-3 py-2 rounded-lg border">Descargar PDF</button>
+        </footer>
     </div>
 
-    <!-- Información General (destacada y exacta) -->
-    <section id="general-info-container" class="hidden mt-6 p-6 rounded-lg border info-general">
-      <h2 class="text-2xl font-bold mb-4">Información General</h2>
+    <script>
+        /* ====== DATOS DEL PROGRAMA ====== */
+        const scheduleData = {
+            "Martes 7": [
+                { location: "Campus USACH", room: "Patio USACH", time: "09:00–15:30", title: "Registro y acreditación", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Patio USACH", time: "11:00–17:00", title: "Feria de productos locales", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Patio USACH", time: "10:00–10:30", title: "Recorrido memoria histórica USACH (previa inscripción; cupo 30)", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Patio USACH", time: "11:30–12:00", title: "Taller: Danza terapia y comunidad", speakers: ["Silvia Pimentel"], axis: null },
+                { location: "Campus USACH", room: "Patio USACH", time: "12:30–13:30", title: "Taller: Cierre simbólico actividades precongreso", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Patio USACH", time: "14:30–15:00", title: "Presentación de La Hebra Migrante (colectivo por la paz en Palestina)", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón de Honor", time: "15:00–16:00", title: "Ceremonia de inauguración del congreso", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón de Honor", time: "16:00–17:00", title: "Conferencia", speakers: ["Dr. Fernando Landini"], axis: null },
+                { location: "Campus USACH", room: "Salón de Honor", time: "17:00–18:00", title: "Conferencia", speakers: ["Dra. Alba Zambrano"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "09:00–10:00", title: "Reunión Red Latinoamericana de Psicología Rural", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "11:00–11:30", title: "Mesa de diálogo: “Cuidando a los que cuidan”. Acción Comunitaria en Cuidadoras/es de la Comuna de Macul", speakers: ["Proyecto Espiral", "Universidad de Chile"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "11:30–12:30", title: "Conferencia (modalidad online; modera: Liliana Parra-Valencia)", speakers: ["Silvia Marcos"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "12:30–13:30", title: "Astronomía y pueblos originarios", speakers: ["Proyecto CIRAS (USACH)"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "16:00–16:30", title: "Presentación de libro: Complicidades y tramas feministas", speakers: ["Yanina Gutiérrez Valdés", "Javiera Cubillos Almendra", "Genoveva Echeverría Gálvez"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "16:30–17:00", title: "Presentación de libro: Saúde Mental Escolar", speakers: ["Dr. Luiz Paulo Ribeiro", "Dra. Fátima Moraes Garcia"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 1", time: "17:00–17:30", title: "Presentación de libro: Subjetividad y Desarrollo en Contextos Rurales", speakers: ["Dr. Pablo Fossa", "Dra. Verónica Serruto"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 2", time: "10:00–11:00", title: "Reunión Sociedad de Psicología Comunitaria", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 2", time: "11:00–11:30", title: "Presentación de libro: Orgullosamente Afro: Experiencias comunitarias y afrofeministas", speakers: ["Lic. Ana Carolina Amaral"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 2", time: "11:30–12:00", title: "Presentación de libro: Decolonialidad y comunidades posibles", speakers: ["Dr. Germán Rozas", "Dra. Mónica Villarroel"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 2", time: "16:00–16:30", title: "Presentación de libro: Psicología Ambiental Comunitaria y Resiliencia Comunitaria", speakers: ["Rodolfo Mardones Barrera", "José Sandoval Díaz"], axis: null },
+                { location: "Campus USACH", room: "Salón VIME 2", time: "16:30–17:00", title: "Presentación de libro: Psicología de las emergencias y desastres en América Latina", speakers: ["José Sandoval Díaz", "Eduardo Sandoval Obando"], axis: null },
+                { location: "Campus USACH", room: "Salón de Cine", time: "16:00–16:30", title: "Presentación de libro: Tukukan Wall Mapu Mew – El habla de la huerta", speakers: ["Camila Jara Villalobos"], axis: null },
+                { location: "Campus USACH", room: "Salón de Cine", time: "16:30–17:00", title: "Audiovisual: Respuestas locales a la gestión de las aguas en Chiloé.", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón de Cine", time: "17:00–17:30", title: "Audiovisual: Diversidades y Ciclos Vitales", speakers: [], axis: null },
+                { location: "Campus USACH", room: "Salón de Cine", time: "17:30–18:00", title: "Audiovisual: Horizontes de la Psicología Comunitaria", speakers: [], axis: null }
+            ],
+            "Miércoles 8": [
+                { location: "CEPEC USACH", room: "Visitas a territorios", time: "09:00–13:00", title: "Visita a Corporación La Caleta y Centro comunitario de La Legua Emergencia.", speakers: [], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "09:00–10:00", title: "Conferencia", speakers: ["Dr. Alicia Rodríguez"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "10:00–11:00", title: "MD3 – Mesa de diálogo: Experiencias de mujeres afrodescendientes e indígenas en contextos rurales y comunitarios.", speakers: ["María Antonieta Campos", "Mabel López", "Genoveva Neculmán", "Ana Carolina Amaral", "Genoveva Reuca"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "11:00–12:00", title: "MD6 – Mesa de diálogo: Perspectivas de psicología: Aportes y miradas críticas con comunidades indígenas y rurales.", speakers: ["Silvia Pimentel Aguilar", "Marcelo Calegare", "Saulo Luders Fernandes", "Ana María Vera", "Gonzalo Bustamante"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "12:00–13:00", title: "MD2 – Mesa de diálogo: Epistemologías del Sur y saberes comunitarios: desafíos para una psicología decolonial y territorialmente situada.", speakers: ["Javier Bravo", "Socorro Nina", "María Antonieta Campos", "German Rozas"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "14:30–15:30", title: "MD3 – Mesa de diálogo: Respuestas de resistencia frente a crisis sociales y políticas actuales en la actoría social de grupos socialmente invisibilizados.", speakers: ["Carla Nuñez", "Evelyn Palma", "Fabián Nichel", "Yuly Andrea Botero", "Colectivos de NNA"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "15:30–16:30", title: "Conferencia", speakers: ["Dra. Irene Magaña"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "16:30–17:30", title: "Conferencia", speakers: ["Dr. Hector Berroeta"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "12:30–13:30", title: "Taller: Proyecto comunitario. Diálogos: One Health – Küme Mugnen", speakers: ["Sharon Viscardi"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "15:30–16:30", title: "MD10 – Mesa de diálogo: Salud mental y convivencia educativa en comunidades educativas rurales.", speakers: ["Rodrigo Rojas-Andrade", "Yonatan Encina", "Gabriel Prosser", "Constanza Méndez", "Loreto Cofré", "Carlos Labra"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "17:00–18:00", title: "MD7 – Mesa de diálogo: Experiencia de investigación colaborativa: Activismos de Mujeres y Justicia Hídrica. Feminismos Ecoterritoriales: Juicios ético-feministas. Movimientos Sociales y Gestión Comunitaria del Agua.", speakers: ["Ana María Vera Haro", "Francisca Fernández Droguett", "Paloma Gajardo", "Evelyn Arriagada"], axis: "Eje 3" },
+                { location: "CEPEC USACH", room: "Cowork 3", time: "11:30–12:30", title: "MD8 – Mesa de diálogo: Tensiones y desafíos para las políticas públicas dirigidas a mujeres.", speakers: ["María Isabel Reyes-Espejo", "Jaime Alfaro", "Valentina Vallejo Correa", "Nicolás Gómez", "Lorena Fuentes"], axis: "Eje 3" },
+                { location: "CEPEC USACH", room: "Cowork 3", time: "14:30–15:30", title: "Ludoteca móvil: EN MARCHA.", speakers: [], axis: null },
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque A: Saberes ancestrales y espiritualidad", block_time: "09:00 - 10:15", axis: "Eje 1", talks: [
+                    { time: "09:00 - 09:20", title: "Salud intercultural. Experiencia Huarpe Guanacache", speakers: ["Roque Andres Soria Seguin"] },
+                    { time: "09:20 - 09:40", title: "Saberes ancestrales como pilares de la resiliencia comunitaria", speakers: ["Luidienne Joseph"] },
+                    { time: "09:40 - 10:00", title: "Impactos psicológicos de los saberes ancestrales en jóvenes haitianos", speakers: ["Geniald Dorvil"] },
+                    { time: "10:00 - 10:03", title: "Tesis 3 min: Red de cuidado colectivo con adolescentes desde metodología participativa", speakers: ["Leslie Reyna"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque B: Racismo y comunidades quilombolas", block_time: "12:30 - 13:30", axis: "Eje 1", talks: [
+                    { time: "12:30 - 12:50", title: "Racismo, Políticas Públicas e seus Impactos na Saúde Mental da Comunidade Quilombola", speakers: ["Geovanna Pinheiro Moura", "Suely Emilia de Barros Santos"] },
+                    { time: "12:50 - 13:10", title: "Saúde Mental e Saberes Ancestrais: caminhos para o cuidado comunitário", speakers: ["Giselle Oliveira Santos", "Suely Emilia de Barros Santos", "Clarissa de Oliveira Marques da Cunha", "Ingrid Jessiane Vieira Lima", "Anael Robson Barbosa Ferreira"] },
+                    { time: "13:10 - 13:30", title: "Metodologias Coparticipativas em Territórios Quilombolas e Camponeses", speakers: ["Suely Emilia de Barros Santos", "Clarissa de Oliveira Marques da Cunha", "Giselle Oliveira Santos", "Thalita Analyane Bezerra De Albuquerque"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque C: Interculturalidad y territorialidad", block_time: "14:30 - 15:30", axis: "Eje 1", talks: [
+                    { time: "14:30 - 14:50", title: "Malestar y cuerpo en las tensiones de la interculturalidad en salud mental", speakers: ["María Francisca Romero León"] },
+                    { time: "14:50 - 15:10", title: "Territorio Williche y Crisis del Agua. Defensa de Derechos Colectivos", speakers: ["Andrea Hain", "Silvia Retamal"] },
+                    { time: "15:10 - 15:30", title: "As reverberações do conhecimento indígena para a transformação social", speakers: ["Thais de Negreiros Sales"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque D: Educación y juventudes indígenas", block_time: "15:30 - 16:30", axis: "Eje 1", talks: [
+                    { time: "15:30 - 15:50", title: "Desafíos de la enseñanza de la lengua mapuche en un liceo rural", speakers: ["Ximena Tocornal Montt"] },
+                    { time: "15:50 - 16:10", title: "Participación de jóvenes étnicos en Política Nacional de Salud Mental", speakers: ["Iliana Curiel Arismendy", "Martha Gutiérrez Bonilla", "Carlos Gómez Restrepo", "Danuby Adriana Buitrago"] },
+                    { time: "16:10 - 16:30", title: "Afrontamiento y vivencias universitarias de becarios amazónicos", speakers: ["Damaris Abigail Pajar Rengifo", "John Espinoza"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque E: Cuidado de semillas y memorias colectivas", block_time: "16:30 - 17:30", axis: "Eje 1", talks: [
+                    { time: "16:30 - 16:50", title: "Significaciones de las cuidadoras de semillas sobre conservación e intercambio", speakers: ["Macarena Luque Sepúlveda"] },
+                    { time: "16:50 - 17:10", title: "Memorias que resisten: Tradiciones populares y procesos de reparación colectiva", speakers: ["Ana María Valencia Varón", "Juan Carlos Arboleda Ariza"] }
+                ]}
+            ],
+            "Jueves 9": [
+                { location: "CEPEC USACH", room: "Visita a territorio", time: "09:00–13:00", title: "Visita a Villa Solidaridad Alsino.", speakers: [], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "09:00–10:00", title: "Conferencia", speakers: ["Dr. Jader Leite"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "10:00–11:00", title: "Conferencia", speakers: ["Dr. German Rozas."], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "11:30–12:30", title: "MD5 – Mesa de diálogo: Cuidados comunitarios, territorio y prácticas de resistencia rurales y urbanas, en clave interseccional.", speakers: ["Ana María Vera Haro", "Javiera Cubillos", "Genoveva Echeverría", "Javiera Pavez", "Yanina Gutiérrez"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "12:45–13:45", title: "MD4 – Trayectorias y derivas de la Psicología Comunitaria en Chile: un testimonio vivo.", speakers: ["Oscar Muñoz", "Alba Zambrano", "Jaime Alfaro Inzunza", "George Unger"], axis: null },
+                { location: "CEPEC USACH", room: "Auditorio", time: "16:30–17:00", title: "Ceremonia de cierre.", speakers: [], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "10:00–11:00", title: "MD11 – Mujeres, cuidados y territorios ancestrales en Latinoamérica: Colombia, Brasil y Chile.", speakers: ["Gloria Mora", "Liliana Parra-Valencia", "Socorro Nina", "María Isabel Reyes"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "11:30–12:30", title: "MD9 – Mesa de diálogo: Formar para implicarse: desafíos críticos en la enseñanza de la Psicología Comunitaria desde el Sur.", speakers: ["Paula Riveros", "Mariadne Molina", "Eduardo Candia", "Bárbara Olivares", "Alejandra Pezoa", "Javiera Pávez"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 2", time: "15:30–16:30", title: "MD12 – Mesa de diálogo: Respuestas comunitarias frente a la crisis socioambiental.", speakers: ["Rodolfo Mardones", "Arlex Angarita", "Alejandra Sánchez", "René Squella"], axis: null },
+                { location: "CEPEC USACH", room: "Cowork 3", time: "11:30–12:30", title: "Círculo de escucha — Corporación Escuchar (previa inscripción; cupo 50).", speakers: [], axis: null },
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque F: Colonialidad y resistencia andina", block_time: "09:00 - 10:00", axis: "Eje 1", talks: [
+                    { time: "09:00 - 09:20", title: "Colonialidad del ser, racialización y autoorganización comunitaria en el estallido andino peruano", speakers: ["Vanessa Verastegui Olle"] },
+                    { time: "09:20 - 09:40", title: "Colonialismo y Subjetivación Mapuche-Williche en Rahue", speakers: ["Héctor Manuel Ahumada Alvarado"] },
+                    { time: "09:40 - 10:00", title: "Saberes ancestrales y planes de vida en comunidades indígenas", speakers: ["Gino Grondona Opazo"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque G: Revitalización ontopolítica territorial", block_time: "10:15 - 11:15", axis: "Eje 1", talks: [
+                    { time: "10:15 - 10:35", title: "Revitalización Ontopolítica en el Wadalafkenmapu", speakers: ["Javier Bravo"] },
+                    { time: "10:35 - 10:55", title: "La comunidad relacional: Hacia una visión onto-política del concepto de comunidad", speakers: ["Javier Bravo"] },
+                    { time: "10:55 - 11:15", title: "Normas Consuetudinarias y formación policial", speakers: ["Patricia Mercado"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque H: Descolonización y convivencia intercultural", block_time: "11:15 - 12:15", axis: "Eje 1", talks: [
+                    { time: "11:15 - 11:35", title: "Descolonizando, despatriarcalizando e indigenizando la Psicología Comunitaria", speakers: ["María Antonieta Campos Melo", "Maritza Tranamil Nahuelpi"] },
+                    { time: "11:35 - 11:55", title: "Claves para la promoción de la convivencia intercultural en territorios mapuche", speakers: ["Alba Zambrano", "María Antonieta Campos Melo"] },
+                    { time: "11:55 - 12:15", title: "Caminos y cruces en el accionar desde la interculturalidad y lo anticolonial", speakers: ["Lucrecia Petit"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque I: Corporalidad y danza comunitaria", block_time: "12:15 - 13:15", axis: "Eje 1", talks: [
+                    { time: "12:15 - 12:35", title: "Bailar también es resistir: el cuerpo como memoria y comunidad", speakers: ["Camila Prieto Callejas"] },
+                    { time: "12:35 - 12:55", title: "El campo chileno como territorio que resiste: identidad del sabio popular", speakers: ["Cristóbal Cataldo Esparza"] },
+                    { time: "12:55 - 13:15", title: "AUDIOVISUAL: Producción de conocimiento situado: Gira Caprina con enfoque agroecológico", speakers: ["Erwin Hans Carlsson Morales", "Enzo Solari Musa", "Claudio Martínez Urquiza"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque J: Agroecología y resistencia territorial", block_time: "14:30 - 15:30", axis: "Eje 1", talks: [
+                    { time: "14:30 - 14:50", title: "Agroecología y resistencia en el Valle Marga Marga", speakers: ["María Carolina Alvarado Aspillaga", "Juan Carlos Molina"] },
+                    { time: "14:50 - 15:10", title: "Representaciones Sociales del trabajo asociativo del Trafkintuwe Panguipulli", speakers: ["Karla Ramírez Barril"] },
+                    { time: "15:10 - 15:30", title: "Poster: os saberes tradicionais de uma comunidade quilombola favorecendo a geração de renda", speakers: ["Andreia Nazareno dos Santos", "Antônio Alves Filho"] }
+                ]},
+                { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque K: Justicia indígena y bienestar infantil", block_time: "15:30 - 16:30", axis: "Eje 1", talks: [
+                    { time: "15:30 - 15:50", title: "La justicia indígena ecuatoriana como ritual terapéutico", speakers: ["Iván Villafuerte"] },
+                    { time: "15:50 - 16:10", title: "Infancias mapuche y bienestar socioemocional en contextos de violencia", speakers: ["Belén Ulloa Llanquileo", "Ana María Vera", "Lisette Urrutia", "Ana María Alarcón Muñoz", "Marcela Castro Garrido"] }
+                ]}
+            ]
+        };
 
-      <div class="mb-4">
-        <h3 class="text-xl font-semibold mb-2">Sedes:</h3>
-        <ul class="list-disc list-inside">
-          <li><span class="font-medium">Martes 7:</span> Campus USACH – Estación Central (L1 METRO USACH)</li>
-          <li><span class="font-medium">Miércoles 8 y Jueves 9:</span> CEPEC USACH – Apoquindo (L1 METRO ESCUELA MILITAR)</li>
-        </ul>
-      </div>
+        /* ====== LÓGICA DE RENDER ====== */
+        const scheduleContainer = document.getElementById('schedule-container');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const toggleInfoBtn = document.getElementById('toggle-info');
+        const generalInfoContainer = document.getElementById('general-info-container');
+        const scheduleSkeleton = document.getElementById('schedule-skeleton');
 
-      <div class="mb-4">
-        <h3 class="text-xl font-semibold mb-2">Datos Clave:</h3>
-        <ul class="list-disc list-inside">
-          <li><span class="font-medium">Acreditación:</span> martes 7 de octubre, de 09:00 a 15:30.</li>
-          <li><span class="font-medium">Actividades con inscripción:</span> Algunos talleres y visitas a territorios tienen cupos limitados y requieren inscripción previa.</li>
-        </ul>
-      </div>
+        let selectedDay = 'Martes 7';
+        let selectedAxis = 'all';
 
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Ejes Temáticos:</h3>
-        <ul class="list-decimal list-inside space-y-2">
-          <li>Pueblos indígenas y afrodescendientes: saberes ancestrales, comunidades rurales y prácticas comunitarias</li>
-          <li>Crisis sistémicas, sostenibilidad y transformaciones socioambientales en territorios rurales y urbanos</li>
-          <li>Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales en resistencia</li>
-          <li>Diversidades, ciclos vitales y territorios: reconocimiento e inclusión de sujetos históricamente invisibilizados</li>
-          <li>Trayectorias de la Psicología Rural en Latinoamérica</li>
-          <li>Trayectorias y horizontes emergentes de la Psicología Comunitaria en Latinoamérica: desarrollos, desafíos y transformaciones.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Contenedor del programa -->
-    <div id="schedule-container" class="mt-8 space-y-8"></div>
-
-    <!-- Pie -->
-    <footer class="text-center text-sm text-gray-700 mt-12 p-6 rounded-xl">
-      <p>Contacto: <a class="underline" href="mailto:eventosepusach@usach.cl">eventosepusach@usach.cl</a> ·
-        <a class="underline" href="https://psicologiaruralcomunitaria.cl" target="_blank" rel="noopener">psicologiaruralcomunitaria.cl</a></p>
-      <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
-        <button id="shareBtn" class="px-3 py-2 rounded-lg border">Compartir este programa</button>
-        <button id="pdfBtn" class="px-3 py-2 rounded-lg border">Descargar PDF</button>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    /* ====== DATOS DEL PROGRAMA ====== */
-    const scheduleData = {
-      "Martes 7": [
-        { location: "Campus USACH", room: "Patio USACH", time: "09:00–15:30", title: "Registro y acreditación", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Patio USACH", time: "11:00–17:00", title: "Feria de productos locales", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Patio USACH", time: "10:00–10:30", title: "Recorrido memoria histórica USACH (previa inscripción; cupo 30)", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Patio USACH", time: "11:30–12:00", title: "Taller: Danza terapia y comunidad", speakers: ["Silvia Pimentel"], axis: null },
-        { location: "Campus USACH", room: "Patio USACH", time: "12:30–13:30", title: "Taller: Cierre simbólico actividades precongreso", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Patio USACH", time: "14:30–15:00", title: "Presentación de La Hebra Migrante (colectivo por la paz en Palestina)", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón de Honor", time: "15:00–16:00", title: "Ceremonia de inauguración del congreso", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón de Honor", time: "16:00–17:00", title: "Conferencia", speakers: ["Dr. Fernando Landini"], axis: null },
-        { location: "Campus USACH", room: "Salón de Honor", time: "17:00–18:00", title: "Conferencia", speakers: ["Dra. Alba Zambrano"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "09:00–10:00", title: "Reunión Red Latinoamericana de Psicología Rural", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "11:00–11:30", title: "Mesa de diálogo: “Cuidando a los que cuidan”. Acción Comunitaria en Cuidadoras/es de la Comuna de Macul", speakers: ["Proyecto Espiral", "Universidad de Chile"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "11:30–12:30", title: "Conferencia (modalidad online; modera: Liliana Parra-Valencia)", speakers: ["Silvia Marcos"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "12:30–13:30", title: "Astronomía y pueblos originarios", speakers: ["Proyecto CIRAS (USACH)"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "16:00–16:30", title: "Presentación de libro: Complicidades y tramas feministas", speakers: ["Yanina Gutiérrez Valdés", "Javiera Cubillos Almendra", "Genoveva Echeverría Gálvez"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "16:30–17:00", title: "Presentación de libro: Saúde Mental Escolar", speakers: ["Dr. Luiz Paulo Ribeiro", "Dra. Fátima Moraes Garcia"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 1", time: "17:00–17:30", title: "Presentación de libro: Subjetividad y Desarrollo en Contextos Rurales", speakers: ["Dr. Pablo Fossa", "Dra. Verónica Serruto"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 2", time: "10:00–11:00", title: "Reunión Sociedad de Psicología Comunitaria", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 2", time: "11:00–11:30", title: "Presentación de libro: Orgullosamente Afro: Experiencias comunitarias y afrofeministas", speakers: ["Lic. Ana Carolina Amaral"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 2", time: "11:30–12:00", title: "Presentación de libro: Decolonialidad y comunidades posibles", speakers: ["Dr. Germán Rozas", "Dra. Mónica Villarroel"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 2", time: "16:00–16:30", title: "Presentación de libro: Psicología Ambiental Comunitaria y Resiliencia Comunitaria", speakers: ["Rodolfo Mardones Barrera", "José Sandoval Díaz"], axis: null },
-        { location: "Campus USACH", room: "Salón VIME 2", time: "16:30–17:00", title: "Presentación de libro: Psicología de las emergencias y desastres en América Latina", speakers: ["José Sandoval Díaz", "Eduardo Sandoval Obando"], axis: null },
-        { location: "Campus USACH", room: "Salón de Cine", time: "16:00–16:30", title: "Presentación de libro: Tukukan Wall Mapu Mew – El habla de la huerta", speakers: ["Camila Jara Villalobos"], axis: null },
-        { location: "Campus USACH", room: "Salón de Cine", time: "16:30–17:00", title: "Audiovisual: Respuestas locales a la gestión de las aguas en Chiloé.", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón de Cine", time: "17:00–17:30", title: "Audiovisual: Diversidades y Ciclos Vitales", speakers: [], axis: null },
-        { location: "Campus USACH", room: "Salón de Cine", time: "17:30–18:00", title: "Audiovisual: Horizontes de la Psicología Comunitaria", speakers: [], axis: null }
-      ],
-      "Miércoles 8": [
-        { location: "CEPEC USACH", room: "Visitas a territorios", time: "09:00–13:00", title: "Visita a Corporación La Caleta y Centro comunitario de La Legua Emergencia.", speakers: [], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "09:00–10:00", title: "Conferencia", speakers: ["Dr. Alicia Rodríguez"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "10:00–11:00", title: "MD3 – Mesa de diálogo: Experiencias de mujeres afrodescendientes e indígenas en contextos rurales y comunitarios.", speakers: ["María Antonieta Campos", "Mabel López", "Genoveva Neculmán", "Ana Carolina Amaral", "Genoveva Reuca"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "11:00–12:00", title: "MD6 – Mesa de diálogo: Perspectivas de psicología: Aportes y miradas críticas con comunidades indígenas y rurales.", speakers: ["Silvia Pimentel Aguilar", "Marcelo Calegare", "Saulo Luders Fernandes", "Ana María Vera", "Gonzalo Bustamante"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "12:00–13:00", title: "MD2 – Mesa de diálogo: Epistemologías del Sur y saberes comunitarios: desafíos para una psicología decolonial y territorialmente situada.", speakers: ["Javier Bravo", "Socorro Nina", "María Antonieta Campos", "German Rozas"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "14:30–15:30", title: "MD3 – Mesa de diálogo: Respuestas de resistencia frente a crisis sociales y políticas actuales en la actoría social de grupos socialmente invisibilizados.", speakers: ["Carla Nuñez", "Evelyn Palma", "Fabián Nichel", "Yuly Andrea Botero", "Colectivos de NNA"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "15:30–16:30", title: "Conferencia", speakers: ["Dra. Irene Magaña"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "16:30–17:30", title: "Conferencia", speakers: ["Dr. Hector Berroeta"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "12:30–13:30", title: "Taller: Proyecto comunitario. Diálogos: One Health – Küme Mugnen", speakers: ["Sharon Viscardi"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "15:30–16:30", title: "MD10 – Mesa de diálogo: Salud mental y convivencia educativa en comunidades educativas rurales.", speakers: ["Rodrigo Rojas-Andrade", "Yonatan Encina", "Gabriel Prosser", "Constanza Méndez", "Loreto Cofré", "Carlos Labra"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "17:00–18:00", title: "MD7 – Mesa de diálogo: Experiencia de investigación colaborativa: Activismos de Mujeres y Justicia Hídrica. Feminismos Ecoterritoriales: Juicios ético-feministas. Movimientos Sociales y Gestión Comunitaria del Agua.", speakers: ["Ana María Vera Haro", "Francisca Fernández Droguett", "Paloma Gajardo", "Evelyn Arriagada"], axis: "Eje 3" },
-        { location: "CEPEC USACH", room: "Cowork 3", time: "11:30–12:30", title: "MD8 – Mesa de diálogo: Tensiones y desafíos para las políticas públicas dirigidas a mujeres.", speakers: ["María Isabel Reyes-Espejo", "Jaime Alfaro", "Valentina Vallejo Correa", "Nicolás Gómez", "Lorena Fuentes"], axis: "Eje 3" },
-        { location: "CEPEC USACH", room: "Cowork 3", time: "14:30–15:30", title: "Ludoteca móvil: EN MARCHA.", speakers: [], axis: null },
-
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque A: Saberes ancestrales y espiritualidad", block_time: "09:00 - 10:15", axis: "Eje 1", talks: [
-          { time: "09:00 - 09:20", title: "Salud intercultural. Experiencia Huarpe Guanacache", speakers: ["Roque Andres Soria Seguin"] },
-          { time: "09:20 - 09:40", title: "Saberes ancestrales como pilares de la resiliencia comunitaria", speakers: ["Luidienne Joseph"] },
-          { time: "09:40 - 10:00", title: "Impactos psicológicos de los saberes ancestrales en jóvenes haitianos", speakers: ["Geniald Dorvil"] },
-          { time: "10:00 - 10:03", title: "Tesis 3 min: Red de cuidado colectivo con adolescentes desde metodología participativa", speakers: ["Leslie Reyna"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque B: Racismo y comunidades quilombolas", block_time: "12:30 - 13:30", axis: "Eje 1", talks: [
-          { time: "12:30 - 12:50", title: "Racismo, Políticas Públicas e seus Impactos na Saúde Mental da Comunidade Quilombola", speakers: ["Geovanna Pinheiro Moura", "Suely Emilia de Barros Santos"] },
-          { time: "12:50 - 13:10", title: "Saúde Mental e Saberes Ancestrais: caminhos para o cuidado comunitário", speakers: ["Giselle Oliveira Santos", "Suely Emilia de Barros Santos", "Clarissa de Oliveira Marques da Cunha", "Ingrid Jessiane Vieira Lima", "Anael Robson Barbosa Ferreira"] },
-          { time: "13:10 - 13:30", title: "Metodologias Coparticipativas em Territórios Quilombolas e Camponeses", speakers: ["Suely Emilia de Barros Santos", "Clarissa de Oliveira Marques da Cunha", "Giselle Oliveira Santos", "Thalita Analyane Bezerra De Albuquerque"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque C: Interculturalidad y territorialidad", block_time: "14:30 - 15:30", axis: "Eje 1", talks: [
-          { time: "14:30 - 14:50", title: "Malestar y cuerpo en las tensiones de la interculturalidad en salud mental", speakers: ["María Francisca Romero León"] },
-          { time: "14:50 - 15:10", title: "Territorio Williche y Crisis del Agua. Defensa de Derechos Colectivos", speakers: ["Andrea Hain", "Silvia Retamal"] },
-          { time: "15:10 - 15:30", title: "As reverberações do conhecimento indígena para a transformação social", speakers: ["Thais de Negreiros Sales"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque D: Educación y juventudes indígenas", block_time: "15:30 - 16:30", axis: "Eje 1", talks: [
-          { time: "15:30 - 15:50", title: "Desafíos de la enseñanza de la lengua mapuche en un liceo rural", speakers: ["Ximena Tocornal Montt"] },
-          { time: "15:50 - 16:10", title: "Participación de jóvenes étnicos en Política Nacional de Salud Mental", speakers: ["Iliana Curiel Arismendy", "Martha Gutiérrez Bonilla", "Carlos Gómez Restrepo", "Danuby Adriana Buitrago"] },
-          { time: "16:10 - 16:30", title: "Afrontamiento y vivencias universitarias de becarios amazónicos", speakers: ["Damaris Abigail Pajar Rengifo", "John Espinoza"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque E: Cuidado de semillas y memorias colectivas", block_time: "16:30 - 17:30", axis: "Eje 1", talks: [
-          { time: "16:30 - 16:50", title: "Significaciones de las cuidadoras de semillas sobre conservación e intercambio", speakers: ["Macarena Luque Sepúlveda"] },
-          { time: "16:50 - 17:10", title: "Memorias que resisten: Tradiciones populares y procesos de reparación colectiva", speakers: ["Ana María Valencia Varón", "Juan Carlos Arboleda Ariza"] }
-        ]}
-      ],
-      "Jueves 9": [
-        { location: "CEPEC USACH", room: "Visita a territorio", time: "09:00–13:00", title: "Visita a Villa Solidaridad Alsino.", speakers: [], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "09:00–10:00", title: "Conferencia", speakers: ["Dr. Jader Leite"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "10:00–11:00", title: "Conferencia", speakers: ["Dr. German Rozas."], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "11:30–12:30", title: "MD5 – Mesa de diálogo: Cuidados comunitarios, territorio y prácticas de resistencia rurales y urbanas, en clave interseccional.", speakers: ["Ana María Vera Haro", "Javiera Cubillos", "Genoveva Echeverría", "Javiera Pavez", "Yanina Gutiérrez"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "12:45–13:45", title: "MD4 – Trayectorias y derivas de la Psicología Comunitaria en Chile: un testimonio vivo.", speakers: ["Oscar Muñoz", "Alba Zambrano", "Jaime Alfaro Inzunza", "George Unger"], axis: null },
-        { location: "CEPEC USACH", room: "Auditorio", time: "16:30–17:00", title: "Ceremonia de cierre.", speakers: [], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "10:00–11:00", title: "MD11 – Mujeres, cuidados y territorios ancestrales en Latinoamérica: Colombia, Brasil y Chile.", speakers: ["Gloria Mora", "Liliana Parra-Valencia", "Socorro Nina", "María Isabel Reyes"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "11:30–12:30", title: "MD9 – Mesa de diálogo: Formar para implicarse: desafíos críticos en la enseñanza de la Psicología Comunitaria desde el Sur.", speakers: ["Paula Riveros", "Mariadne Molina", "Eduardo Candia", "Bárbara Olivares", "Alejandra Pezoa", "Javiera Pávez"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 2", time: "15:30–16:30", title: "MD12 – Mesa de diálogo: Respuestas comunitarias frente a la crisis socioambiental.", speakers: ["Rodolfo Mardones", "Arlex Angarita", "Alejandra Sánchez", "René Squella"], axis: null },
-        { location: "CEPEC USACH", room: "Cowork 3", time: "11:30–12:30", title: "Círculo de escucha — Corporación Escuchar (previa inscripción; cupo 50).", speakers: [], axis: null },
-
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque F: Colonialidad y resistencia andina", block_time: "09:00 - 10:00", axis: "Eje 1", talks: [
-          { time: "09:00 - 09:20", title: "Colonialidad del ser, racialización y autoorganización comunitaria en el estallido andino peruano", speakers: ["Vanessa Verastegui Olle"] },
-          { time: "09:20 - 09:40", title: "Colonialismo y Subjetivación Mapuche-Williche en Rahue", speakers: ["Héctor Manuel Ahumada Alvarado"] },
-          { time: "09:40 - 10:00", title: "Saberes ancestrales y planes de vida en comunidades indígenas", speakers: ["Gino Grondona Opazo"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque G: Revitalización ontopolítica territorial", block_time: "10:15 - 11:15", axis: "Eje 1", talks: [
-          { time: "10:15 - 10:35", title: "Revitalización Ontopolítica en el Wadalafkenmapu", speakers: ["Javier Bravo"] },
-          { time: "10:35 - 10:55", title: "La comunidad relacional: Hacia una visión onto-política del concepto de comunidad", speakers: ["Javier Bravo"] },
-          { time: "10:55 - 11:15", title: "Normas Consuetudinarias y formación policial", speakers: ["Patricia Mercado"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque H: Descolonización y convivencia intercultural", block_time: "11:15 - 12:15", axis: "Eje 1", talks: [
-          { time: "11:15 - 11:35", title: "Descolonizando, despatriarcalizando e indigenizando la Psicología Comunitaria", speakers: ["María Antonieta Campos Melo", "Maritza Tranamil Nahuelpi"] },
-          { time: "11:35 - 11:55", title: "Claves para la promoción de la convivencia intercultural en territorios mapuche", speakers: ["Alba Zambrano", "María Antonieta Campos Melo"] },
-          { time: "11:55 - 12:15", title: "Caminos y cruces en el accionar desde la interculturalidad y lo anticolonial", speakers: ["Lucrecia Petit"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque I: Corporalidad y danza comunitaria", block_time: "12:15 - 13:15", axis: "Eje 1", talks: [
-          { time: "12:15 - 12:35", title: "Bailar también es resistir: el cuerpo como memoria y comunidad", speakers: ["Camila Prieto Callejas"] },
-          { time: "12:35 - 12:55", title: "El campo chileno como territorio que resiste: identidad del sabio popular", speakers: ["Cristóbal Cataldo Esparza"] },
-          { time: "12:55 - 13:15", title: "AUDIOVISUAL: Producción de conocimiento situado: Gira Caprina con enfoque agroecológico", speakers: ["Erwin Hans Carlsson Morales", "Enzo Solari Musa", "Claudio Martínez Urquiza"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque J: Agroecología y resistencia territorial", block_time: "14:30 - 15:30", axis: "Eje 1", talks: [
-          { time: "14:30 - 14:50", title: "Agroecología y resistencia en el Valle Marga Marga", speakers: ["María Carolina Alvarado Aspillaga", "Juan Carlos Molina"] },
-          { time: "14:50 - 15:10", title: "Representaciones Sociales del trabajo asociativo del Trafkintuwe Panguipulli", speakers: ["Karla Ramírez Barril"] },
-          { time: "15:10 - 15:30", title: "Poster: os saberes tradicionais de uma comunidade quilombola favorecendo a geração de renda", speakers: ["Andreia Nazareno dos Santos", "Antônio Alves Filho"] }
-        ]},
-        { location: "CEPEC USACH", room: "SALA 301", block_title: "Bloque K: Justicia indígena y bienestar infantil", block_time: "15:30 - 16:30", axis: "Eje 1", talks: [
-          { time: "15:30 - 15:50", title: "La justicia indígena ecuatoriana como ritual terapéutico", speakers: ["Iván Villafuerte"] },
-          { time: "15:50 - 16:10", title: "Infancias mapuche y bienestar socioemocional en contextos de violencia", speakers: ["Belén Ulloa Llanquileo", "Ana María Vera", "Lisette Urrutia", "Ana María Alarcón Muñoz", "Marcela Castro Garrido"] }
-        ]}
-      ]
-    };
-
-    /* ====== Estado y elementos ====== */
-    const scheduleContainer = document.getElementById('schedule-container');
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const axisPills = document.getElementById('axis-pills');
-    const toggleInfoBtn = document.getElementById('toggle-info');
-    const generalInfoContainer = document.getElementById('general-info-container');
-
-    let selectedDay = 'Martes 7';
-    let selectedAxis = 'all';
-
-    /* ====== Render ====== */
-    function renderSchedule() {
-      const currentDaySchedule = scheduleData[selectedDay];
-      const selectedAxisLocal = selectedAxis;
-
-      const groupedEvents = currentDaySchedule.reduce((acc, event) => {
-        const key = event.location + ' - ' + event.room;
-        if (!acc[key]) acc[key] = [];
-        if (selectedAxisLocal === 'all' || event.axis === selectedAxisLocal || event.axis === null) {
-          acc[key].push(event);
+        // Función para renderizar el esqueleto mientras se carga
+        function showSkeleton() {
+            scheduleContainer.innerHTML = '';
+            scheduleContainer.appendChild(scheduleSkeleton);
         }
-        return acc;
-      }, {});
 
-      let htmlContent = '';
-      for (const key in groupedEvents) {
-        if (groupedEvents[key].length > 0) {
-          const [location, room] = key.split(' - ');
+        // Función principal para renderizar el programa
+        function renderSchedule() {
+            showSkeleton();
+            // Simular un retardo para la carga
+            setTimeout(() => {
+                const currentDaySchedule = scheduleData[selectedDay];
+                const filteredEvents = currentDaySchedule.filter(event => 
+                    selectedAxis === 'all' || event.axis === selectedAxis || event.axis === null
+                );
+                
+                // Agrupar eventos por sala
+                const groupedEvents = filteredEvents.reduce((acc, event) => {
+                    const key = event.location + ' - ' + event.room;
+                    if (!acc[key]) acc[key] = [];
+                    acc[key].push(event);
+                    return acc;
+                }, {});
 
-          // ejes únicos en la sala
-          const axesInRoom = Array.from(new Set(groupedEvents[key].map(ev => ev.axis).filter(Boolean)));
-          const axesHtml = axesInRoom.length
-            ? `<div class="mb-3 flex flex-wrap gap-2">
-                 ${axesInRoom.map(a => `<span class="eje-chip">${a}</span>`).join('')}
-               </div>` : '';
-
-          htmlContent += `
-            <section class="sala-card p-6 rounded-xl shadow-lg border" aria-label="${room}">
-              <h3 class="text-xl sm:text-2xl font-extrabold sala-title mb-1">${room}</h3>
-              <p class="text-gray-700 mb-2">${location}</p>
-              ${axesHtml}
-              <div class="space-y-4">
-                ${groupedEvents[key].map(event => {
-                  if (event.block_title) {
-                    return `
-                      <article class="p-4 rounded-lg shadow-inner" style="background:#f9f3ea;border:1px solid #e7d8c5;">
-                        <h4 class="font-bold mb-2" style="color:#5c432f;">${event.block_title}</h4>
-                        <p class="text-sm text-gray-600 mb-4">${event.block_time}</p>
-                        <div class="space-y-2">
-                          ${event.talks.map(talk => `
-                            <div class="talk-button w-full text-left p-3 rounded-md border">
-                              <p class="text-xs" style="color:#6b7280">${talk.time}</p>
-                              <h5 class="font-medium">${talk.title}</h5>
-                              ${talk.speakers.length ? `<p class="autores text-sm mt-1">${talk.speakers.join(', ')}</p>` : ''}
+                let htmlContent = '';
+                for (const key in groupedEvents) {
+                    const [location, room] = key.split(' - ');
+                    htmlContent += `
+                        <section class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200" aria-label="${room}">
+                            <h3 class="text-xl sm:text-2xl font-bold text-blue-800 mb-2">${room}</h3>
+                            <p class="text-gray-500 mb-4">${location}</p>
+                            <div class="space-y-4">
+                                ${groupedEvents[key].map(event => {
+                                    if (event.block_title) {
+                                        return `
+                                            <article class="bg-gray-100 p-4 rounded-lg shadow-inner">
+                                                <h4 class="font-bold text-gray-700 mb-2">${event.block_title}</h4>
+                                                <p class="text-sm text-gray-500 mb-4">${event.block_time}</p>
+                                                <div class="space-y-2">
+                                                    ${event.talks.map(talk => `
+                                                        <button class="talk-button w-full text-left bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                                                            <p class="text-xs text-gray-200/80" style="color:#6b7280">${talk.time}</p>
+                                                            <h5 class="font-medium">${talk.title}</h5>
+                                                            ${talk.speakers.length > 0 ? `<p class="text-sm mt-1">Con: <span class="font-medium">${talk.speakers.join(', ')}</span></p>` : ''}
+                                                        </button>
+                                                    `).join('')}
+                                                </div>
+                                            </article>
+                                        `;
+                                    } else {
+                                        return `
+                                            <button class="talk-button w-full text-left bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                                                <p class="text-sm" style="color:#6b7280">${event.time}</p>
+                                                <h4 class="font-semibold">${event.title}</h4>
+                                                ${event.speakers.length > 0 ? `<p class="text-sm mt-1">Con: <span class="font-medium">${event.speakers.join(', ')}</span></p>` : ''}
+                                            </button>
+                                        `;
+                                    }
+                                }).join('')}
                             </div>
-                          `).join('')}
-                        </div>
-                      </article>
+                        </section>
                     `;
-                  } else {
-                    return `
-                      <div class="talk-button w-full text-left p-4 rounded-lg border">
-                        <p class="text-sm" style="color:#6b7280">${event.time}</p>
-                        <h4 class="font-semibold">${event.title}</h4>
-                        ${event.speakers.length ? `<p class="autores text-sm mt-1">${event.speakers.join(', ')}</p>` : ''}
-                      </div>
-                    `;
-                  }
-                }).join('')}
-              </div>
-            </section>
-          `;
+                }
+                
+                scheduleContainer.innerHTML = htmlContent || '<p class="text-center text-gray-500 text-lg py-10">No hay eventos para el filtro seleccionado.</p>';
+            }, 500); // 500ms de retardo
         }
-      }
-      scheduleContainer.innerHTML = htmlContent || '<p class="text-center text-gray-500 text-lg py-10">No hay eventos para el filtro seleccionado.</p>';
-    }
 
-    function updateTabs() {
-      tabButtons.forEach(button => {
-        const isActive = (button.textContent.trim() === selectedDay);
-        button.classList.toggle('active', isActive);
-        button.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
-    }
+        // Funciones para actualizar la interfaz
+        function updateTabs() {
+            tabButtons.forEach(button => {
+                const isActive = (button.dataset.day === selectedDay);
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+        }
+        
+        function updateFilters() {
+            filterButtons.forEach(button => {
+                const isActive = (button.dataset.filter === selectedAxis);
+                button.classList.toggle('active', isActive);
+            });
+        }
 
-    // Estado en la URL (#dia=...&eje=...)
-    function readStateFromHash(){
-      const params = new URLSearchParams(location.hash.replace('#',''));
-      const dia = params.get('dia');
-      const eje = params.get('eje');
-      if (dia && scheduleData[dia]) selectedDay = dia;
-      if (eje){
-        selectedAxis = eje;
-        // marcar píldora activa
-        const btn = axisPills.querySelector(`[data-axis="${eje}"]`);
-        axisPills.querySelectorAll('.axis-pill').forEach(b=>b.classList.remove('axis-active'));
-        (btn||axisPills.querySelector('[data-axis="all"]')).classList.add('axis-active');
-      }
-    }
-    function writeStateToHash(){
-      const params = new URLSearchParams();
-      params.set('dia', selectedDay);
-      if (selectedAxis !== 'all') params.set('eje', selectedAxis);
-      location.hash = params.toString();
-    }
-    window.addEventListener('hashchange', () => { readStateFromHash(); updateTabs(); renderSchedule(); });
+        // Lógica para manejar la URL y el estado de la página
+        function readStateFromHash() {
+            const params = new URLSearchParams(location.hash.replace('#',''));
+            const dia = params.get('dia');
+            const eje = params.get('eje');
+            if (dia && scheduleData[dia]) selectedDay = dia;
+            if (eje && [...filterButtons].some(o => o.dataset.filter === eje)) selectedAxis = eje;
+        }
 
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        selectedDay = button.textContent.trim();
-        updateTabs();
-        renderSchedule();
-        writeStateToHash();
-      });
-    });
+        function writeStateToHash() {
+            const params = new URLSearchParams();
+            params.set('dia', selectedDay);
+            if (selectedAxis !== 'all') params.set('eje', selectedAxis);
+            location.hash = params.toString();
+        }
 
-    // Píldoras de ejes
-    axisPills.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.axis-pill');
-      if(!btn) return;
-      selectedAxis = btn.dataset.axis;
-      axisPills.querySelectorAll('.axis-pill').forEach(b=>b.classList.remove('axis-active'));
-      btn.classList.add('axis-active');
-      renderSchedule();
-      writeStateToHash();
-    });
+        window.addEventListener('hashchange', () => { 
+            readStateFromHash(); 
+            updateTabs(); 
+            updateFilters();
+            renderSchedule(); 
+        });
 
-    // Mostrar/Ocultar Información General
-    const toggleInfoBtnEl = document.getElementById('toggle-info');
-    const generalInfoContainerEl = document.getElementById('general-info-container');
-    toggleInfoBtnEl.addEventListener('click', ()=>{
-      generalInfoContainerEl.classList.toggle('hidden');
-      toggleInfoBtnEl.textContent = generalInfoContainerEl.classList.contains('hidden')
-        ? 'Ver Información General' : 'Ocultar Información General';
-    });
+        // Eventos de los botones
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                selectedDay = button.dataset.day;
+                updateTabs();
+                renderSchedule();
+                writeStateToHash();
+            });
+        });
 
-    // Botón compartir (nativo o copia)
-    document.getElementById('shareBtn')?.addEventListener('click', async () => {
-      const url = location.href;
-      const title = document.title;
-      if (navigator.share) {
-        try { await navigator.share({ title, url }); } catch (e) {}
-      } else {
-        try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
-      }
-    });
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                selectedAxis = button.dataset.filter;
+                updateFilters();
+                renderSchedule();
+                writeStateToHash();
+            });
+        });
 
-    // Botón descargar PDF (usa librería incluida al final)
-    document.getElementById('pdfBtn')?.addEventListener('click', () => {
-      const element = document.querySelector('.container-main');
-      html2pdf().from(element).save('programa_congreso.pdf');
-    });
+        toggleInfoBtn.addEventListener('click', () => {
+            generalInfoContainer.classList.toggle('hidden');
+            const buttonText = generalInfoContainer.classList.contains('hidden') ? 'Ver Información General' : 'Ocultar Información General';
+            toggleInfoBtn.textContent = buttonText;
+        });
 
-    // Render inicial
-    document.addEventListener('DOMContentLoaded', () => { readStateFromHash(); updateTabs(); renderSchedule(); });
-  </script>
+        // Botón compartir (nativo o copia)
+        document.getElementById('shareBtn')?.addEventListener('click', async () => {
+            const url = location.href;
+            const title = document.title;
+            if (navigator.share) {
+                try { await navigator.share({ title, url }); } catch (e) {}
+            } else {
+                try { await navigator.clipboard.writeText(url); alert('Enlace copiado'); } catch (e) {}
+            }
+        });
 
-  <!-- Librería para generar PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+        // Botón descargar PDF
+        document.getElementById('pdfBtn')?.addEventListener('click', () => {
+            const element = document.querySelector('.container-main');
+            html2pdf().from(element).save('programa_congreso.pdf');
+        });
+
+        // Render inicial
+        document.addEventListener('DOMContentLoaded', () => {
+            readStateFromHash();
+            updateTabs();
+            updateFilters();
+            renderSchedule();
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </body>
 </html>
