@@ -28,6 +28,18 @@
     @media print{#controls,#shareBtn,#pdfBtn,.sticky-top{display:none!important}body{background:#fff}.card,.room,.talk{box-shadow:none}}
   </style>
 </head>
+  <style>
+  .countdown{
+    font:600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    display:inline-flex; gap:.5rem; align-items:center;
+  }
+  .countdown .unit{
+    text-align:center; padding:.5rem .75rem; border-radius:.75rem;
+    box-shadow:0 1px 3px rgba(0,0,0,.12);
+  }
+  .countdown .num{ font-size:clamp(20px,3.5vw,32px); }
+  .countdown .lab{ font-size:12px; opacity:.7; }
+</style>
 <body>
   <header>
     <!-- Banner de imagen grande -->
@@ -38,6 +50,7 @@
   <div class="container-main mx-auto">
     <header class="text-center md:text-left mb-8">
       <div class="info-panel p-6 sm:p-8 rounded-xl">
+       <div id="countdown" class="countdown"></div>
         <h1 class="text-2xl font-bold mb-2">
           V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
         </h1>
@@ -607,7 +620,60 @@
     });
   </script>
 </body>
+    <script>
+(function(){
+  // Inicio del congreso en Santiago de Chile: 7 oct 2025, 09:00 UTC-3
+  const TARGET_ISO = '2025-10-07T09:00:00-03:00';
+
+  const el = document.getElementById('countdown');
+  if(!el) return;
+
+  el.innerHTML = `
+    <span>Faltan</span>
+    <div class="unit"><div class="num" id="cd-d">--</div><div class="lab">días</div></div>
+    <div class="unit"><div class="num" id="cd-h">--</div><div class="lab">horas</div></div>
+    <div class="unit"><div class="num" id="cd-m">--</div><div class="lab">min</div></div>
+    <div class="unit"><div class="num" id="cd-s">--</div><div class="lab">seg</div></div>
+  `;
+
+  const target = new Date(TARGET_ISO);
+  const els = {
+    d: document.getElementById('cd-d'),
+    h: document.getElementById('cd-h'),
+    m: document.getElementById('cd-m'),
+    s: document.getElementById('cd-s')
+  };
+
+  const pad = n => String(n).padStart(2,'0');
+
+  function tick(){
+    const now = new Date();
+    let diff = target - now;
+
+    if (diff <= 0){
+      el.textContent = '¡El congreso ya comenzó!';
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+    const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
+    const mins = Math.floor(diff / 60000); diff -= mins * 60000;
+    const secs = Math.floor(diff / 1000);
+
+    els.d.textContent = days;
+    els.h.textContent = pad(hours);
+    els.m.textContent = pad(mins);
+    els.s.textContent = pad(secs);
+  }
+
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+</script>
+
 </html>
+
 
 
 
