@@ -27,40 +27,36 @@
     .info-panel{background:#fff;border:1px solid #00000012}
     @media print{#controls,#shareBtn,#pdfBtn,.sticky-top{display:none!important}body{background:#fff}.card,.room,.talk{box-shadow:none}}
   </style>
-</head>
+
   <style>
-  .countdown{
-    font:600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    display:inline-flex; gap:.5rem; align-items:center;
-  }
-  .countdown .unit{
-    text-align:center; padding:.5rem .75rem; border-radius:.75rem;
-    box-shadow:0 1px 3px rgba(0,0,0,.12);
-  }
-  .countdown .num{ font-size:clamp(18px,3vw,32px); }
-  .countdown .lab{ font-size:16px; opacity:.7; }
+    .countdown{
+      font:600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      display:inline-flex; gap:.5rem; align-items:center;
+    }
     .countdown .unit{
-  background:#E5D6BF;          /* si lo quieres más oscuro, prueba #DFC9A6 */
-  border:1px solid #00000014;
-}
-</style>
-<body>
-  <header>
-    <!-- Banner de imagen grande -->
-    <div class="w-full overflow-hidden">
-      <img
-  src="logos2.png"
-  alt="Logos del Congreso"
-  class="block mx-auto object-contain w-auto max-w-full
-         max-h-[120px] sm:max-h-[120px] md:max-h-[150px] lg:max-h-[180px] xl:max-h-[180px]"
-/>
-    </div>
+      text-align:center; padding:.5rem .75rem; border-radius:.75rem;
+      box-shadow:0 1px 3px rgba(0,0,0,.12);
+      background:#E5D6BF; border:1px solid #00000014;
+    }
+    .countdown .num{ font-size:clamp(18px,3vw,32px); }
+    .countdown .lab{ font-size:16px; opacity:.7; }
+  </style>
+</head>
+
 <body class="p-4 sm:p-6 lg:p-8 bg-[var(--fondo)]">
   <div class="container-main mx-auto">
     <header class="text-center md:text-left mb-8">
       <div class="info-panel p-6 sm:p-8 rounded-xl">
-      <div id="countdown" class="countdown mb-6 sm:mb-8 lg:mb-10"></div>
-                <h1 class="text-2xl font-bold mb-2">
+        <div class="w-full overflow-hidden">
+          <img
+            src="logos2.png"
+            alt="Logos del Congreso"
+            class="block mx-auto object-contain w-auto max-w-full
+                   max-h-[120px] sm:max-h-[120px] md:max-h-[150px] lg:max-h-[180px] xl:max-h-[180px]"
+          />
+        </div>
+        <div id="countdown" class="countdown mb-6 sm:mb-8 lg:mb-10"></div>
+        <h1 class="text-2xl font-bold mb-2">
           V Congreso Latinoamericano de Psicología Rural & III Congreso Nacional de Psicología Comunitaria
         </h1>
         <p class="text-sm font-semibold text-gray-600 mb-2">Fechas: 7 al 9 de octubre de 2025</p>
@@ -91,6 +87,7 @@
         </ul>
       </div>
     </header>
+
     <div id="controls" class="sticky-top top-0 bg-[var(--fondo)] py-4 z-10">
       <div class="flex flex-col sm:flex-row items-center justify-between card p-3 mb-6">
         <div class="text-lg font-bold mb-2 sm:mb-0">
@@ -105,6 +102,7 @@
           </button>
         </div>
       </div>
+
       <div id="day-filter-controls" class="card p-3 mb-6">
         <h3 class="font-bold text-sm mb-2">Filtrar por Día</h3>
         <div class="flex flex-wrap gap-2" id="day-buttons">
@@ -113,6 +111,7 @@
           <button class="btn-day-filter btn btn-ghost text-sm md:text-base" data-day="Jueves 9 de octubre">Jueves 9</button>
         </div>
       </div>
+
       <div id="filter-controls" class="card p-3 mb-6 hidden">
         <h3 class="font-bold text-sm mb-2">Filtrar por Eje</h3>
         <div class="flex flex-wrap gap-2" id="eje-buttons">
@@ -131,6 +130,9 @@
   </div>
 
   <script>
+    /* =========================
+       DATA (sin cambios)
+       ========================= */
     const allEvents = [
       // Martes 7 de octubre
       { day: 'Martes 7 de octubre', room: 'Patio USACH', time: '09:00–15:30', title: 'Registro y acreditación', code: null, speakers: null, eje: null, description: 'Acreditación en el V Congreso Latinoamericano de Psicología Rural.' },
@@ -186,13 +188,12 @@
       { day: 'Jueves 9 de octubre', room: 'Cowork 2', time: '15:30–16:30', title: 'MD12 – Mesa de diálogo: Respuestas comunitarias frente a la crisis socioambiental. Modera: Rodolfo Mardones.', code: 'MD12', speakers: 'Arlex Angarita, Alejandra Sánchez, René Squella.', eje: null, description: 'Mesa de diálogo.' },
       { day: 'Jueves 9 de octubre', room: 'Cowork 3', time: '11:30–12:30', title: 'Círculo de escucha', code: null, speakers: 'Corporación Escuchar (previa inscripción; cupo 50).', eje: null, description: 'Círculo de escucha.' },
 
+      /* ===== Ejes (sin cambios) ===== */
       // Eje 1
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque A: Saberes ancestrales y espiritualidad', time: '09:00 - 09:20', code: 'EJE1 1.13', title: 'Salud intercultural. Experiencia Huarpe Guanacache', speakers: 'Roque Andres Soria Seguin' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque A: Saberes ancestrales y espiritualidad', time: '09:20 - 09:40', code: 'EJE1 1.22', title: 'Saberes ancestrales como pilares de la resiliencia comunitaria', speakers: 'Luidienne Joseph' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque A: Saberes ancestrales y espiritualidad', time: '09:40 - 10:00', code: 'EJE1 1.23', title: 'Impactos psicológicos de los saberes ancestrales en jóvenes haitianos', speakers: 'Geniald Dorvil' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque A: Saberes ancestrales y espiritualidad', time: '10:00 - 10:03', code: 'EJE1 3.1', title: 'Tesis 3 min: Red de cuidado colectivo con adolescentes desde metodología participativa', speakers: 'Leslie Reyna' },
-      /* NUEVO LUGAR PARA PATRICIA MERCADO (movida desde Jueves) */
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque A: Saberes ancestrales y espiritualidad', time: '10:30 - 10:50', code: 'EJE1 1.12', title: 'Normas Consuetudinarias y formación policial', speakers: 'Patricia Mercado' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque B: Racismo y comunidades quilombolas', time: '12:30 - 12:50', code: 'EJE1 1.16', title: 'Racismo, Políticas Públicas e seus Impactos na Saúde Mental da Comunidade Quilombola', speakers: 'Geovanna Pinheiro Moura, Suely Emilia de Barros Santos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque B: Racismo y comunidades quilombolas', time: '12:50 - 13:10', code: 'EJE1 1.18', title: 'Saúde Mental e Saberes Ancestrais: caminhos para o cuidado comunitário', speakers: 'Giselle Oliveira Santos, Suely Emilia de Barros Santos, Clarissa de Oliveira Marques da Cunha, Ingrid Jessiane Vieira Lima, Anael Robson Barbosa Ferreira' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque B: Racismo y comunidades quilombolas', time: '13:10 - 13:30', code: 'EJE1 1.14', title: 'Metodologias Coparticipativas em Territórios Quilombolas e Camponeses', speakers: 'Suely Emilia de Barros Santos, Clarissa de Oliveira Marques da Cunha, Giselle Oliveira Santos, Thalita Analyane Bezerra De Albuquerque' },
@@ -210,7 +211,7 @@
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque F: Colonialidad y resistencia andina', time: '09:40 - 10:00', code: 'EJE1 1.25', title: 'Saberes ancestrales y planes de vida en comunidades indígenas', speakers: 'Gino Grondona Opazo' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque G: Revitalización ontopolítica territorial', time: '10:15 - 10:35', code: 'EJE1 1.24', title: 'Revitalización Ontopolítica en el Wadalafkenmapu', speakers: 'Javier Bravo' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque G: Revitalización ontopolítica territorial', time: '10:35 - 10:55', code: 'EJE1 1.11', title: 'La comunidad relacional: Hacia una visión onto-política del concepto de comunidad', speakers: 'Javier Bravo' },
-      /* ELIMINADO DE JUEVES: Patricia Mercado, ya movida al Miércoles */
+      { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque G: Revitalización ontopolítica territorial', time: '10:55 - 11:15', code: 'EJE1 1.12', title: 'Normas Consuetudinarias y formación policial', speakers: 'Patricia Mercado' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque H: Descolonización y convivencia intercultural', time: '11:15 - 11:35', code: 'EJE1 1.19', title: 'Descolonizando, despatriarcalizando e indigenizando la Psicología Comunitaria', speakers: 'María Antonieta Campos Melo, Maritza Tranamil Nahuelpi' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque H: Descolonización y convivencia intercultural', time: '11:35 - 11:55', code: 'EJE1 1.27', title: 'Claves para la promoción de la convivencia intercultural en territorios mapuche', speakers: 'Alba Zambrano, María Antonieta Campos Melo' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 1', room: 'SALA 301', block: 'Bloque H: Descolonización y convivencia intercultural', time: '11:55 - 12:15', code: 'EJE1 1.21', title: 'Caminos y cruces en el accionar desde la interculturalidad y lo anticolonial', speakers: 'Lucrecia Petit' },
@@ -243,7 +244,7 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque F: Patrimonio y metodologías participativas', time: '16:10 - 16:30', code: 'EJE2 4.2', title: 'AUDIOVISUAL: Crisis Socioambiental y Salud Mental en el Valle del Elqui', speakers: 'Erland Zhigley, Álvaro Hurtado, Bárbara Yevenes, Paz Astudillo, Axel Coopman, Lenard Torres' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque G: Síntesis territorial', time: '16:30 - 16:50', code: 'EJE2 1.22', title: 'Conflictos socioambientales en el Wallmapu: perspectivas de infancias y comunidades', speakers: 'Camila Jara Villalobos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque G: Síntesis territorial', time: '16:50 - 17:10', code: 'EJE2 1.4', title: 'Vínculos Afectivos en Territorios en Crisis: Las Voces de Niños', speakers: 'Celeste M. Orrego Olivares, Paula Ascorra, Pablo Mansilla, Patricio Pérez' },
-      
+
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque H: Agricultura familiar y sistemas alimentarios', time: '09:00 - 09:20', code: 'EJE2 1.8', title: 'Políticas públicas, agricultura familiar e segurança alimentar: Projeto Paulo Freire', speakers: 'Florença Moreira Gonçalves, Filipe Augusto Xavier Lima, César Augustus Labre Lemos de Freitas' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque H: Agricultura familiar y sistemas alimentarios', time: '09:20 - 09:40', code: 'EJE2 1.17', title: 'Relación entre Agricultura Campesina Familiar, Étnica y Comunitaria y la Psicología Rural', speakers: 'Arlex Angarita Leiton' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque H: Agricultura familiar y sistemas alimentarios', time: '09:40 - 10:00', code: 'EJE2 1.18', title: 'Ahora es la carne: cooperativas ganaderas y comunidades mapuche en Río Negro', speakers: 'Santiago Conti, Franca Bidinost' },
@@ -265,7 +266,7 @@
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque N: Gestión juvenil de desastres y percepción ambiental', time: '16:30 - 16:50', code: 'EJE2 1.35', title: 'El rol de los jóvenes emprendedores en la gestión de desastres y el desarrollo comunitario en Haití', speakers: 'Carlens Ybrahim' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque N: Gestión juvenil de desastres y percepción ambiental', time: '16:50 - 17:10', code: 'EJE2 1.19', title: 'Percepción emocional ante estímulos ambientales en estudiantes de nivel básico', speakers: 'Monserrat Romero Miranda, Niels Martínez Guevara, Alejandra Olivera Méndez, Ernesto Peredo Rivera, Gerardo Loera Alvarado' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 2', room: 'SALA 302', block: 'Bloque N: Gestión juvenil de desastres y percepción ambiental', time: '17:10 - 17:30', code: 'EJE2 5.2', title: 'PRESENTACIÓN DE LIBRO: De las emergencias a la transformación: aprendizajes para la acción social y educativa', speakers: 'Yanina Gutiérrez Valdés, Sebastián Ortiz Mallegas, Marlen Figueroa Varela' },
-      
+
       // Eje 3
       { day: 'Miércoles 8 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque A: Salud/cuidados comunitarios y ruralidades', time: '09:00 - 09:20', code: 'EJE3 1.6', title: 'Trabajadoras comunitarias de salud mental, acompañando violencias en México rural', speakers: 'Verónica Ortega García, Aurora Luna Martínez' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque A: Salud/cuidados comunitarios y ruralidades', time: '09:20 - 09:40', code: 'EJE3 1.7', title: 'Feminino e rural: Saúde Mental de mulheres que vivem no campo', speakers: 'Lara de Araújo Miranda, Pamela Vasconcellos' },
@@ -293,7 +294,7 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque G: Saberes ancestrales y territorios', time: '17:50 - 18:00', code: 'EJE3 2.3', title: 'PÓSTER: Mujeres, cuidados y territorios: experiencias comunitarias, urbanas y rurales', speakers: 'Jizlayne Estevam da Fonseca, João Batista da Silva Dantas, Fernanda Fernandes Gurgel' },
 
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque H: Feminismos negros y comunidades quilombolas', time: '09:00 - 09:20', code: 'EJE3 1.1', title: 'Casa de la Mujer Quilombola: espacio de referencia y cuidado en el Quilombo Grilo', speakers: 'Giovanni Sampaio Queiroz, Jader Ferreira Leite' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque H: Feminismos negros y comunidades quilombolas', time: '09:20 - 09:40', code: 'EJE3 1.30', title: 'Feminino e Ancestralidade: A transmisión de saberes tradicionales entre mujeres quilombolas', speakers: 'Lara de Araújo Miranda' },
+      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque H: Feminismos negros y comunidades quilombolas', time: '09:20 - 09:40', code: 'EJE3 1.30', title: 'Feminino e Ancestralidade: A transmisión de saberes tradicionais entre mulheres quilombolas', speakers: 'Lara de Araújo Miranda' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque H: Feminismos negros y comunidades quilombolas', time: '09:40 - 10:00', code: 'EJE3 1.34', title: 'Práticas parentais na primeira infância em comunidades quilombolas na perspectiva dos papéis de gênero', speakers: 'Renan Vinicius Guerra da Costa, Adria de Lima Sousa' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque I: Saberes extractivistas y narrativas indígenas', time: '10:00 - 10:15', code: 'EJE3 1.3', title: 'Saberes, transmissão e protagonismo feminino no conhecimento extrativista do Pequi', speakers: 'Rafaela Alves da Silva, Filipe Augusto Xavier Lima' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque I: Saberes extractivistas y narrativas indígenas', time: '10:00 - 10:10', code: 'EJE3 2.4', title: 'PÓSTER: Hilado del tejido colectivo de la Red Latinoamericana de Defensoras digitales', speakers: 'Mayra Daniela Martínez Cruz' },
@@ -301,8 +302,8 @@
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque I: Saberes extractivistas y narrativas indígenas', time: '10:20 - 10:40', code: 'EJE3 2.6', title: 'PÓSTER: Saberes, liderazgo y empoderamiento comunitario en mujeres mapuche-lafkenche', speakers: 'Millaray Malen Nahuelhual Epunir' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque I: Saberes extractivistas y narrativas indígenas', time: '10:40 - 10:50', code: 'EJE3 2.7', title: 'PÓSTER: Sentipensando el buenvivir y salud mental desde Villa Alemana', speakers: 'Marcela Vargas Tobon, Melissa Vargas Paredes, Victoria Rosales Manivet, Agrupación Bienestar Consciente' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque I: Saberes extractivistas y narrativas indígenas', time: '10:50 - 11:00', code: 'EJE3 2.2', title: 'POSTER: Análisis de acceso efectivo al dispositivo Centro de la Mujer en las mujeres rurales', speakers: 'Damaris Melo Uribe' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque J: Narrativas indígenas femeninas y gestión agrícola', time: '11:15 - 11:35', code: 'EJE3 1.4', title: 'Entre a floresta e o asfalto: narrativas indígenas femininas sobre um clima em transformación', speakers: 'Cristina Gonçalves Rodrigues, Gian Carlos Cruz Pereira, Socorro Nina' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque J: Narrativas indígenas femeninas y gestión agrícola', time: '11:35 - 11:55', code: 'EJE3 1.5', title: 'O projeto São José e a participação feminina na gestão da agricultura familiar', speakers: 'Moacir de Souza Junior, Lafaete Almeida de Oliveira Mesquita, Ana Karina Holanda, Filipe Augusto Xavier Lima' },
+      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque J: Narrativas indígenas femeninas y gestión agrícola', time: '11:15 - 11:35', code: 'EJE3 1.4', title: 'Entre a floresta e o asfalto: narrativas indígenas femininas sobre um clima en transformación', speakers: 'Cristina Gonçalves Rodrigues, Gian Carlos Cruz Pereira, Socorro Nina' },
+      { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque J: Narrativas indígenas femeninas y gestión agrícola', time: '11:35 - 11:55', code: 'EJE3 1.5', title: 'O projeto São José e a participação femenina na gestão da agricultura familiar', speakers: 'Moacir de Souza Junior, Lafaete Almeida de Oliveira Mesquita, Ana Karina Holanda, Filipe Augusto Xavier Lima' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque J: Narrativas indígenas femeninas y gestión agrícola', time: '11:55 - 12:15', code: 'EJE3 3.2', title: 'TESIS 3 MIN: O cuidado psicossocial exercido por anciãs indígenas para o enfrentamento do sofrimento colonial', speakers: 'Thais de Negreiros Sales' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque K: Resistencias y cuidados ancestrales', time: '12:15 - 12:35', code: 'EJE3 1.35', title: 'Corpo-território e resistência: Estratégias de uma mujer indígena citadina na educación', speakers: 'Jhanine Magalhães Cabral, Adria de Lima Sousa' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque K: Resistencias y cuidados ancestrales', time: '12:35 - 12:55', code: 'EJE3 1.21', title: 'Cuidar en silencio, voces del cuidado informal en ruralidad', speakers: 'Verónica Monreal' },
@@ -317,7 +318,7 @@
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque N: Liderazgos femeninos y cartografías territoriales', time: '16:30 - 16:50', code: 'EJE3 1.31', title: 'Liderazgos femeninos rurales: el poder del cuidado para la transformación territorial', speakers: 'Ginny Rocio Luna Rodríguez, Sindy Katrina Orozco Monsalve, Mayerly Lucía Paredes Ardila' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque N: Liderazgos femeninos y cartografías territoriales', time: '16:50 - 17:10', code: 'EJE3 1.32', title: 'Cuidar la vida: cartografiar cuerpos-territorios con mujeres rurales en Uruguay', speakers: 'Nat Tommasino Comesaña' },
       { day: 'Jueves 9 de octubre', eje: 'Eje 3', room: 'SALA 303', block: 'Bloque N: Liderazgos femeninos y cartografías territoriales', time: '17:10 - 17:30', code: 'EJE3 1.38', title: 'Arquitecturas que muerden: geografías del rechazo y la resistencia feminista en territorios urbanos', speakers: 'Juan Urzúa, Esteban Pacheco Yáñez' },
-      
+
       // Eje 4
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque A: Opresión/liberación y autogestión comunitaria', time: '09:00 - 10:00', code: 'EJE4 1.1', title: 'La experiencia de opresión/liberación en usuarios instituciones hospitalarias chilenas', speakers: 'Rodrigo Quiroz, Antonia Cruz Covarrubias' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque A: Opresión/liberación y autogestión comunitaria', time: '09:20 - 09:40', code: 'EJE4 1.2', title: 'Talleres con niños y adolescentes como propuesta de autogestión comunitaria', speakers: 'Amanda Borba Ramos Silva' },
@@ -326,11 +327,11 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque B: Narrativas territoriales y bienestar juvenil rural', time: '10:35 - 10:55', code: 'EJE4 1.9', title: 'Fragilidad emocional urbana: una propuesta de solución comunitaria intergeneracional', speakers: 'Nabil Morocho' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque B: Narrativas territoriales y bienestar juvenil rural', time: '10:55 - 11:15', code: 'EJE4 3.1', title: 'TESIS 3 MIN: Sentidos en la formación del curso de licenciatura en educación del campo', speakers: 'Angélica de Souza Lima, Juliana da Silva Nobrega' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque C: Educación del campo y salud mental escolar', time: '11:15 - 12:15', code: 'EJE4 1.4', title: 'Salud Mental Escolar y Educación del Campo: prácticas de cuidado en una Escuela Familia Agrícola', speakers: 'Catarina Prado Sakai, Luiz Paulo Ribeiro' },
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque C: Educación del campo y salud mental escolar', time: '11:35 - 11:55', code: 'EJE4 1.6', title: 'Da escola do campo à universidade, do aluno ao professor: a construcción da representação social', speakers: 'Fátima Moraes Garcia, Josimario Marques Dos Santos' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque C: Educación del campo y salud mental escolar', time: '11:35 - 11:55', code: 'EJE4 1.6', title: 'Da escola do campo à universidade, do aluno ao professor: a construcción da representación social', speakers: 'Fátima Moraes Garcia, Josimario Marques Dos Santos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque C: Educación del campo y salud mental escolar', time: '11:55 - 12:15', code: 'EJE4 2.2', title: 'PÓSTER: La salud mental adolescente en zonas rurales: el rol comunitario en la disminución de barreras', speakers: 'Carmen Cristina Vigo Valle, Kristy Mariel García Montenegro, John Espinoza' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque D: Diálogos interculturales y mentalidad democrática', time: '12:15 - 13:15', code: 'EJE4 1.5', title: 'Diálogos y Tensiones entre la Psicología y las Comunidades Mapuche', speakers: 'Fernanda Marilicán, Felipe Andrés Quintano Méndez' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque D: Diálogos interculturales y mentalidad democrática', time: '12:35 - 12:55', code: 'EJE4 1.7', title: 'Mentalidad democrática e individuación', speakers: 'Lina Marcela Gil Congote' },
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque D: Diálogos interculturales y mentalidad democrática', time: '12:55 - 13:15', code: 'EJE4 1.17', title: 'Movimento dos Trabalhadores Sem Terra - MST: Uma luta pela reforma agrária e justicia social', speakers: 'Cíntia Aparecida Campos Pontes' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque D: Diálogos interculturales y mentalidad democrática', time: '12:55 - 13:15', code: 'EJE4 1.17', title: 'Movimento dos Trabalhadores Sem Terra - MST: Uma luta pela reforma agrária e justiça social', speakers: 'Cíntia Aparecida Campos Pontes' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque E: Patrimonio cultural y trayectorias rurales', time: '14:30 - 15:30', code: 'EJE4 1.10', title: 'Dialogo sobre la educación rural y patrimonio cultural: talleres en Pichidegua', speakers: 'Paula Andrea Torres Homez' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque E: Patrimonio cultural y trayectorias rurales', time: '14:50 - 15:10', code: 'EJE4 1.11', title: 'Trayectorias de profesores rurales: aportes para comprender la escuela rural de Los Ríos', speakers: 'Paula Andrea Torres Homez, Marcelo Arancibia' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 4', room: 'SALA 206', block: 'Bloque E: Patrimonio cultural y trayectorias rurales', time: '15:10 - 15:30', code: 'EJE4 1.12', title: 'Proyectos de vida y experiencias de traslado de localidad por continuidad de estudios en Ollagüe', speakers: 'Cristian Fernando Cortés Tapia, Nathalie Infante' },
@@ -356,8 +357,7 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque A: Marcos metodológicos fundacionales', time: '09:00 - 10:00', code: 'EJE5 1.1', title: 'Círculo de Cultura: dimensión metodológica, espacio de escucha y atención colectiva en una comunidad rural', speakers: 'Giovanni Sampaio Queiroz, María Valquíria Nogueira do Nascimento' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque A: Marcos metodológicos fundacionales', time: '09:20 - 09:40', code: 'EJE5 1.2', title: 'Procedencias de las psicologías en las ruralidades: gubernamentalidad y Extensión Universitaria en Uruguay', speakers: 'Gabriel Picos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque A: Marcos metodológicos fundacionales', time: '09:40 - 10:00', code: 'EJE5 1.4', title: 'Claves metodológicas reflexivas y contextualizadas para la psicología territorial: aprendizajes de la Amazonía', speakers: 'Angélica Fierro, Sandra Frieri Gilchrist' },
-      /* AJUSTE PARA EVITAR SOLAPE DE CATARINA SAKAI */
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque B: Historia y construcción de saberes', time: '10:00 - 11:10', code: 'EJE5 1.3', title: 'Helena Antipoff e a Construção de Práticas e Saberes para a Escola Rural Brasileira', speakers: 'Catarina Prado Sakai, Pina Marsico, Regina Helena de Freitas Campos' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque B: Historia y construcción de saberes', time: '10:15 - 11:30', code: 'EJE5 1.3', title: 'Helena Antipoff e a Construção de Práticas e Saberes para a Escola Rural Brasileira', speakers: 'Catarina Prado Sakai, Pina Marsico, Regina Helena de Freitas Campos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque B: Historia y construcción de saberes', time: '10:35 - 10:55', code: 'EJE5 1.8', title: '"Sin duda, no hay fase de la educación pública sobre la que sepamos menos que la educación rural": Investigaciones en Journal of Educational Psychology (1910-1932)', speakers: 'Juan David Millán' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque B: Historia y construcción de saberes', time: '10:55 - 10:58', code: 'EJE5 3.1', title: 'TESIS 3 MIN: Psicología y ruralidades: una revisión de la producción nacional para elucidar el campo', speakers: 'Daniel González Fajardo' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque C: Trayectorias profesionales y narrativas', time: '12:30 - 13:30', code: 'EJE5 1.5', title: 'Turmas especiais de Psicologia no PRONERA: novos trajetos para a Psicologia Rural no Brasil', speakers: 'Maria Letícia De Oliveira Bianchini, Dolores Galindo' },
@@ -367,7 +367,7 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque D: Diálogos interdisciplinarios y desarrollo rural', time: '14:50 - 15:10', code: 'EJE5 1.10', title: 'Comunidades de Prácticas Virtuales como Herramienta de Formación y Encuentro de Profesionales Geográficamente Dispersos', speakers: 'Fernando Landini' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque D: Diálogos interdisciplinarios y desarrollo rural', time: '15:10 - 15:30', code: 'EJE5 5.1', title: 'PRESENTACIÓN DE LIBRO: Subjetividad y Desarrollo en Contextos Rurales', speakers: 'Pablo Fossa, Verónica Serruto' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque E: Extensión universitaria e innovación', time: '15:30 - 16:30', code: 'EJE5 1.11', title: 'Facilitadores y obstaculizadores de procesos de innovación y desarrollo en el ámbito de la extensión rural y agricultura familiar de Misiones', speakers: 'Manuela Martínez' },
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque E: Extensión universitaria e innovación', time: '15:50 - 16:10', code: 'EJE5 1.12', title: 'Extensão universitária e educação do campo: ações do lacs/nueges com jovens e adultos em comunidades quilombolas', speakers: 'Geovanna Pinheiro Moura, Jorge Edielson Costa Gueiros, Jullyane Chagas Barboza Brasilino' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque E: Extensión universitaria e innovación', time: '15:50 - 16:10', code: 'EJE5 1.12', title: 'Extensão universitária e educação do campo: ações do lacs/nueges com jovens e adultos en comunidades quilombolas', speakers: 'Geovanna Pinheiro Moura, Jorge Edielson Costa Gueiros, Jullyane Chagas Barboza Brasilino' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque E: Extensión universitaria e innovación', time: '16:10 - 16:30', code: 'EJE5 1.13', title: 'Factores psicológicos de adopción de prácticas de conservación del suelo: El rol de la conexión emocional de los agricultores con el suelo', speakers: 'Alexander Neaman' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque F: Formación y construcción disciplinaria', time: '16:30 - 17:30', code: 'EJE5 1.14', title: 'O campo na Psicologia: a formação e práticas a partir das ruralidades', speakers: 'Daniel González Fajardo, Gustavo Melo, Nathan Almeida da Silva' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque F: Formación y construcción disciplinaria', time: '16:50 - 17:10', code: 'EJE5 1.15', title: 'Hacer camino en lo rural: Red Latinoamericana de Psicología Rural y la construcción de una psicología situada', speakers: 'Sandra Emilia Hoffman Martins' },
@@ -376,60 +376,213 @@
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque G: Pósters y síntesis metodológica', time: '17:45 - 18:00', code: 'EJE5 2.2', title: 'PÓSTER: Cartas: las voces de los estudiantes rurales', speakers: 'Maria Elisa Carneiro Pereira Pinto, Sandra Ferraz' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque G: Pósters y síntesis metodológica', time: '18:00 - 18:15', code: 'EJE5 2.3', title: 'PÓSTER: La psicología y su contribución a la educación rural en Brasil', speakers: 'Valdirene Gonçalves, Sandra Ferraz' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 5', room: 'SALA 207', block: 'Bloque G: Pósters y síntesis metodológica', time: '18:15 - 18:18', code: 'EJE5 3.2', title: 'TESIS 3 MIN: Procesos psicosociales asociados a la adopción de prácticas agroecológicas. Significados e impacto en la salud integral', speakers: 'María Julia Sabez' },
-      
+
       // Eje 6
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque A: Formación y docencia', time: '10:15 - 11:00', code: 'E6 1.3', title: 'El diálogo de la Psicología Comunitaria con la Educación Popular en la Formación', speakers: 'Maria Valquíria Nogueira do Nascimento, Giovanni Sampaio Queiroz' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque A: Formación y docencia', time: '10:35 - 10:55', code: 'E6 1.10', title: 'Fortaleciendo la formación integral en psicología comunitaria: impacto del Aprendizaje-Servicio en la Intervención Psicosocial', speakers: 'Valentina Vera Caro, José Sandoval Díaz, Jerónimo Vega Ortega, Camila Navarrete Valladares, Consuelo Paz Suazo Muñoz' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque B: Formación y sistematización', time: '11:30 - 12:15', code: 'E6 2.2', title: 'PÓSTER: Sistematización de la Experiencia de Formación de Estudiantes de Psicología (Universidad Playa Ancha, Chile)', speakers: 'Isidora Ascencio Carrozza, Macarena Hernández Castillo, Eduardo Robles Araya, Eduardo Guesalaga Cebreros, José Luís Pérez Flores' },
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque B: Formación y sistematización', time: '11:50 - 12:10', code: 'E6 2.3', title: 'PÓSTER: Ações Comunitárias no Contexto Amazônico: Reflexões da Psicologia Comunitária a partir da Experiência Docente', speakers: 'Janaína Duarte Ferreira Vieiralves, Dra. Socorro Nina' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque B: Formación y sistematización', time: '11:50 - 12:10', code: 'E6 2.3', title: 'PÓSTER: Ações Comunitárias no Contexto Amazônico: Reflexões da Psicología Comunitaria a partir da Experiência Docente', speakers: 'Janaína Duarte Ferreira Vieiralves, Dra. Socorro Nina' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque C: Prácticas emergentes', time: '17:00 - 17:45', code: 'E6 1.4', title: 'Abordaje interdisciplinario e intersectorial de un proceso de duelo colectivo en una comunidad escolar', speakers: 'Mariela Muñoz Rodríguez, Juan Miguel Flores' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque C: Prácticas emergentes', time: '17:20 - 17:40', code: 'E6 1.12', title: 'El Circo Social como herramienta de intervención comunitaria', speakers: 'Marcelo Antonio Pérez Daza, Pía Barrios Valenzuela, Ángel Ruiz' },
-      /* COWORK 2 — SESIONES PARALELAS (Opción 2) */
+
+      /* Opción 2: paralelas en Cowork 2 (no tocadas, solo se ordenan al render) */
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Sesión paralela A: Territorio y comunalidad', time: '10:15 - 11:00', code: 'E6 1.8', title: 'Rostros y Rastros: Papachos Sentipensantes', speakers: 'Jose Dario Patarroyo Gomez, Carlos Leal Ruano' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Sesión paralela A: Territorio y comunalidad', time: '10:35 - 10:55', code: 'E6 1.20', title: 'Co-razonar los territorios en Valparaíso: escuela de formación popular para la universidad y comunidades organizadas', speakers: 'Gino Grondona Opazo, Marcelo Rodríguez, Pablo Saravia Ramos' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Sesión paralela B: Innovación y metodologías', time: '11:30 - 12:15', code: 'E6 1.9', title: 'Innovación ciudadana y mundos por-venir ¿un nuevo paradigma para la psicología comunitaria?', speakers: 'Claudia Calquín, Carlos Ramírez-Vargas, Cristopher Yañez-Urbina' },
-      /* MOVIDO DENTRO DE LA MAÑANA SEGÚN Opción 2 */
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Sesión paralela B: Innovación y metodologías', time: '11:10 - 11:30', code: 'E6 1.26', title: 'Más allá de lo visible: análisis multimodal crítico de la Plaza de la Independencia', speakers: 'Juan Urzúa, Esteban Pacheco Yáñez' },
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Sesión paralela B: Innovación y metodologías', time: '11:50 - 12:10', code: 'E6 1.26', title: 'Más allá de lo visible: análisis multimodal crítico de la Plaza de la Independencia', speakers: 'Juan Urzúa, Esteban Pacheco Yáñez' },
       { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Presentaciones de libros', time: '16:30 - 17:10', code: 'E6 5.2', title: 'Alegorías en la porfía. 40 años de historia de La Caleta', speakers: 'Carla Núñez' },
-      /* REUBICADO A COWORK 3 SEGÚN Opción 2 */
-      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 3', block: 'Presentaciones de libros', time: '16:50 - 17:10', code: 'E6 5.1', title: 'Ateliê de Filosofia na Escola: experimentações para los años finales do Ensino Fundamental', speakers: 'Rosângela Da Luz Matos, Raquel Maciel Paulo dos Anjos' },
-
-      { day: 'Jueves 9 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque D: Metodologías críticas', time: '10:15 - 11:00', code: 'E6 1.13', title: 'Psicología comunitaria y políticas prefigurativas: El potencial prefigurativo de la intervención comunitaria', speakers: 'Andrés Gutiérrez Vásquez, Millaray Coderch García, Andrés Jara Silva' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque D: Metodologías críticas', time: '10:35 - 10:50', code: 'E6 1.16', title: 'Narración Oral Escénica y Comunitaria: la Narración Oral Escénica como herramienta metodológica participativa para la transformación social', speakers: 'Bran Montiel' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque D: Metodologías críticas', time: '10:50 - 11:00', code: 'E6 1.17', title: 'Breve guía para realizar cabildos ciudadanos que generan incidencia en la institucionalidad local', speakers: 'Matías Montenegro C.' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque E: Epistemologías decoloniales', time: '11:30 - 12:15', code: 'E6 1.14', title: 'Sistematización de Experiencias y Psicología Comunitaria: Trayectorias, Convergencias, y la innegable necesidad de su articulación para la formación profesional en Psicología Comunitaria en Chile', speakers: 'Eduardo Guesalaga Cebreros, José Luís Pérez Flores' },
-      { day: 'Jueves 9 de octubre', eje: 'Eje 6', room: 'SALA 208', block: 'Bloque E: Epistemologías decoloniales', time: '...' }
+      { day: 'Miércoles 8 de octubre', eje: 'Eje 6', room: 'Cowork 2', block: 'Presentaciones de libros', time: '16:50 - 17:10', code: 'E6 5.1', title: 'Ateliê de Filosofia na Escola: experimentações para los años finales do Ensino Fundamental', speakers: 'Rosângela Da Luz Matos, Raquel Maciel Paulo dos Anjos' },
     ];
+
+    /* =========================
+       Utils de tiempo y orden
+       ========================= */
+    const normalizeDash = s => s.replace(/–/g, '-').replace(/\s*-\s*/g, '-');
+    function timeToMinutes(range){
+      if(!range) return { start: 0, end: 0 };
+      const r = normalizeDash(range);
+      const [startStr, endStr] = r.split('-');
+      const [sh, sm] = startStr.split(':').map(Number);
+      const [eh, em] = (endStr||startStr).split(':').map(Number);
+      return { start: sh*60 + (sm||0), end: eh*60 + (em||0) };
+    }
+    function sortByStart(a,b){
+      const ta = timeToMinutes(a.time);
+      const tb = timeToMinutes(b.time);
+      if(ta.start !== tb.start) return ta.start - tb.start;
+      return ta.end - tb.end;
+    }
+
+    /* =========================
+       Render (vista Horario / vista Eje)
+       ========================= */
+    const programContainer = document.getElementById('program-container');
+    const btnHorario = document.getElementById('btn-horario');
+    const btnEje = document.getElementById('btn-eje');
+    const dayButtons = document.querySelectorAll('.btn-day-filter');
+    const filterControls = document.getElementById('filter-controls');
+
+    let currentView = 'horario'; // 'horario' | 'eje'
+    let currentDay = 'Martes 7 de octubre';
+    let currentEje = '';
+
+    function setActive(btns, target){
+      btns.forEach(b => b.classList.toggle('active', b === target));
+      btns.forEach(b => b.classList.toggle('btn-ghost', b !== target));
+    }
+
+    btnHorario.addEventListener('click', () => {
+      currentView = 'horario';
+      btnHorario.classList.add('active');
+      btnEje.classList.remove('active');
+      filterControls.classList.add('hidden');
+      render();
+    });
+
+    btnEje.addEventListener('click', () => {
+      currentView = 'eje';
+      btnEje.classList.add('active');
+      btnHorario.classList.remove('active');
+      filterControls.classList.remove('hidden');
+      render();
+    });
+
+    dayButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        setActive(Array.from(dayButtons), btn);
+        currentDay = btn.dataset.day;
+        render();
+      });
+    });
+
+    // Filtro por eje
+    document.querySelectorAll('.btn-filter').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.btn-filter').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentEje = btn.dataset.eje || '';
+        render();
+      });
+    });
+
+    function groupBy(arr, keyFn){
+      return arr.reduce((acc, item)=>{
+        const k = keyFn(item);
+        (acc[k] = acc[k] || []).push(item);
+        return acc;
+      }, {});
+    }
+
+    function render(){
+      const dayEvents = allEvents.filter(e=>e.day===currentDay);
+
+      programContainer.innerHTML = '';
+
+      if(currentView === 'horario'){
+        // Agrupar por sala y ordenar por hora
+        const byRoom = groupBy(dayEvents, e=> e.room || e.eje || 'General');
+        Object.keys(byRoom).sort().forEach(room=>{
+          const items = byRoom[room].slice().sort(sortByStart);
+
+          const card = document.createElement('div');
+          card.className = 'card p-4 mb-6';
+          card.innerHTML = `
+            <div class="section-title flex items-center justify-between">
+              <h3 class="font-bold text-lg">${room || 'General'}</h3>
+              <span class="chip chip-sala">${currentDay}</span>
+            </div>
+            <div class="space-y-3"></div>
+          `;
+          const list = card.querySelector('.space-y-3');
+
+          items.forEach(ev=>{
+            const ejeChip = ev.eje ? `<span class="chip chip-eje">${ev.eje}</span>` : '';
+            list.innerHTML += `
+              <div class="talk p-3 rounded-lg">
+                <div class="text-sm text-gray-600 mb-1">${ev.time || ''}</div>
+                <div class="font-semibold">${ev.title}</div>
+                <div class="text-sm text-gray-700">${ev.block ? ev.block+' · ' : ''}${ev.code ? `<span class="font-mono">${ev.code}</span>` : ''}</div>
+                <div class="text-sm text-gray-600">${ev.speakers || ''}</div>
+                ${ejeChip}
+                ${ev.description ? `<p class="text-sm text-gray-700 mt-1">${ev.description}</p>` : ''}
+              </div>
+            `;
+          });
+
+          programContainer.appendChild(card);
+        });
+
+      } else {
+        // Vista por EJE (opcionalmente filtrar) y ordenar por hora
+        let ejeEvents = dayEvents.filter(e=> e.eje); // solo los que tienen eje
+        if(currentEje) ejeEvents = ejeEvents.filter(e=> e.eje === currentEje);
+
+        const byEje = groupBy(ejeEvents, e=> `${e.eje} — ${e.room || ''}`);
+        Object.keys(byEje).sort().forEach(groupKey=>{
+          const items = byEje[groupKey].slice().sort(sortByStart);
+
+          const card = document.createElement('div');
+          card.className = 'card p-4 mb-6';
+          card.innerHTML = `
+            <div class="section-title flex items-center justify-between">
+              <h3 class="font-bold text-lg">${groupKey}</h3>
+              <span class="chip chip-sala">${currentDay}</span>
+            </div>
+            <div class="space-y-3"></div>
+          `;
+          const list = card.querySelector('.space-y-3');
+
+          items.forEach(ev=>{
+            list.innerHTML += `
+              <div class="talk p-3 rounded-lg">
+                <div class="text-sm text-gray-600 mb-1">${ev.time || ''}</div>
+                <div class="font-semibold">${ev.title}</div>
+                <div class="text-sm text-gray-700">${ev.block ? ev.block+' · ' : ''}${ev.code ? `<span class="font-mono">${ev.code}</span>` : ''}</div>
+                <div class="text-sm text-gray-600">${ev.speakers || ''}</div>
+                <span class="chip chip-eje">${ev.eje}</span>
+                ${ev.description ? `<p class="text-sm text-gray-700 mt-1">${ev.description}</p>` : ''}
+              </div>
+            `;
+          });
+
+          programContainer.appendChild(card);
+        });
+
+        // Si no hay eventos con eje para ese día/filtro, mostramos un mensaje
+        if(!Object.keys(byEje).length){
+          programContainer.innerHTML = `
+            <div class="card p-6">
+              <p class="text-gray-700">No hay actividades con este filtro.</p>
+            </div>`;
+        }
+      }
+    }
+
+    // Cuenta regresiva simple a 7 de octubre 2025 09:00
+    function startCountdown(){
+      const el = document.getElementById('countdown');
+      const target = new Date('2025-10-07T09:00:00-03:00').getTime();
+      function tick(){
+        const now = Date.now();
+        let diff = Math.max(0, target - now);
+        const d = Math.floor(diff / (1000*60*60*24)); diff -= d*24*60*60*1000;
+        const h = Math.floor(diff / (1000*60*60)); diff -= h*60*60*1000;
+        const m = Math.floor(diff / (1000*60)); diff -= m*60*1000;
+        const s = Math.floor(diff / 1000);
+        el.innerHTML = `
+          <div class="unit"><div class="num">${d}</div><div class="lab">días</div></div>
+          <div class="unit"><div class="num">${h}</div><div class="lab">horas</div></div>
+          <div class="unit"><div class="num">${m}</div><div class="lab">min</div></div>
+          <div class="unit"><div class="num">${s}</div><div class="lab">seg</div></div>
+        `;
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    // Estado inicial
+    startCountdown();
+    render();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
